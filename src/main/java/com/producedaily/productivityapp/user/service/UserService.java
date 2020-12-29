@@ -1,11 +1,10 @@
-package com.producedaily.productivityapp.dao;
+package com.producedaily.productivityapp.user.service;
 
-
-import com.producedaily.productivityapp.entity.User;
+import com.producedaily.productivityapp.user.entity.User;
 
 import java.util.List;
 
-public interface UserDAO {
+public interface UserService {
 
     public List<User> findAll();
 
@@ -14,5 +13,4 @@ public interface UserDAO {
     public void save(User theUser);
 
     public void deleteById(int id);
-
 }

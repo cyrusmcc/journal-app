@@ -1,7 +1,7 @@
 package com.producedaily.productivityapp.rest;
 
-import com.producedaily.productivityapp.entity.User;
-import com.producedaily.productivityapp.service.UserService;
+import com.producedaily.productivityapp.user.entity.User;
+import com.producedaily.productivityapp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

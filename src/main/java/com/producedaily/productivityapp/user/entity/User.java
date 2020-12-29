@@ -1,4 +1,4 @@
-package com.producedaily.productivityapp.entity;
+package com.producedaily.productivityapp.user.entity;
 
 import javax.persistence.*;
 
