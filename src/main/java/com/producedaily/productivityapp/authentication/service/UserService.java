@@ -1,6 +1,6 @@
-package com.producedaily.productivityapp.user.service;
+package com.producedaily.productivityapp.authentication.service;
 
-import com.producedaily.productivityapp.user.entity.User;
+import com.producedaily.productivityapp.authentication.model.User;
 
 import java.util.List;
 

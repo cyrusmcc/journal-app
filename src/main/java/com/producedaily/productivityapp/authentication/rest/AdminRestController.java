@@ -1,20 +1,25 @@
-package com.producedaily.productivityapp.rest;
+package com.producedaily.productivityapp.authentication.rest;
 
-import com.producedaily.productivityapp.user.entity.User;
-import com.producedaily.productivityapp.user.service.UserService;
+import com.producedaily.productivityapp.authentication.model.User;
+import com.producedaily.productivityapp.authentication.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
-public class UserRestController {
+@RequestMapping("/admin")
+public class AdminRestController {
 
+    @Autowired
     private UserService userService;
 
     @Autowired
-    public UserRestController(UserService theUserService) {
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    public AdminRestController(UserService theUserService) {
         userService = theUserService;
     }
 
@@ -38,6 +43,12 @@ public class UserRestController {
     public User addUser(@RequestBody User theUser) {
 
         theUser.setId(0);
+
+        String password= theUser.getPassword();
+
+        String encryptedPwd = passwordEncoder.encode(password);
+
+        theUser.setPassword(encryptedPwd);
 
         userService.save(theUser);
 

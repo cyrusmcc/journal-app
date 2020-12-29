@@ -1,6 +1,7 @@
-package com.producedaily.productivityapp.user.entity;
+package com.producedaily.productivityapp.authentication.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="user")
@@ -8,17 +9,18 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+    private int user_id;
 
-    @Column(name="username")
     private String username;
 
-    @Column(name="password")
     private String password;
 
-    @Column(name="email")
     private String email;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"),
+                                 inverseJoinColumns=@JoinColumn(name="role_id"))
+    private Set<Role> roles;
 
     public User() {
 
@@ -31,11 +33,11 @@ public class User {
     }
 
     public int getId() {
-        return id;
+        return user_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.user_id = id;
     }
 
     public String getUsername() {
@@ -62,12 +64,21 @@ public class User {
         this.email = email;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", username=" + username +
-                ", email=" + email +
+                "id=" + user_id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", roles=" + roles +
                 '}';
     }
 }
