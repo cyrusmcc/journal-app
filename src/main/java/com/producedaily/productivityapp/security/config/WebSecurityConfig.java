@@ -17,7 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -57,11 +57,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
             .antMatchers("/admin/**").hasRole("ADMIN")
             .antMatchers("/home").hasAnyRole("USER", "ADMIN")
-            .anyRequest().authenticated()
+            .antMatchers("/").permitAll()
             .and()
             .formLogin()
+                .defaultSuccessUrl("/")
+                .permitAll()
             .and()
-            .logout();
+            .logout()
+                .logoutSuccessUrl("/")
+                .permitAll();
     }
 
 }
