@@ -1,11 +1,9 @@
 package com.producedaily.productivityapp.authentication.config;
 
-import com.producedaily.productivityapp.authentication.service.MyUserDetailsService;
 import com.producedaily.productivityapp.authentication.service.MyUserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -54,14 +52,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
 
+        http.httpBasic();
+
         http.authorizeRequests()
-           .antMatchers("/admin", "/admin/**").hasAnyRole("ADMIN", "USER")
-           .antMatchers("/home").hasAnyRole("ADMIN", "USER")
-           .antMatchers("/").permitAll()
-           .and()
-           .formLogin().permitAll()
-           .and()
-           .logout().permitAll();
+            .antMatchers("/admin/**").hasRole("ADMIN")
+            .antMatchers("/home").hasAnyRole("USER", "ADMIN")
+            .anyRequest().authenticated()
+            .and()
+            .formLogin()
+            .and()
+            .logout();
     }
 
 }
