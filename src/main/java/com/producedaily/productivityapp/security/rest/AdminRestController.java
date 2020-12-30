@@ -1,7 +1,7 @@
-package com.producedaily.productivityapp.authentication.rest;
+package com.producedaily.productivityapp.security.rest;
 
-import com.producedaily.productivityapp.authentication.model.User;
-import com.producedaily.productivityapp.authentication.service.UserService;
+import com.producedaily.productivityapp.security.model.User;
+import com.producedaily.productivityapp.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;

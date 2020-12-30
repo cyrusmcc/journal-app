@@ -1,6 +1,6 @@
-package com.producedaily.productivityapp.authentication.config;
+package com.producedaily.productivityapp.security.config;
 
-import com.producedaily.productivityapp.authentication.service.MyUserDetailsServiceImpl;
+import com.producedaily.productivityapp.security.service.MyUserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

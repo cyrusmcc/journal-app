@@ -1,7 +1,7 @@
-package com.producedaily.productivityapp.authentication.service;
+package com.producedaily.productivityapp.security.service;
 
-import com.producedaily.productivityapp.authentication.model.User;
-import com.producedaily.productivityapp.authentication.repository.UserRepository;
+import com.producedaily.productivityapp.security.model.User;
+import com.producedaily.productivityapp.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
