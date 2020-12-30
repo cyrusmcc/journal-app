@@ -9,7 +9,8 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int user_id;
+    @Column(name="user_id")
+    private int id;
 
     private String username;
 
@@ -17,10 +18,14 @@ public class User {
 
     private String email;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"),
+    private String role;
+
+    /**
+    //@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    //@JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"),
                                  inverseJoinColumns=@JoinColumn(name="role_id"))
     private Set<Role> roles;
+    */
 
     public User() {
 
@@ -33,11 +38,11 @@ public class User {
     }
 
     public int getId() {
-        return user_id;
+        return id;
     }
 
     public void setId(int id) {
-        this.user_id = id;
+        this.id = id;
     }
 
     public String getUsername() {
@@ -64,6 +69,15 @@ public class User {
         this.email = email;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    /**
     public Set<Role> getRoles() {
         return roles;
     }
@@ -71,14 +85,15 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+     */
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + user_id +
+                "id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", roles=" + roles +
+                ", role=" + role +
                 '}';
     }
 }

@@ -3,6 +3,7 @@ package com.producedaily.productivityapp.authentication.rest;
 import com.producedaily.productivityapp.authentication.model.User;
 import com.producedaily.productivityapp.authentication.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ public class AdminRestController {
         userService = theUserService;
     }
 
+    //@PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/users")
     public List<User> findAll() {
         return userService.findAll();
@@ -39,6 +41,7 @@ public class AdminRestController {
         return theUser;
     }
 
+    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/users")
     public User addUser(@RequestBody User theUser) {
 
