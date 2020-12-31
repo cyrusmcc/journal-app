@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="loginstyle.css">
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -20,46 +22,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
-
-    <style type="text/css">
-
-        body {
-        background-color: #07090F;
-        }
-        section{
-            height: 90vh;
-        }
-        .container{
-            margin: auto;
-
-            height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .card{
-            background-color: #FCFAF9 !important;
-            width: 50vh !important;
-        }
-        .btn-primary {
-            color: #FCFAF9;
-            background-color: #586994;
-            border-color: #586994;
-}
-
-    </style>
-
 </head>
 
 <body>
-
 <section>
+
     <div class="container">
         <div class="card">
             <div class="card-body">
 
                 <div class="panel-heading">
-                    <div class="panel-title">Sign In</div>
+                    <div class="panel-title"><b>Sign In</b></div>
                 </div>
 
                 <form th:action="@{/authenticateUser}"
@@ -97,7 +70,6 @@
         </div>
     </div>
 </section>
-
 </body>
 
 </html>

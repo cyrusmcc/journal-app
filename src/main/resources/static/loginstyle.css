@@ -1,0 +1,23 @@
+        body {
+        background-color: #07090F;
+        }
+        section{
+            height: 90vh;
+        }
+        .container{
+            margin: auto;
+
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card{
+            background-color: #FCFAF9 !important;
+            width: 50vh !important;
+        }
+        .btn-primary {
+            color: #FCFAF9;
+            background-color: #586994;
+            border-color: #586994;
+}
