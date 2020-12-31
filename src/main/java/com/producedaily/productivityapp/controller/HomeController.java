@@ -23,6 +23,11 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String showLoginForm() {
+        return "login-form";
+    }
+
     @GetMapping("/register")
     public String showSignUpForm(Model model) {
         model.addAttribute("user", new User());
