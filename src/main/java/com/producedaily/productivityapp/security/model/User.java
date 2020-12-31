@@ -1,7 +1,6 @@
-package com.producedaily.productivityapp.authentication.model;
+package com.producedaily.productivityapp.security.model;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name="user")

@@ -1,6 +1,6 @@
-package com.producedaily.productivityapp.authentication.service;
+package com.producedaily.productivityapp.security.service;
 
-import com.producedaily.productivityapp.authentication.model.User;
+import com.producedaily.productivityapp.security.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
