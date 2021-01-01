@@ -1,27 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="eng" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Login Page</title>
+    <title>Login</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="loginstyle.css">
+    <link href="loginstyle.css" rel="stylesheet" type="text/css">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+    <script crossorigin="anonymous"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -31,41 +23,50 @@
         <div class="card">
             <div class="card-body">
 
-                <div class="panel-heading">
-                    <div class="panel-title"><b>Sign In</b></div>
-                </div>
+                <form method="POST"
+                      th:action="@{/authenticateUser}">
 
-                <form th:action="@{/authenticateUser}"
-                      method="POST" class="form-horizontal">
+                    <fieldset>
+                        <legend>Sign In</legend>
 
-                    <div class="form-group">
-                        <div class="col-xs-15">
-                            <div>
+                        <div class="mb-3">
+                            <div class="col-xs-15">
+                                <div>
 
-                                <div th:if="${param.error}" class="alert alert-danger col-xs-offset-1 col-xs-10">
-                                    Invalid username and password combination.
+                                    <div class="alert alert-danger col-xs-offset-1 col-xs-10" th:if="${param.error}">
+                                        Invalid username and password combination.
+                                    </div>
+
+                                    <div class="alert alert-success col-xs-offset-1 col-xs-10" th:if="${param.logout}">
+                                        You have been logged out.
+                                    </div>
+
                                 </div>
-
-                                <div th:if="${param.logout}"class="alert alert-success col-xs-offset-1 col-xs-10">
-                                    You have been logged out.
-                                </div>
-
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" name="username" class="form-control" aria-describedby="usernameHelp" placeholder="Enter username">
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="usernameInput">Username</label>
+                            <input aria-describedby="usernameHelp" class="form-control" id="usernameInput" name="username"
+                                   placeholder="Enter username" type="text" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Enter password">
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="passwordInput">Password</label>
+                            <input class="form-control" id="passwordInput" name="password"
+                                   placeholder="Enter password" type="password" required>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                        <button class="btn btn-primary" type="submit">Login</button>
+
+                    </fieldset>
+
+                    <br>
+
+                    <a th:href="@{/register}">Register</a>
+
                 </form>
+
             </div>
         </div>
     </div>
