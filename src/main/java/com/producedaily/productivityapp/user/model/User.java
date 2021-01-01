@@ -1,7 +1,4 @@
-package com.producedaily.productivityapp.security.model;
-
-import com.producedaily.productivityapp.calendar.model.Calendar;
-import org.hibernate.annotations.Cascade;
+package com.producedaily.productivityapp.user.model;
 
 import javax.persistence.*;
 
@@ -22,18 +19,17 @@ public class User {
 
     private String role;
 
-    //@OneToOne(mappedBy = "user", fetch = FetchType.LAZY,
-    //            cascade = CascadeType.ALL)
-    //private Calendar calendar;
+    private String local_date;
 
     public User() {
 
     }
 
-    public User(String username, String password, String email) {
+    public User(String username, String password, String email, String local_date) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.local_date = local_date;
     }
 
     public int getId() {
@@ -76,13 +72,22 @@ public class User {
         this.role = role;
     }
 
+    public String getLocal_date() {
+        return local_date;
+    }
+
+    public void setLocal_date(String local_date) {
+        this.local_date = local_date;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", role=" + role +
+                ", role='" + role + '\'' +
+                ", local_date='" + local_date + '\'' +
                 '}';
     }
 }

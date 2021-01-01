@@ -1,7 +1,7 @@
 package com.producedaily.productivityapp.security.rest;
 
-import com.producedaily.productivityapp.security.model.User;
-import com.producedaily.productivityapp.security.service.UserService;
+import com.producedaily.productivityapp.user.model.User;
+import com.producedaily.productivityapp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +35,17 @@ public class AdminRestController {
 
         if (theUser == null) {
             throw new RuntimeException("User not found - " + userId);
+        }
+        return theUser;
+    }
+
+    @GetMapping("/users/username/{username}")
+    public User getUserbyUsername(@PathVariable String username) {
+
+        User theUser = userService.findByUsername(username);
+
+        if (theUser == null) {
+            throw new RuntimeException("User not found - " + username);
         }
         return theUser;
     }
@@ -73,5 +84,6 @@ public class AdminRestController {
         }
         return "deleted user " + userId;
     }
+
 
 }
