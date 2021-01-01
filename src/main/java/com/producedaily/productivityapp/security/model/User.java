@@ -1,5 +1,8 @@
 package com.producedaily.productivityapp.security.model;
 
+import com.producedaily.productivityapp.calendar.model.Calendar;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,12 +22,9 @@ public class User {
 
     private String role;
 
-    /**
-    //@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    //@JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"),
-                                 inverseJoinColumns=@JoinColumn(name="role_id"))
-    private Set<Role> roles;
-    */
+    //@OneToOne(mappedBy = "user", fetch = FetchType.LAZY,
+    //            cascade = CascadeType.ALL)
+    //private Calendar calendar;
 
     public User() {
 
@@ -75,16 +75,6 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
-
-    /**
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-     */
 
     @Override
     public String toString() {

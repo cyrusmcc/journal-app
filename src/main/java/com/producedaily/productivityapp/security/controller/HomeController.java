@@ -1,4 +1,4 @@
-package com.producedaily.productivityapp.controller;
+package com.producedaily.productivityapp.security.controller;
 
 import com.producedaily.productivityapp.security.model.User;
 import com.producedaily.productivityapp.security.service.UserService;
