@@ -19,6 +19,7 @@ public class DateServiceImpl implements DateService {
 
     @Override
     public String getLocalDate(Principal principal) {
+
         User user = userService.findByUsername(principal.getName());
 
         return user.getLocal_date();

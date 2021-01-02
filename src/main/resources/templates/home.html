@@ -23,15 +23,19 @@
 
 <div class="container">
 
-   <!--
     <form th:action="@{/logout}" method="post" id="logoutForm">
         <input class="btn btn-primary" type="submit" value="Logout" />
     </form>
-    -->
-
-    <p>Hello!</p>
 
     <p th:text="${username}"></p>
+
+    <p th:text="${userLocalDate}"></p>
+
+    <p th:text="${month}"></p>
+
+    <p th:text="${dayOfMonth}"></p>
+
+    <p th:text="${daysInMonth}"></p>
 
 </div>
 
