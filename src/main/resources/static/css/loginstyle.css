@@ -3,6 +3,10 @@
         }
         section{
             height: 90vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .container{
             margin: auto;
@@ -13,11 +17,16 @@
             justify-content: center;
         }
         .card{
-            background-color: #FCFAF9 !important;
-            width: 50vh !important;
+            background-color: #FCFAF9;
+            width: 50vh;
         }
         .btn-primary {
             color: #FCFAF9;
             background-color: #586994;
             border-color: #586994;
-}
+        }
+        .btn-primary:hover {
+            color: #FDFBFB;
+            background-color: #7383AB;
+            border-color: #7383AB;
+        }

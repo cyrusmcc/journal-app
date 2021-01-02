@@ -1,0 +1,15 @@
+
+        body {
+        background-color: #07090F;
+        color: #FCFAF9;
+        }
+        input[type="submit"] {
+        color: #FCFAF9;
+        background-color: #586994;
+        border-color: #586994;
+        }
+        input[type="submit"]:hover {
+        color: #FDFBFB;
+        background-color: #7383AB;
+        border-color: #7383AB;
+        }
