@@ -1,5 +1,6 @@
 package com.producedaily.productivityapp.user.service;
 
+import com.producedaily.productivityapp.security.repository.UserRepository;
 import com.producedaily.productivityapp.user.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class DateServiceImpl implements DateService {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    UserRepository userRepository;
+
     public DateServiceImpl() {
     }
 
@@ -22,7 +26,13 @@ public class DateServiceImpl implements DateService {
 
         User user = userService.findByUsername(principal.getName());
 
-        return user.getLocal_date();
+        String userLocalDate =  LocalDate.now().toString();
+
+        user.setLocalDate(userLocalDate);
+
+        userRepository.save(user);
+
+        return user.getLocalDate();
     }
 
     @Override

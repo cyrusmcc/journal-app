@@ -2,7 +2,6 @@ package com.producedaily.productivityapp.user.service;
 
 import com.producedaily.productivityapp.user.model.User;
 import com.producedaily.productivityapp.security.repository.UserRepository;
-import com.producedaily.productivityapp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -77,7 +76,7 @@ public class  UserServiceImpl implements UserService {
 
         user.setRole("ROLE_USER");
 
-        user.setLocal_date(LocalDate.now().toString());
+        user.setLocalDate(LocalDate.now().toString());
 
         userRepository.save(user);
     }

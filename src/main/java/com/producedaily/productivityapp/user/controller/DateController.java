@@ -1,11 +1,10 @@
 package com.producedaily.productivityapp.user.controller;
 
+import com.producedaily.productivityapp.user.model.User;
 import com.producedaily.productivityapp.user.service.DateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -16,8 +15,8 @@ public class DateController {
     @Autowired
     private DateService dateService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public Model getActiveUserDate(Principal principal, Model model) {
+        @GetMapping("")
+        public Model getActiveUserDate(Principal principal, Model model) {
 
         model.addAttribute("username", principal.getName());
 
@@ -35,4 +34,5 @@ public class DateController {
 
         return model;
     }
+
 }
