@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/calendar")
 public class DateController {
 
     @Autowired
@@ -35,6 +35,4 @@ public class DateController {
 
         return model;
     }
-
-
 }
