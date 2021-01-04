@@ -1,6 +1,9 @@
 package com.producedaily.productivityapp.user.model;
 
+import com.producedaily.productivityapp.event.model.Event;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="user")
@@ -19,17 +22,22 @@ public class User {
 
     private String role;
 
-    private String local_date;
+    private String localDate;
+
+    @OneToMany(mappedBy = "user", cascade = {
+            CascadeType.ALL
+    })
+    private List<Event> events;
 
     public User() {
 
     }
 
-    public User(String username, String password, String email, String local_date) {
+    public User(String username, String password, String email, String localDate) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.local_date = local_date;
+        this.localDate = localDate;
     }
 
     public int getId() {
@@ -72,12 +80,20 @@ public class User {
         this.role = role;
     }
 
-    public String getLocal_date() {
-        return local_date;
+    public String getLocalDate() {
+        return localDate;
     }
 
-    public void setLocal_date(String local_date) {
-        this.local_date = local_date;
+    public void setLocalDate(String local_date) {
+        this.localDate = local_date;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 
     @Override
@@ -87,7 +103,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", role='" + role + '\'' +
-                ", local_date='" + local_date + '\'' +
+                ", local_date='" + localDate + '\'' +
                 '}';
     }
 }

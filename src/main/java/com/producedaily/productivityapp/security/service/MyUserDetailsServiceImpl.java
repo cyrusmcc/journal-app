@@ -1,7 +1,7 @@
 package com.producedaily.productivityapp.security.service;
 
 import com.producedaily.productivityapp.user.model.User;
-import com.producedaily.productivityapp.security.repository.UserRepository;
+import com.producedaily.productivityapp.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

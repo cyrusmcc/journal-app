@@ -14,11 +14,6 @@ public class SecurityController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("")
-    public String viewIndex(){
-        return "index";
-    }
-
     @GetMapping("/login")
     public String showLoginForm() {
         return "login-form";
