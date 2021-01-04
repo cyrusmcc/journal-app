@@ -1,28 +1,85 @@
+body {
+    background-color: #07090F;
+    color: #FCFAF9;
+}
 
-        body {
-        background-color: #07090F;
-        color: #FCFAF9;
-        }
-        input[type="submit"] {
-        color: #FCFAF9;
-        background-color: #586994;
-        border-color: #586994;
-        }
-        input[type="submit"]:hover {
-        color: #FDFBFB;
-        background-color: #7383AB;
-        border-color: #7383AB;
-        }
-        .parent {
-                display: grid;
-                grid-template-columns: repeat(5, 1fr);
-                grid-template-rows: repeat(5, 1fr);
-                grid-column-gap: 0px;
-                grid-row-gap: 0px;
-        }
+input[type="submit"] {
+    color: #FCFAF9;
+    background-color: #586994;
+    border-color: #586994;
+}
 
-        .div1 { grid-area: 1 / 1 / 4 / 2; }
-        .div2 { grid-area: 1 / 2 / 4 / 5; }
-        .div3 { grid-area: 1 / 5 / 4 / 6; }
-        .div4 { grid-area: 4 / 1 / 6 / 4; }
-        .div5 { grid-area: 4 / 4 / 6 / 6; }
+input[type="submit"]:hover {
+    color: #FDFBFB;
+    background-color: #7383AB;
+    border-color: #7383AB;
+}
+
+.parent {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: .5em;
+}
+
+.div1 {
+    grid-area: 1 / 1 / 4 / 2;
+    background: lightblue;
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+}
+
+.div2 {
+    grid-area: 1 / 2 / 4 / 5;
+    background: lightblue;
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+}
+
+.div3 {
+    grid-area: 1 / 5 / 4 / 6;
+    background: lightblue;
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+}
+
+.div4 {
+    grid-area: 4 / 1 / 6 / 4;
+    background: lightblue;
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+}
+
+.div5 {
+    grid-area: 4 / 4 / 6 / 6;
+    background: lightblue;
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+}
+
+#calendarGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 6em;
+}
+
+#calendarGrid > div {
+    background: #eee;
+    padding: 1em;
+    border: #333 1px solid;
+
+}
+
+#calendarGrid > div:nth-child(odd) {
+    background: #ddd;
+}
+
+.calendarDay {
+    display: grid;
+    justify-items: end;
+}
+
+#month {
+
+}

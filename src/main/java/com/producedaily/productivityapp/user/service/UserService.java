@@ -2,6 +2,7 @@ package com.producedaily.productivityapp.user.service;
 
 import com.producedaily.productivityapp.user.model.User;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface UserService {
@@ -15,4 +16,13 @@ public interface UserService {
     public void save(User theUser);
 
     public void deleteById(int id);
+
+    public String findLocalDate(Principal principal);
+
+    public String findMonth(Principal principal);
+
+    public int findDayOfMonth(Principal principal);
+
+    public int findDaysInMonth(Principal principal);
+
 }

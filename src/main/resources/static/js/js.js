@@ -10,7 +10,7 @@ console.log("Days in month: " + daysInMonth)
 var dayOfMonth = document.getElementById('dayOfMonth').innerText;
 console.log("Day of month: "  + dayOfMonth)
 
-var childDivs = document.getElementById('calendar')
+var childDivs = document.getElementById('calendarGrid')
     .getElementsByTagName('div');
 
 console.log("OUTSIDE FOR LOOP")

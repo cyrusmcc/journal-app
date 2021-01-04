@@ -1,6 +1,9 @@
 package com.producedaily.productivityapp.user.model;
 
+import com.producedaily.productivityapp.event.model.Event;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="user")
@@ -20,6 +23,11 @@ public class User {
     private String role;
 
     private String localDate;
+
+    @OneToMany(mappedBy = "user", cascade = {
+            CascadeType.ALL
+    })
+    private List<Event> events;
 
     public User() {
 
@@ -78,6 +86,14 @@ public class User {
 
     public void setLocalDate(String local_date) {
         this.localDate = local_date;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 
     @Override

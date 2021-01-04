@@ -1,12 +1,13 @@
 package com.producedaily.productivityapp.user.service;
 
 import com.producedaily.productivityapp.user.model.User;
-import com.producedaily.productivityapp.security.repository.UserRepository;
+import com.producedaily.productivityapp.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -85,4 +86,43 @@ public class  UserServiceImpl implements UserService {
     public void deleteById(int id) {
         userRepository.deleteById(id);
     }
+
+    @Override
+    public String findLocalDate(Principal principal) {
+
+        User user = userRepository.findByUsername(principal.getName());
+
+        String userLocalDate =  LocalDate.now().toString();
+
+        user.setLocalDate(userLocalDate);
+
+        userRepository.save(user);
+
+        return user.getLocalDate();
+    }
+
+    @Override
+    public String findMonth(Principal principal) {
+
+        LocalDate date = LocalDate.parse(findLocalDate(principal));
+
+        return date.getMonth().toString();
+    }
+
+    @Override
+    public int findDayOfMonth(Principal principal) {
+
+        LocalDate date = LocalDate.parse(findLocalDate(principal));
+
+        return date.getDayOfMonth();
+    }
+
+    @Override
+    public int findDaysInMonth(Principal principal) {
+
+        LocalDate date = LocalDate.parse(findLocalDate(principal));
+
+        return date.lengthOfMonth();
+    }
+
 }

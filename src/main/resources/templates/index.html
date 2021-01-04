@@ -19,21 +19,14 @@
 
 <body>
 
-    <div class="parent">
-        <div class="div1"> </div>
-        <div class="div2"> </div>
-        <div class="div3">
-            <div class="container">
-                <form th:action="@{/logout}" method="post" id="logoutForm">
-                    <input class="btn btn-primary" type="submit" value="Logout" />
-                </form>
-            </div>
+<div class="container">
+    <form th:action="@{/logout}" method="post" id="logoutForm">
+        <input class="btn btn-primary" type="submit" value="Logout" />
+    </form>
+</div>
 
-            <a th:href="@{/calendar}">Calendar</a>
-        </div>
-        <div class="div4"> </div>
-        <div class="div5"> </div>
-    </div>
+<a th:href="@{/calendar}">Calendar</a>
+</div>
 
 </body>
 

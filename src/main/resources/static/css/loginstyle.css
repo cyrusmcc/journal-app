@@ -1,32 +1,37 @@
-        body {
-        background-color: #07090F;
-        }
-        section{
-            height: 90vh;
+body {
+    background-color: #07090F;
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .container{
-            margin: auto;
+section {
+    height: 90vh;
 
-            height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .card{
-            background-color: #FCFAF9;
-            width: 50vh;
-        }
-        .btn-primary {
-            color: #FCFAF9;
-            background-color: #586994;
-            border-color: #586994;
-        }
-        .btn-primary:hover {
-            color: #FDFBFB;
-            background-color: #7383AB;
-            border-color: #7383AB;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    margin: auto;
+
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: #FCFAF9;
+    width: 50vh;
+}
+
+.btn-primary {
+    color: #FCFAF9;
+    background-color: #586994;
+    border-color: #586994;
+}
+
+.btn-primary:hover {
+    color: #FDFBFB;
+    background-color: #7383AB;
+    border-color: #7383AB;
+}
