@@ -1,4 +1,4 @@
-package com.producedaily.productivityapp.user.controller;
+package com.producedaily.productivityapp.dashboard.controller;
 
 import com.producedaily.productivityapp.event.model.Event;
 import com.producedaily.productivityapp.event.service.EventService;
@@ -36,6 +36,9 @@ public class HomeController {
 
             model.addAttribute("daysInMonth",
                 userService.findDaysInMonth(principal));
+
+            model.addAttribute("userEvents",
+                    userService.findByUsername(principal.getName()).getId());
 
         return model;
     }
