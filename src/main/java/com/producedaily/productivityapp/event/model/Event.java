@@ -5,6 +5,7 @@ import com.producedaily.productivityapp.user.model.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 enum Status {
     PASSED,
@@ -104,5 +105,4 @@ public class Event {
             eventStatus = Status.FUTURE;
         }
     }
-
 }

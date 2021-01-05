@@ -1,5 +1,5 @@
 body {
-    background-color: #07090F;
+    background-color: #0D1B2A ;
 }
 
 section {
@@ -20,18 +20,18 @@ section {
 }
 
 .card {
-    background-color: #FCFAF9;
+    background-color: #E0E1DD;
     width: 50vh;
 }
 
 .btn-primary {
-    color: #FCFAF9;
-    background-color: #586994;
-    border-color: #586994;
+    color: #E0E1DD;
+    background-color: #415A77;
+    border-color: #415A77;
 }
 
 .btn-primary:hover {
-    color: #FDFBFB;
-    background-color: #7383AB;
-    border-color: #7383AB;
+    color: #E0E1DD;
+    background-color: #778DA9;
+    border-color: #778DA9;
 }

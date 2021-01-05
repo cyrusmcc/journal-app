@@ -24,7 +24,11 @@ public class EventServiceImpl implements EventService {
     @Override
     public String findByUserId(int id) throws JsonProcessingException {
 
-        String json = new ObjectMapper().writeValueAsString(eventRepository.findByUserId(id));
+        User user = userService.findById(id);
+
+        List<Event> sortedEvents = user.sortEventsByDate(user.getEvents());
+
+        String json = new ObjectMapper().writeValueAsString(sortedEvents);
 
         return json;
 

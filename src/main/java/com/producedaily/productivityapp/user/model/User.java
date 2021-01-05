@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.producedaily.productivityapp.event.model.Event;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -97,6 +99,56 @@ public class User {
     public void setEvents(List<Event> events) {
         this.events = events;
     }
+
+
+    public List<Event> sortEventsByDate(List<Event> theEvents) {
+
+        Event[] events = new Event[theEvents.size()];
+        Event tempEvent;
+
+        for(int i = 0; i < theEvents.size(); i++) {
+            events[i] = theEvents.get(i);
+            System.out.println(events[i].toString());
+        }
+
+        System.out.println("Before: " +
+                events[0].getEventDate() + "\n" +
+                events[1].getEventDate() + "\n" +
+                events[2].getEventDate() + "\n" +
+                events[3].getEventDate() + "\n");
+
+        for(int i = 0; i < events.length - 1; i++) {
+            for(int j = 1; j < events.length - i; j++) {
+
+                LocalDate date1 = LocalDate.parse(events[j - 1].getEventDate());
+                System.out.println(date1);
+
+                LocalDate date2 = LocalDate.parse(events[j].getEventDate());
+                System.out.println(date2);
+
+                if(date1.isAfter(date2)) {
+
+                    tempEvent = events[j - 1];
+
+                    events[j - 1] = events[j];
+
+                    events[j] = tempEvent;
+                }
+            }
+        }
+
+        System.out.println("");
+
+        System.out.println( "After: " +
+                events[0].getEventDate() + "\n" +
+                events[1].getEventDate() + "\n" +
+                events[2].getEventDate() + "\n" +
+                events[3].getEventDate());
+        List<Event> sortedEventList = Arrays.asList(events);
+
+        return sortedEventList;
+    }
+
 
     @Override
     public String toString() {

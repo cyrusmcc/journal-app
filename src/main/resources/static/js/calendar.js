@@ -1,20 +1,15 @@
 var localDate = document.getElementById('userLocalDate').innerText;
-console.log("User's local date: "  + localDate)
 
 var month = document.getElementById('month').innerText;
-console.log(month)
 
 var daysInMonth = document.getElementById('daysInMonth').innerText;
-console.log("Days in month: " + daysInMonth)
 
 var dayOfMonth = document.getElementById('dayOfMonth').innerText;
-console.log("Day of month: "  + dayOfMonth)
 
 var childDivs = document.getElementById('calendarGrid')
     .getElementsByTagName('div');
 
 var userEvents = JSON.parse(document.getElementById("userEvents").innerText);
-console.log(userEvents);
 
 for(i=1; i < childDivs.length; i++ ) {
     var divName = "day" + (i);
@@ -23,18 +18,21 @@ for(i=1; i < childDivs.length; i++ ) {
         document.getElementById(divName).innerText = (i);
     }
     if(i == dayOfMonth) {
-        document.getElementById(divName).style.background = 'red';
+
+        document.getElementById(divName).style.background = '#E0E1DD';
+
+        document.getElementById(divName).style.color = 'black';
+
+        document.getElementById(divName).style.border = "thick solid #778DA9";
+
     }
     if(i > daysInMonth && i <= 35) {
-        console.log(i)
+
         var divNameOverDays = "day" + (i);
-        console.log(divNameOverDays)
 
         document.getElementById(divNameOverDays).style.background = 'black';
     }
-
 }
-
     for (var i = 0; i < userEvents.length; i++) {
 
         var eventDate = new Date(userEvents[i].eventDate);
@@ -59,7 +57,15 @@ for(i=1; i < childDivs.length; i++ ) {
 
                 var day = "day" + (eventDate.getDate() + 1);
 
-                document.getElementById(day).style.background = 'blue';
+                var eventInfo = "eventInfo" + (eventDate.getDate() + 1);
+
+                var eventName = userEvents[i].name;
+
+                document.getElementById(day).style.background = '#415A77';
+
+                if(eventName != null) {
+                    document.getElementById(day).style.background = eventName;
+                }
             }
         }
 }
