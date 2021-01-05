@@ -1,5 +1,6 @@
 package com.producedaily.productivityapp.security.rest;
 
+import com.producedaily.productivityapp.event.model.Event;
 import com.producedaily.productivityapp.user.model.User;
 import com.producedaily.productivityapp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,19 @@ public class AdminRestController {
             throw new RuntimeException("User not found - " + username);
         }
         return theUser;
+    }
+
+    @GetMapping("/users/{userId}/events")
+    public List<Event> getUserEventsById(@PathVariable int userId) {
+
+        User theUser = userService.findById(userId);
+
+        List<Event> events = theUser.getEvents();
+
+        if (theUser == null) {
+            throw new RuntimeException("User not found - " + userId);
+        }
+        return events;
     }
 
     @PostMapping("/users")

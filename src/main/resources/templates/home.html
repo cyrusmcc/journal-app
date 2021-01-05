@@ -21,9 +21,13 @@
 
 <div class="parent">
     <div class="div1">
-        <div id="lightbox">test</div>
-        <a href="#" id="opener">Click</a>
-        <script src="js/addeventpopup.js"></script>
+
+        <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
+
+        <a id="newEventButton" th:href="@{/newEvent}"
+            class="btn btn-primary btn-sm mb-3">
+            Add Event
+        </a>
 
     </div>
 
@@ -148,10 +152,10 @@
 
         </div>
 
-        <script src="js/calendar.js"></script>
-
     </div>
 
+    <script src="js/calendar.js"></script>
+    
     <div class="div3">
         <div class="container">
             <form id="logoutForm" method="post" th:action="@{/logout}">
