@@ -1,5 +1,6 @@
 package com.producedaily.productivityapp.event.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.producedaily.productivityapp.user.model.User;
 
 import javax.persistence.*;
@@ -29,6 +30,7 @@ public class Event {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
 
     public Event() {
@@ -103,15 +105,4 @@ public class Event {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Event{" +
-                "event_id=" + Id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", eventDate='" + eventDate + '\'' +
-                ", eventStatus=" + eventStatus +
-                ", user=" + user +
-                '}';
-    }
 }

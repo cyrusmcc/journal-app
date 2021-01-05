@@ -28,7 +28,7 @@ public class SecurityController {
     }
 
     @PostMapping("/process-register")
-    public  String processRegistration(User user) {
+    public String processRegistration(User user) {
 
         userService.save(user);
 

@@ -1,5 +1,6 @@
 package com.producedaily.productivityapp.user.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.producedaily.productivityapp.event.model.Event;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = {
             CascadeType.ALL
     })
+    @JsonManagedReference
     private List<Event> events;
 
     public User() {
