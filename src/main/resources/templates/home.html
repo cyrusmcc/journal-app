@@ -25,7 +25,7 @@
         <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
 
         <a id="newEventButton" th:href="@{/newEvent}"
-            class="btn btn-primary btn-sm mb-3">
+            class="btn btn-primary">
             Add Event
         </a>
 
@@ -45,97 +45,97 @@
 
         <div class="grid" id="calendarGrid">
             <div class="calendarDay" id="day1">
-                <div></div>
+                <p class="eventInfo" id="eventInfo1">test</p>
             </div>
             <div class="calendarDay" id="day2">
-                <div></div>
+                <div class="eventInfo" id="eventInfo2"></div>
             </div>
             <div class="calendarDay" id="day3">
-                <div></div>
+                <div class="eventInfo" id="eventInfo3"></div>
             </div>
             <div class="calendarDay" id="day4">
-                <div></div>
+                <div class="eventInfo" id="eventInfo4"></div>
             </div>
             <div class="calendarDay" id="day5">
-                <div></div>
+                <div class="eventInfo" id="eventInfo5"></div>
             </div>
             <div class="calendarDay" id="day6">
-                <div></div>
+                <div class="eventInfo" id="eventInfo6"></div>
             </div>
             <div class="calendarDay" id="day7">
-                <div></div>
+                <div class="eventInfo" id="eventInfo7"></div>
             </div>
             <div class="calendarDay" id="day8">
-                <div></div>
+                <div class="eventInfo" id="eventInfo8"></div>
             </div>
             <div class="calendarDay" id="day9">
-                <div></div>
+                <div class="eventInfo" id="eventInfo9"></div>
             </div>
             <div class="calendarDay" id="day10">
-                <div></div>
+                <div class="eventInfo" id="eventInfo10"></div>
             </div>
             <div class="calendarDay" id="day11">
-                <div></div>
+                <div class="eventInfo" id="eventInfo11"></div>
             </div>
             <div class="calendarDay" id="day12">
-                <div></div>
+                <div class="eventInfo" id="eventInfo12"></div>
             </div>
             <div class="calendarDay" id="day13">
-                <div></div>
+                <div class="eventInfo" id="eventInfo13"></div>
             </div>
             <div class="calendarDay" id="day14">
-                <div></div>
+                <div class="eventInfo" id="eventInfo14"></div>
             </div>
             <div class="calendarDay" id="day15">
-                <div></div>
+                <div class="eventInfo" id="eventInfo15"></div>
             </div>
             <div class="calendarDay" id="day16">
-                <div></div>
+                <div class="eventInfo" id="eventInfo16"></div>
             </div>
             <div class="calendarDay" id="day17">
-                <div></div>
+                <div class="eventInfo" id="eventInfo17"></div>
             </div>
             <div class="calendarDay" id="day18">
-                <div></div>
+                <div class="eventInfo" id="eventInfo18"></div>
             </div>
             <div class="calendarDay" id="day19">
-                <div></div>
+                <div class="eventInfo" id="eventInfo19"></div>
             </div>
             <div class="calendarDay" id="day20">
-                <div></div>
+                <div class="eventInfo" id="eventInfo20"></div>
             </div>
             <div class="calendarDay" id="day21">
-                <div></div>
+                <div class="eventInfo" id="eventInfo21"></div>
             </div>
             <div class="calendarDay" id="day22">
-                <div></div>
+                <div class="eventInfo" id="eventInfo22"></div>
             </div>
             <div class="calendarDay" id="day23">
-                <div></div>
+                <div class="eventInfo" id="eventInfo23"></div>
             </div>
             <div class="calendarDay" id="day24">
-                <div></div>
+                <div class="eventInfo" id="eventInfo24"></div>
             </div>
             <div class="calendarDay" id="day25">
-                <div></div>
+                <div class="eventInfo" id="eventInfo25"></div>
             </div>
             <div class="calendarDay" id="day26">
-                <div></div>
+                <div class="eventInfo" id="eventInfo26"></div>
             </div>
             <div class="calendarDay" id="day27">
-                <div></div>
+                <div class="eventInfo" id="eventInfo27"></div>
             </div>
             <div class="calendarDay" id="day28">
-                <div></div>
+                <div class="eventInfo" id="eventInfo28"></div>
             </div>
             <div class="calendarDay" id="day29">
-                <div></div>
+                <div class="eventInfo" id="eventInfo29"></div>
             </div>
             <div class="calendarDay" id="day30">
-                <div></div>
+                <div class="eventInfo" id="eventInfo30"></div>
             </div>
             <div class="calendarDay" id="day31">
-                <div></div>
+                <div class="eventInfo" id="eventInfo31"></div>
             </div>
             <div class="calendarDay" id="day32">
                 <div></div>
@@ -155,7 +155,7 @@
     </div>
 
     <script src="js/calendar.js"></script>
-    
+
     <div class="div3">
         <div class="container">
             <form id="logoutForm" method="post" th:action="@{/logout}">
@@ -166,7 +166,11 @@
 
     <div class="div4"></div>
 
-    <div class="div5"></div>
+    <div class="div5" id="eventList">
+
+        <script src="js/eventlist.js"></script>
+
+    </div>
 </div>
 
 </body>
