@@ -107,21 +107,17 @@ public class User {
     }
 
 
-    public List<Event> sortEventsByDate(List<Event> theEvents) {
+    public List<Event> sortEventsByDate(List<Event> theEvents) throws ArrayIndexOutOfBoundsException {
 
         Event[] events = new Event[theEvents.size()];
         Event tempEvent;
+
+        if(events != null) {
 
         for(int i = 0; i < theEvents.size(); i++) {
             events[i] = theEvents.get(i);
             System.out.println(events[i].toString());
         }
-
-        System.out.println("Before: " +
-                events[0].getEventDate() + "\n" +
-                events[1].getEventDate() + "\n" +
-                events[2].getEventDate() + "\n" +
-                events[3].getEventDate() + "\n");
 
         for(int i = 0; i < events.length - 1; i++) {
             for(int j = 1; j < events.length - i; j++) {
@@ -142,15 +138,10 @@ public class User {
                 }
             }
         }
+        }
 
-        System.out.println("");
-
-        System.out.println( "After: " +
-                events[0].getEventDate() + "\n" +
-                events[1].getEventDate() + "\n" +
-                events[2].getEventDate() + "\n" +
-                events[3].getEventDate());
         List<Event> sortedEventList = Arrays.asList(events);
+
 
         return sortedEventList;
     }
