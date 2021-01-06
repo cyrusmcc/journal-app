@@ -91,10 +91,6 @@ input[type="submit"]:hover {
     justify-items: end;
 }
 
-.eventInfo {
-    background-color: #415A77;
-}
-
 .btn-primary {
     color: #E0E1DD;
     background-color: #415A77;
