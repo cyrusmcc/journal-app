@@ -2,6 +2,7 @@ package com.producedaily.productivityapp.user.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.producedaily.productivityapp.event.model.Event;
+import com.producedaily.productivityapp.task.Task;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -32,6 +33,11 @@ public class User {
     })
     @JsonManagedReference
     private List<Event> events;
+
+    //@OneToMany(mappedBy = "user", cascade = {
+    //        CascadeType.ALL
+    //})
+    //private List<Task> tasks;
 
     public User() {
 

@@ -41,7 +41,7 @@ for(i=1; i < childDivs.length; i++ ) {
 
         var currentDate = new Date();
 
-        /* for testing purposes, to be removed
+        /* for development purposes, to be removed
 
         console.log("event date: " + eventDate + " " + eventDate.getDay());
 
@@ -61,8 +61,6 @@ for(i=1; i < childDivs.length; i++ ) {
 
                 var eventName = userEvents[i].name;
 
-                document.getElementById(day).style.background = '#415A77';
-
                 var eventNameForGrid = document.createElement("div");
                 eventNameForGrid.innerText = eventName;
                 eventNameForGrid.style.background = '#7a77a9';
@@ -75,14 +73,6 @@ for(i=1; i < childDivs.length; i++ ) {
                 eventNameForGrid.style.marginTop = "20px";
 
                 document.getElementById(day).appendChild(eventNameForGrid);
-
-
-                    /*
-                if(eventName != null) {
-                    document.getElementById(day).style.background = eventName;
-                }
-
-                     */
 
             }
         }
