@@ -11,6 +11,8 @@ var childDivs = document.getElementById('calendarGrid')
 
 var userEvents = JSON.parse(document.getElementById("userEvents").innerText);
 
+
+// iterate over calendar grid and assign dates according to number of days in month
 for(i=1; i < childDivs.length; i++ ) {
     var divName = "day" + (i);
 
@@ -39,7 +41,7 @@ for(i=1; i < childDivs.length; i++ ) {
 
         var currentDate = new Date();
 
-        /* for testing purposes, to be removed
+        /* for development purposes, to be removed
 
         console.log("event date: " + eventDate + " " + eventDate.getDay());
 
@@ -57,15 +59,21 @@ for(i=1; i < childDivs.length; i++ ) {
 
                 var day = "day" + (eventDate.getDate() + 1);
 
-                var eventInfo = "eventInfo" + (eventDate.getDate() + 1);
-
                 var eventName = userEvents[i].name;
 
-                document.getElementById(day).style.background = '#415A77';
+                var eventNameForGrid = document.createElement("div");
+                eventNameForGrid.innerText = eventName;
+                eventNameForGrid.style.background = '#7a77a9';
+                eventNameForGrid.style.fontSize = ".5em";
+                eventNameForGrid.style.borderRadius = "10px 10px 10px 10px";
+                eventNameForGrid.style.padding= "5px";
+                eventNameForGrid.style.alignContent = "end";
+                eventNameForGrid.style.display = "flex";
+                eventNameForGrid.style.width = "100%";
+                eventNameForGrid.style.marginTop = "20px";
 
-                if(eventName != null) {
-                    document.getElementById(day).style.background = eventName;
-                }
+                document.getElementById(day).appendChild(eventNameForGrid);
+
             }
         }
 }

@@ -15,12 +15,17 @@
             integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="js/calendar.js"></script>
+
 </head>
 
 <body>
 
 <div class="parent">
-    <div class="div1">
+
+    <div class="div1"> </div>
+
+    <div class="div2">
 
         <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
 
@@ -31,7 +36,7 @@
 
     </div>
 
-    <div class="div2" id="calendar">
+    <div class="div3" id="calendar">
 
         <div class="var" id="daysInMonth" style="display:none;" th:text="${daysInMonth}"></div>
 
@@ -45,7 +50,6 @@
 
         <div class="grid" id="calendarGrid">
             <div class="calendarDay" id="day1">
-                <p class="eventInfo" id="eventInfo1">test</p>
             </div>
             <div class="calendarDay" id="day2">
                 <div class="eventInfo" id="eventInfo2"></div>
@@ -156,7 +160,7 @@
 
     <script src="js/calendar.js"></script>
 
-    <div class="div3">
+    <div class="div4">
         <div class="container">
             <form id="logoutForm" method="post" th:action="@{/logout}">
                 <input class="btn btn-primary" type="submit" value="Logout"/>
@@ -164,9 +168,9 @@
         </div>
     </div>
 
-    <div class="div4"></div>
+    <div class="div5"></div>
 
-    <div class="div5" id="eventList">
+    <div class="div6" id="eventList">
 
         <script src="js/eventlist.js"></script>
 

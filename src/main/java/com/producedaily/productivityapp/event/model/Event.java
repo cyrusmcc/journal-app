@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-enum Status {
+enum EventStatus {
     PASSED,
     ACTIVE,
     FUTURE
@@ -19,7 +19,7 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="event_id")
-    private long Id;
+    private long id;
 
     private String name;
 
@@ -27,7 +27,7 @@ public class Event {
 
     private String eventDate;
 
-    private Status eventStatus;
+    private EventStatus eventStatus;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -38,18 +38,18 @@ public class Event {
     }
 
     public Event(int event_id, String name, String description, String eventDate) {
-        this.Id = event_id;
+        this.id = event_id;
         this.name = name;
         this.description = description;
         this.eventDate = eventDate;
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long event_id) {
-        this.Id = event_id;
+        this.id = event_id;
     }
 
     public String getName() {
@@ -84,7 +84,7 @@ public class Event {
         this.user = user;
     }
 
-    public Status getEventStatus() {
+    public EventStatus getEventStatus() {
         return eventStatus;
     }
 
@@ -96,13 +96,13 @@ public class Event {
             throw new NullPointerException();
         }
         else if(date.isBefore(LocalDate.now())) {
-            eventStatus = Status.PASSED;
+            eventStatus = EventStatus.PASSED;
         }
         else if(date.isEqual(LocalDate.now())) {
-            eventStatus = Status.ACTIVE;
+            eventStatus = EventStatus.ACTIVE;
         }
         else if(date.isAfter(LocalDate.now())) {
-            eventStatus = Status.FUTURE;
+            eventStatus = EventStatus.FUTURE;
         }
     }
 }
