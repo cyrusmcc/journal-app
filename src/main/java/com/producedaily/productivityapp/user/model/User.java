@@ -2,6 +2,7 @@ package com.producedaily.productivityapp.user.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.producedaily.productivityapp.event.model.Event;
+import com.producedaily.productivityapp.journal.Journal;
 import com.producedaily.productivityapp.task.Task;
 
 import javax.persistence.*;
@@ -28,26 +29,29 @@ public class User {
 
     private String localDate;
 
-    @OneToMany(mappedBy = "user", cascade = {
-            CascadeType.ALL
-    })
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL})
     @JsonManagedReference
     private List<Event> events;
 
-    @OneToMany(mappedBy = "user", cascade = {
-            CascadeType.ALL})
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL})
     @JsonManagedReference
     private List<Task> tasks;
+
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "journal_id")
+    private Journal journal;
 
     public User() {
 
     }
 
-    public User(String username, String password, String email, String localDate) {
+    public User(String username, String password, String email, String localDate, Journal journal) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.localDate = localDate;
+        this.journal = journal;
+        this.journal.setUser(this);
     }
 
     public long getId() {
@@ -112,6 +116,14 @@ public class User {
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public Journal getJournal() {
+        return journal;
+    }
+
+    public void setJournal(Journal journal) {
+        this.journal = journal;
     }
 
     public List<Event> sortEventsByDate(List<Event> theEvents) {

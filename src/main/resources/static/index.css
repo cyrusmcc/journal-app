@@ -42,6 +42,7 @@ input[type="submit"]:hover {
     background: #1B263B;
     border-radius: 10px 10px 10px 10px;
     overflow: hidden;
+    padding: 1em;
 }
 
 .div4 {
@@ -67,12 +68,12 @@ input[type="submit"]:hover {
 }
 
 #calendarGrid {
-    border: solid thick #1B263B;
+    background: #0D1B2A;
+    border: solid thick #0D1B2A;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-auto-rows: 6em;
     font-family: Bahnschrift;
-
 }
 
 #calendarGrid > div {

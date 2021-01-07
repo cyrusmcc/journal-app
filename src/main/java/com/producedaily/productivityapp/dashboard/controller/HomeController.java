@@ -3,6 +3,7 @@ package com.producedaily.productivityapp.dashboard.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.producedaily.productivityapp.event.model.Event;
 import com.producedaily.productivityapp.event.service.EventService;
+import com.producedaily.productivityapp.journal.JournalService;
 import com.producedaily.productivityapp.task.Task;
 import com.producedaily.productivityapp.task.service.TaskService;
 import com.producedaily.productivityapp.user.model.User;
@@ -27,6 +28,9 @@ public class HomeController {
     @Autowired
     private TaskService taskService;
 
+    @Autowired
+    JournalService journalService;
+
     @GetMapping("/home")
     public Model getActiveUserData(Principal principal, Model model) throws JsonProcessingException {
 
@@ -50,7 +54,8 @@ public class HomeController {
         model.addAttribute("userTasks",
             taskService.findByUserName(principal));
 
-        // GET TASKS FROM USER CLASS, THEY HAVE EVENTS DONT GET USER FROM EVENT ?
+        model.addAttribute("journalEntry",
+                journalService.findEntryTextByDate(principal));
 
         return model;
     }

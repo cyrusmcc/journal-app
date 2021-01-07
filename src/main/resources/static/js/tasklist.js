@@ -1,14 +1,11 @@
 var userTasks = JSON.parse(document.getElementById("userTasks").innerText);
 console.log(userTasks);
 
-
 if(userTasks[0] != null) {
 
     var currentTaskName = userTasks[0].name;
 
     var currentTask= document.createElement("span");
-
-
 
     currentTask.innerHTML = currentTaskName;
     currentTask.style.color = '#FCFAF9';
@@ -36,8 +33,6 @@ for(i = 1; i < userTasks.length; i++) {
     taskDiv.style.margin = "1em";
     taskDiv.style.padding = "5px";
     taskDiv.style.border = "thin solid #FCFAF9";
-
-
 
     document.getElementById("taskList").appendChild(taskDiv);
 }
