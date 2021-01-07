@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface EventService {
 
-    String findByUserId(int id) throws JsonProcessingException;
+    String findByUserName(Principal principal) throws JsonProcessingException;
 
     public void saveEvent(Principal principal, Event theEvent);
 

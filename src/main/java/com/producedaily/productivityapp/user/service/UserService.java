@@ -9,13 +9,13 @@ public interface UserService {
 
     public List<User> findAll();
 
-    public User findById(int id);
+    public User findById(long id);
 
     public User findByUsername(String username);
 
     public void save(User theUser);
 
-    public void deleteById(int id);
+    public void deleteById(long id);
 
     public String findLocalDate(Principal principal);
 

@@ -67,7 +67,7 @@ input[type="submit"]:hover {
 }
 
 #calendarGrid {
-    border: solid thick #0D1B2A;
+    border: solid thick #1B263B;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-auto-rows: 6em;
@@ -76,9 +76,7 @@ input[type="submit"]:hover {
 }
 
 #calendarGrid > div {
-   /* background: #eee;
-    */
-    padding: 1em;
+    padding : 1em;
     background: #0D1B2A;
 }
 
@@ -88,14 +86,23 @@ input[type="submit"]:hover {
 }
 
 #calendarGrid > div:nth-child(odd) {
-    /* background: #ddd;
-     */
     background: #1B263B;
 }
 
 .calendarDay {
     display: grid;
     justify-items: end;
+}
+
+#currentTaskBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px 10px 10px 10px;
+    border: solid thick #1B263B;
+    background: #0D1B2A;
+    height: 5em;
+    width: auto;
 }
 
 .btn-primary {

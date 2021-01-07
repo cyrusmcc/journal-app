@@ -25,10 +25,10 @@
             <div class="card-body">
 
                 <form method="POST"
-                      th:action="@{/saveEvent}" th:object="${event}">
+                      th:action="@{/saveTask}" th:object="${task}">
 
                     <fieldset>
-                        <legend>Add New Event</legend>
+                        <legend>Add New Task</legend>
 
                         <div class="mb-3">
                             <div class="col-xs-15">
@@ -41,26 +41,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="nameInput">Event Name</label>
-                            <input class="form-control" id="nameInput" placeholder="Enter event name"
+                            <label class="form-label" for="nameInput">Task Name</label>
+                            <input  class="form-control" id="nameInput" placeholder="Enter task name"
                                    required th:field="*{name}" type="text">
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label" for="descriptionInput">Description</label>
-                            <input class="form-control" id="descriptionInput"
-                                   placeholder="Enter description" th:field="*{description}"
-                                   type="text">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="eventDateInput">Date of event</label>
-                            <input class="form-control" id="eventDateInput"
-                                   placeholder="YYYY-MM-DD" required th:field="*{eventDate}"
-                                   type="text">
-                        </div>
-
-                        <button class="btn btn-primary" type="submit">Add Event</button>
+                        <button class="btn btn-primary" type="submit">Add Task</button>
                     </fieldset>
                 </form>
 

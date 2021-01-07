@@ -9,5 +9,4 @@ public class ProductivitytrackerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProductivitytrackerApplication.class, args);
     }
-
 }

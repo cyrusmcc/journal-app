@@ -23,17 +23,31 @@
 
 <div class="parent">
 
-    <div class="div1"> </div>
-
-    <div class="div2">
+    <div class="div1">
 
         <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
 
+        <div class="var" id="userTasks" style="display:none;" th:text="${userTasks}"></div>
+
         <a id="newEventButton" th:href="@{/newEvent}"
-            class="btn btn-primary">
+           class="btn btn-primary">
             Add Event
         </a>
 
+        <a id="newTaskButton" th:href="@{/newTask}"
+           class="btn btn-primary">
+            Add Task
+        </a>
+
+        <div class="container">
+            <form id="logoutForm" method="post" th:action="@{/logout}">
+                <input class="btn btn-primary" type="submit" value="Logout"/>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="div2">
     </div>
 
     <div class="div3" id="calendar">
@@ -160,12 +174,8 @@
 
     <script src="js/calendar.js"></script>
 
-    <div class="div4">
-        <div class="container">
-            <form id="logoutForm" method="post" th:action="@{/logout}">
-                <input class="btn btn-primary" type="submit" value="Logout"/>
-            </form>
-        </div>
+    <div class="div4" id="taskList">
+        <div id="currentTaskBar">Current task</div>
     </div>
 
     <div class="div5"></div>
@@ -173,6 +183,9 @@
     <div class="div6" id="eventList">
 
         <script src="js/eventlist.js"></script>
+
+        <script src="js/tasklist.js"></script>
+
 
     </div>
 </div>
