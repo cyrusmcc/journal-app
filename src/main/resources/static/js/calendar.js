@@ -1,7 +1,3 @@
-var localDate = document.getElementById('userLocalDate').innerText;
-
-var month = document.getElementById('month').innerText;
-
 var daysInMonth = document.getElementById('daysInMonth').innerText;
 
 var dayOfMonth = document.getElementById('dayOfMonth').innerText;
@@ -11,28 +7,46 @@ var childDivs = document.getElementById('calendarGrid')
 
 var userEvents = JSON.parse(document.getElementById("userEvents").innerText);
 
+var userTasks = JSON.parse(document.getElementById("userTasks").innerText);
 
 // iterate over calendar grid and assign dates according to number of days in month
 for(i=1; i < childDivs.length; i++ ) {
+
     var divName = "day" + (i);
 
     if(i <= daysInMonth) {
+
         document.getElementById(divName).innerText = (i);
+
     }
     if(i == dayOfMonth) {
 
-        document.getElementById(divName).style.background = '#E0E1DD';
+        document.getElementById(divName).style.background = '#FCFAF9';
 
         document.getElementById(divName).style.color = 'black';
 
-        document.getElementById(divName).style.border = "thick solid #778DA9";
+        document.getElementById(divName).style.border = "thick solid #586994";
 
+        var numberOfTaskCircle = document.createElement("div");
+
+        numberOfTaskCircle.style.background = '#586994';
+        numberOfTaskCircle.style.color = '#FCFAF9';
+        numberOfTaskCircle.style.borderRadius = "50%";
+        numberOfTaskCircle.style.width = "25px";
+        numberOfTaskCircle.style.height = "25px";
+        numberOfTaskCircle.style.marginBottom = "5em"
+        numberOfTaskCircle.style.marginRight = "1.5em";
+        numberOfTaskCircle.style.textAlign = "center";
+        numberOfTaskCircle.innerText = userTasks.length;
+
+
+        document.getElementById(divName).appendChild(numberOfTaskCircle);
     }
     if(i > daysInMonth && i <= 35) {
 
         var divNameOverDays = "day" + (i);
 
-        document.getElementById(divNameOverDays).style.background = 'black';
+        document.getElementById(divNameOverDays).style.background = '#0D1B2A';
     }
 }
     for (var i = 0; i < userEvents.length; i++) {

@@ -1,17 +1,14 @@
 package com.producedaily.productivityapp.task;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.producedaily.productivityapp.user.model.User;
 
 import javax.persistence.*;
 
-enum TaskStatus {
-
-        }
-
-
-//@Entity
-public class Task {
+@Entity
+@Table(name="task")
+public class  Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,21 +21,19 @@ public class Task {
 
     private boolean isFinished;
 
-    private TaskStatus taskStatus;
+    //private TaskStatus taskStatus;
 
-    //@ManyToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "user_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
-
 
     public Task() {
     }
 
-    public Task(String name, boolean isFinished, TaskStatus taskStatus, User user) {
+    public Task(String name, boolean isFinished) {
         this.name = name;
         this.isFinished = isFinished;
-        this.taskStatus = taskStatus;
-        this.user = user;
     }
 
     public long getId() {
@@ -73,14 +68,6 @@ public class Task {
         isFinished = finished;
     }
 
-    public TaskStatus getTaskStatus() {
-        return taskStatus;
-    }
-
-    public void setTaskStatus(TaskStatus taskStatus) {
-        this.taskStatus = taskStatus;
-    }
-
     public User getUser() {
         return user;
     }
@@ -94,8 +81,6 @@ public class Task {
         return "Task{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", taskStatus=" + taskStatus +
-                ", user=" + user +
                 '}';
     }
 }

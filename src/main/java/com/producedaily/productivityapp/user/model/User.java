@@ -16,7 +16,7 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="user_id")
-    private int id;
+    private long id;
 
     private String username;
 
@@ -34,10 +34,10 @@ public class User {
     @JsonManagedReference
     private List<Event> events;
 
-    //@OneToMany(mappedBy = "user", cascade = {
-    //        CascadeType.ALL
-    //})
-    //private List<Task> tasks;
+    @OneToMany(mappedBy = "user", cascade = {
+            CascadeType.ALL})
+    @JsonManagedReference
+    private List<Task> tasks;
 
     public User() {
 
@@ -50,11 +50,11 @@ public class User {
         this.localDate = localDate;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -106,6 +106,13 @@ public class User {
         this.events = events;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
 
     public List<Event> sortEventsByDate(List<Event> theEvents) {
 
@@ -114,23 +121,14 @@ public class User {
 
         for(int i = 0; i < theEvents.size(); i++) {
             events[i] = theEvents.get(i);
-            System.out.println(events[i].toString());
         }
-
-        System.out.println("Before: " +
-                events[0].getEventDate() + "\n" +
-                events[1].getEventDate() + "\n" +
-                events[2].getEventDate() + "\n" +
-                events[3].getEventDate() + "\n");
 
         for(int i = 0; i < events.length - 1; i++) {
             for(int j = 1; j < events.length - i; j++) {
 
                 LocalDate date1 = LocalDate.parse(events[j - 1].getEventDate());
-                System.out.println(date1);
 
                 LocalDate date2 = LocalDate.parse(events[j].getEventDate());
-                System.out.println(date2);
 
                 if(date1.isAfter(date2)) {
 
@@ -143,27 +141,17 @@ public class User {
             }
         }
 
-        System.out.println("");
-
-        System.out.println( "After: " +
-                events[0].getEventDate() + "\n" +
-                events[1].getEventDate() + "\n" +
-                events[2].getEventDate() + "\n" +
-                events[3].getEventDate());
         List<Event> sortedEventList = Arrays.asList(events);
 
         return sortedEventList;
     }
-
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
-                ", local_date='" + localDate + '\'' +
+                ", tasks=" + tasks +
                 '}';
     }
 }

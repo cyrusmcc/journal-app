@@ -1,9 +1,9 @@
-package com.producedaily.productivityapp.event.service;
+package com.producedaily.productivityapp.task.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.producedaily.productivityapp.event.model.Event;
-import com.producedaily.productivityapp.event.repository.EventRepository;
+import com.producedaily.productivityapp.task.Task;
+import com.producedaily.productivityapp.task.repository.TaskRepository;
 import com.producedaily.productivityapp.user.model.User;
 import com.producedaily.productivityapp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,10 @@ import java.security.Principal;
 import java.util.List;
 
 @Service
-public class EventServiceImpl implements EventService {
+public class TaskServiceImpl implements TaskService {
 
     @Autowired
-    private EventRepository eventRepository;
+    private TaskRepository taskRepository;
 
     @Autowired
     private UserService userService;
@@ -26,31 +26,29 @@ public class EventServiceImpl implements EventService {
 
         User user = userService.findByUsername(principal.getName());
 
-        List<Event> sortedEvents = user.sortEventsByDate(user.getEvents());
-
-        String json = new ObjectMapper().writeValueAsString(sortedEvents);
+        String json = new ObjectMapper().writeValueAsString(user.getTasks());
 
         return json;
-
     }
 
     @Override
-    public void saveEvent(Principal principal, Event theEvent) {
+    public void saveTask(Principal principal, Task theTask) {
 
         User user = userService.findByUsername(principal.getName());
 
-        theEvent.setUser(user);
+        theTask.setUser(user);
 
-        eventRepository.save(theEvent);
+        theTask.setFinished(false);
 
-        theEvent.setEventStatus(theEvent.getEventDate());
-
-        eventRepository.save(theEvent);
-
+        taskRepository.save(theTask);
     }
 
     @Override
     public void deleteById(long event_id) {
-        eventRepository.deleteById(event_id);
+        taskRepository.deleteById(event_id);
+    }
+
+    public boolean isExistByUserId(long id) {
+        return taskRepository.existsById(id);
     }
 }

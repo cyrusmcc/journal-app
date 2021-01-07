@@ -3,6 +3,8 @@ package com.producedaily.productivityapp.dashboard.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.producedaily.productivityapp.event.model.Event;
 import com.producedaily.productivityapp.event.service.EventService;
+import com.producedaily.productivityapp.task.Task;
+import com.producedaily.productivityapp.task.service.TaskService;
 import com.producedaily.productivityapp.user.model.User;
 import com.producedaily.productivityapp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private TaskService taskService;
+
     @GetMapping("/home")
     public Model getActiveUserData(Principal principal, Model model) throws JsonProcessingException {
 
@@ -40,7 +45,12 @@ public class HomeController {
                 userService.findDaysInMonth(principal));
 
         model.addAttribute("userEvents",
-                eventService.findByUserId(userService.findByUsername(principal.getName()).getId()));
+                eventService.findByUserName(principal));
+
+        model.addAttribute("userTasks",
+            taskService.findByUserName(principal));
+
+        // GET TASKS FROM USER CLASS, THEY HAVE EVENTS DONT GET USER FROM EVENT ?
 
         return model;
     }
@@ -63,5 +73,21 @@ public class HomeController {
         return "redirect:/home";
     }
 
+    @GetMapping("/newTask")
+    public String showTaskAddForm(Model model) {
 
+        Task task = new Task();
+
+        model.addAttribute("task", task);
+
+        return "/task-form.html";
+    }
+
+    @PostMapping("/saveTask")
+    public String addTask(Principal principal, @ModelAttribute("task") Task task) {
+
+        taskService.saveTask(principal, task);
+
+        return "redirect:/home";
+    }
 }

@@ -14,11 +14,12 @@ enum EventStatus {
 }
 
 @Entity
+@Table(name="event")
 public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="event_id")
+    @Column(name= "event_id")
     private long id;
 
     private String name;
