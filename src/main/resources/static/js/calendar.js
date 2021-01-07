@@ -47,6 +47,10 @@ for(i=1; i < childDivs.length; i++ ) {
         var divNameOverDays = "day" + (i);
 
         document.getElementById(divNameOverDays).style.background = '#0D1B2A';
+        document.getElementById(divNameOverDays).style.border = "thick solid #1B263B";
+        document.getElementById(divNameOverDays).style.borderRight = "0px";
+        document.getElementById(divNameOverDays).style.borderLeft = "0px";
+
     }
 }
     for (var i = 0; i < userEvents.length; i++) {

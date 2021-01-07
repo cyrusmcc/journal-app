@@ -95,6 +95,9 @@ input[type="submit"]:hover {
 }
 
 #currentTaskBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px 10px 10px 10px;
     border: solid thick #1B263B;
     background: #0D1B2A;
