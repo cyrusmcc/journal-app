@@ -7,22 +7,22 @@ import java.util.List;
 
 public interface UserService {
 
-    public List<User> findAll();
+    List<User> findAll();
 
-    public User findById(long id);
+    User findById(long id);
 
-    public User findByUsername(String username);
+    User findByUsername(String username);
 
-    public void save(User theUser);
+    void save(User theUser);
 
-    public void deleteById(long id);
+    void deleteById(long id);
 
-    public String findLocalDate(Principal principal);
+    String findLocalDate(Principal principal);
 
-    public String findMonth(Principal principal);
+    String findMonth(Principal principal);
 
-    public int findDayOfMonth(Principal principal);
+    int findDayOfMonth(Principal principal);
 
-    public int findDaysInMonth(Principal principal);
+    int findDaysInMonth(Principal principal);
 
 }

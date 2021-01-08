@@ -42,34 +42,12 @@ for(i=1; i < childDivs.length; i++ ) {
 
         document.getElementById(divName).appendChild(numberOfTaskCircle);
     }
-    if(i > daysInMonth && i <= 35) {
-
-        var divNameOverDays = "day" + (i);
-
-        document.getElementById(divNameOverDays).style.background = '#0D1B2A';
-        document.getElementById(divNameOverDays).style.border = "thick solid #1B263B";
-        document.getElementById(divNameOverDays).style.borderRight = "0px";
-        document.getElementById(divNameOverDays).style.borderLeft = "0px";
-
-    }
 }
     for (var i = 0; i < userEvents.length; i++) {
 
         var eventDate = new Date(userEvents[i].eventDate);
 
         var currentDate = new Date();
-
-        /* for development purposes, to be removed
-
-        console.log("event date: " + eventDate + " " + eventDate.getDay());
-
-        console.log("event year: " + eventDate.getFullYear() +
-            " current year: " + currentDate.getFullYear() +
-            " event month: " + eventDate.getMonth() +
-            " current month: " + currentDate.getMonth() +
-            " event day: " + eventDate.getDay())
-
-         */
 
         if (userEvents[i].eventStatus === "FUTURE") {
             if (eventDate.getFullYear() == currentDate.getFullYear()

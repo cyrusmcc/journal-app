@@ -1,5 +1,7 @@
 package com.producedaily.productivityapp.user.service;
 
+import com.producedaily.productivityapp.journal.Journal;
+import com.producedaily.productivityapp.journal.JournalEntry;
 import com.producedaily.productivityapp.user.model.User;
 import com.producedaily.productivityapp.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,6 +81,8 @@ public class  UserServiceImpl implements UserService {
 
         user.setLocalDate(LocalDate.now().toString());
 
+        user.setJournal(new Journal());
+
         userRepository.save(user);
     }
 
@@ -124,5 +128,4 @@ public class  UserServiceImpl implements UserService {
 
         return date.lengthOfMonth();
     }
-
 }

@@ -3,6 +3,8 @@ package com.producedaily.productivityapp.dashboard.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.producedaily.productivityapp.event.model.Event;
 import com.producedaily.productivityapp.event.service.EventService;
+import com.producedaily.productivityapp.journal.JournalEntry;
+import com.producedaily.productivityapp.journal.JournalService;
 import com.producedaily.productivityapp.task.Task;
 import com.producedaily.productivityapp.task.service.TaskService;
 import com.producedaily.productivityapp.user.model.User;
@@ -27,6 +29,9 @@ public class HomeController {
     @Autowired
     private TaskService taskService;
 
+    @Autowired
+    JournalService journalService;
+
     @GetMapping("/home")
     public Model getActiveUserData(Principal principal, Model model) throws JsonProcessingException {
 
@@ -50,7 +55,8 @@ public class HomeController {
         model.addAttribute("userTasks",
             taskService.findByUserName(principal));
 
-        // GET TASKS FROM USER CLASS, THEY HAVE EVENTS DONT GET USER FROM EVENT ?
+        model.addAttribute("journalEntry",
+                journalService.findEntryTextByDate(principal));
 
         return model;
     }
@@ -66,7 +72,7 @@ public class HomeController {
     }
 
     @PostMapping("/saveEvent")
-    public String addEvent(Principal principal, @ModelAttribute("event") Event event) {
+    public String saveEvent(Principal principal, @ModelAttribute("event") Event event) {
 
         eventService.saveEvent(principal, event);
 
@@ -84,9 +90,17 @@ public class HomeController {
     }
 
     @PostMapping("/saveTask")
-    public String addTask(Principal principal, @ModelAttribute("task") Task task) {
+    public String saveTask(Principal principal, @ModelAttribute("task") Task task) {
 
         taskService.saveTask(principal, task);
+
+        return "redirect:/home";
+    }
+
+    @PutMapping("/saveEntry")
+    public String saveJournalEntry(Principal principal, @RequestParam("journalEntry") JournalEntry journalEntry) {
+
+        journalService.updateEntry(journalEntry);
 
         return "redirect:/home";
     }
