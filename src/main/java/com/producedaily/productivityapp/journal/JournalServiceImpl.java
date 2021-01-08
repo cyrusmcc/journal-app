@@ -22,8 +22,10 @@ public class JournalServiceImpl implements JournalService {
         return userService.findByUsername(principal.getName()).getJournal();
     }
 
+
+
     @Override
-    public String findEntryTextByDate(Principal principal) {
+    public JournalEntry findEntryTextByDate(Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
 
@@ -41,23 +43,31 @@ public class JournalServiceImpl implements JournalService {
 
             jEntryRepo.save(newEntry);
 
-            return newEntry.getText();
+            return newEntry;
         } else {
-            return journalEntry.getText();
+            return journalEntry;
         }
     }
 
     @Override
-    public void saveEntry(Principal principal, JournalEntry journalEntry) {
+    public void updateEntry(JournalEntry journalEntry) {
+            jEntryRepo.save(journalEntry);
 
+       /*
         Journal journal =
                 userService.findByUsername(principal.getName()).getJournal();
 
-        journalEntry.setJournal(journal);
+        User user = userService.findByUsername(principal.getName());
 
-        journalEntry.setEntryDate(LocalDate.now().toString());
+        String userDate = user.getLocalDate().toString();
 
-        jEntryRepo.save(journalEntry);
+        JournalEntry entry =
+                jEntryRepo.findJournalEntryByJournalAndEntryDate(journal,userDate);
 
+        entry.setText(text);
+
+        jEntryRepo.save(entry);
+
+        */
     }
 }

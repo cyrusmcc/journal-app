@@ -6,7 +6,7 @@ public interface JournalService {
 
     Journal findJournal(Principal principal);
 
-    String findEntryTextByDate(Principal principal);
+    JournalEntry findEntryTextByDate(Principal principal);
 
-    void saveEntry(Principal principal, JournalEntry journalEntry);
+    void updateEntry(JournalEntry journalEntry);
 }

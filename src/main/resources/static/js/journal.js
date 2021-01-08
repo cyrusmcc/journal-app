@@ -1,4 +1,5 @@
-var generatedSummary;
+var currentJournalEntry = document.getElementById("journalEntry").innerText;
+
 
 var tasksCompletedCounter;
 

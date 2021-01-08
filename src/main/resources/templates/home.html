@@ -167,25 +167,28 @@
     </div>
 
     <div class="div5" id="dailyJournal">
+
+        <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry}"></div>
+        <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry.text}"></div>
+
         <div id="dailyGeneratedSummary">
             <span class="generatedPart" id="genStart"></span>
             <span class="generatedPart" id="genMid"></span>
             <span class="generatedPart" id="genEnd"></span>
         </div>
 
-        <textarea id="userJournalNotes" rows="10" placeholder="### Daily Journal"></textarea>
+        <textarea id="userJournalNotes" rows="10" placeholder="### Daily Journal" th:text="${journalEntry.text}">
+        </textarea>
 
     </div>
 
     <script src="js/journal.js"></script>
-
 
     <div class="div6" id="eventList">
 
         <script src="js/eventlist.js"></script>
 
         <script src="js/tasklist.js"></script>
-
 
     </div>
 </div>
