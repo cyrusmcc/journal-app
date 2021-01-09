@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 public class JournalServiceImpl implements JournalService {
@@ -17,22 +18,35 @@ public class JournalServiceImpl implements JournalService {
     @Autowired
     JournalEntryRepository jEntryRepo;
 
+    @Autowired
+    JournalRepository journalRepository;
+
     @Override
     public Journal findJournal(Principal principal) {
         return userService.findByUsername(principal.getName()).getJournal();
     }
+    
+    public JournalEntry findEntryById(long id) {
 
+        JournalEntry entry = jEntryRepo.findJournalEntryById(id);
 
+        return entry;
+    }
 
     @Override
-    public JournalEntry findEntryTextByDate(Principal principal) {
+    public JournalEntry findEntryByDate(Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
 
         String date = user.getLocalDate();
 
+        long journalId = user.getJournal().getId();
+
+        Journal userJournal = journalRepository.findById(journalId);
+
         JournalEntry journalEntry = jEntryRepo.
-                findJournalEntryByJournalAndEntryDate(user.getJournal(), date);
+               findJournalEntryByJournalAndEntryDate(userJournal, date);
+
 
         // check if entry already exists with user's date, if not create new entry
         if(journalEntry == null) {
@@ -42,7 +56,6 @@ public class JournalServiceImpl implements JournalService {
             newEntry.setEntryDate(LocalDate.now().toString());
 
             jEntryRepo.save(newEntry);
-
             return newEntry;
         } else {
             return journalEntry;
@@ -51,23 +64,8 @@ public class JournalServiceImpl implements JournalService {
 
     @Override
     public void updateEntry(JournalEntry journalEntry) {
-            jEntryRepo.save(journalEntry);
 
-       /*
-        Journal journal =
-                userService.findByUsername(principal.getName()).getJournal();
+        jEntryRepo.save(journalEntry);
 
-        User user = userService.findByUsername(principal.getName());
-
-        String userDate = user.getLocalDate().toString();
-
-        JournalEntry entry =
-                jEntryRepo.findJournalEntryByJournalAndEntryDate(journal,userDate);
-
-        entry.setText(text);
-
-        jEntryRepo.save(entry);
-
-        */
     }
 }

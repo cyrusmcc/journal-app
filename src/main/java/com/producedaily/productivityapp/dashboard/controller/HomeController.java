@@ -56,7 +56,7 @@ public class HomeController {
             taskService.findByUserName(principal));
 
         model.addAttribute("journalEntry",
-                journalService.findEntryTextByDate(principal));
+                journalService.findEntryByDate(principal));
 
         return model;
     }
@@ -97,10 +97,12 @@ public class HomeController {
         return "redirect:/home";
     }
 
-    @PutMapping("/saveEntry")
-    public String saveJournalEntry(Principal principal, @RequestParam("journalEntry") JournalEntry journalEntry) {
+    @PostMapping("/saveEntry")
+    public String saveJournalEntry(@ModelAttribute("entry") JournalEntry entry) {
 
-        journalService.updateEntry(journalEntry);
+
+
+        journalService.updateEntry(entry);
 
         return "redirect:/home";
     }

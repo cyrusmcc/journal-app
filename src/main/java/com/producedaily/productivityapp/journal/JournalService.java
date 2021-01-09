@@ -6,7 +6,9 @@ public interface JournalService {
 
     Journal findJournal(Principal principal);
 
-    JournalEntry findEntryTextByDate(Principal principal);
+    JournalEntry findEntryById(long id);
+
+    JournalEntry findEntryByDate(Principal principal);
 
     void updateEntry(JournalEntry journalEntry);
 }

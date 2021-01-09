@@ -169,6 +169,8 @@
     <div class="div5" id="dailyJournal">
 
         <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry}"></div>
+        <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry.id}"></div>
+
         <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry.text}"></div>
 
         <div id="dailyGeneratedSummary">
@@ -177,8 +179,19 @@
             <span class="generatedPart" id="genEnd"></span>
         </div>
 
-        <textarea id="userJournalNotes" rows="10" placeholder="### Daily Journal" th:text="${journalEntry.text}">
-        </textarea>
+        <form method="post" th:action="@{/saveEntry}" th:object="${journalEntry}">
+
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{entryDate}"/>
+            <input type="hidden" th:field="*{journal}"/>
+
+            <textarea id="userJournalNotes" rows="10"
+                      placeholder="### Daily Journal" th:field="*{text}">
+            </textarea>
+
+            <input type="submit" value="Submit"/>
+            
+        </form>
 
     </div>
 
