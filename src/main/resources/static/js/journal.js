@@ -1,18 +1,17 @@
 var currentJournalEntry = document.getElementById("journalEntry").innerText;
 
+var currentDayOfMonth = document.getElementById('dayOfMonth').innerText;
 
 var tasksCompletedCounter;
 
 var userMonth = document.getElementById("month").innerText;
-
-let userDate = new Date();
 
 var totalTasksComplete = 0;
 
 tasksCompletedCounter = totalTasksComplete + "/" + userTasks.length;
 
 document.getElementById("genStart").innerText = "Today, " + userMonth + " "
-                             + userDate.getDate() + "," + " you have completed [";
+                        + currentDayOfMonth + "," + " you have completed [";
 
 document.getElementById("genMid").innerText = tasksCompletedCounter;
 
