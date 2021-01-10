@@ -6,14 +6,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
-    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" rel="stylesheet">
-
     <link href="index.css" rel="stylesheet" type="text/css">
-
-    <script crossorigin="anonymous"
-            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="js/calendar.js"></script>
 
@@ -26,18 +19,7 @@
     <div class="div1">
 
         <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
-
         <div class="var" id="userTasks" style="display:none;" th:text="${userTasks}"></div>
-
-        <a id="newEventButton" th:href="@{/newEvent}"
-           class="btn btn-primary">
-            Add Event
-        </a>
-
-        <a id="newTaskButton" th:href="@{/newTask}"
-           class="btn btn-primary">
-            Add Task
-        </a>
 
         <div class="container">
             <form id="logoutForm" method="post" th:action="@{/logout}">
@@ -164,14 +146,23 @@
     <script src="js/calendar.js"></script>
 
     <div class="div4" id="taskList">
-        <div id="currentTaskBar">Current task</div>
+        <div id="currentTaskBar">Current task
+        </div>
+
+        <a id="newTaskButton" th:href="@{/newTask}" class="btn btn-primary">
+            Add Task
+        </a>
+
+        <a href="#" id="finishTaskButton" class="btn btn-primary">
+            Finish task
+        </a>
+
     </div>
 
     <div class="div5" id="dailyJournal">
 
         <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry}"></div>
         <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry.id}"></div>
-
         <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry.text}"></div>
 
         <div id="dailyGeneratedSummary">
@@ -194,17 +185,40 @@
             
         </form>
 
-    </div>
+        <script src="js/journal.js"></script>
 
-    <script src="js/journal.js"></script>
+    </div>
 
     <div class="div6" id="eventList">
 
+        <a id="newEventButton" th:href="@{/newEvent}"
+           class="btn btn-primary">
+            Add Event
+        </a>
+
         <script src="js/eventlist.js"></script>
 
-        <script src="js/tasklist.js"></script>
+    </div>
+
+</div>
+
+<div id="task-modal-bg">
+    <div id="task-modal-content">
+
+        <div id="task-modal-close">+</div>
+
+        <div id="task-modal-title">Temp</div>
+
+        <form action="">
+            <textarea name="" id="task-modal-notes-input" cols="30" rows="5"></textarea>
+
+            <input type="submit" value="finish task"/>
+        </form>
 
     </div>
+
+    <script src="js/tasklist.js"></script>
+
 </div>
 
 </body>

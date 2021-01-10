@@ -1,5 +1,4 @@
 var userEvents = JSON.parse(document.getElementById("userEvents").innerText);
-console.log(userEvents);
 
 for(i = 0; i < userEvents.length; i++) {
 

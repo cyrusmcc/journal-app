@@ -3,30 +3,6 @@ body {
     color: #FCFAF9;
 }
 
-input[type="submit"] {
-    color: #FCFAF9;
-    background-color: #586994;
-    border-color: #586994;
-}
-
-input[type="submit"]:hover {
-    color: #FDFBFB;
-    background-color: #7383AB;
-    border-color: #7383AB;
-}
-
-.btn-primary {
-    color: #FDFBFB;
-    background-color: #586994;
-    border-color: #586994;
-}
-
-.btn-primary:hover {
-    color: #E0E1DD;
-    background-color: #778DA9;
-    border-color: #778DA9;
-}
-
 .parent {
     margin: 20px;
     display: grid;
@@ -54,7 +30,7 @@ input[type="submit"]:hover {
     background: #1B263B;
     border-radius: 10px 10px 10px 10px;
     overflow: hidden;
-    padding: 1em;
+    padding: .5em;
 }
 
 .div4 {
@@ -68,6 +44,7 @@ input[type="submit"]:hover {
     grid-area: 4 / 1 / 6 / 4;
     border-radius: 10px 10px 10px 10px;
     overflow: hidden;
+    border: thick solid #1B263B;
 }
 
 .div6 {
@@ -75,7 +52,6 @@ input[type="submit"]:hover {
     background: #1B263B;
     border-radius: 10px 10px 10px 10px;
     overflow: hidden;
-    overflow-y: scroll;
 }
 
 #calendarGrid {
@@ -131,9 +107,11 @@ input[type="submit"]:hover {
     width: 100%;
     height: 3em;
     background: #0D1B2A;
-    border: solid thick #1B263B;
+
+   /* border: solid thick #1B263B;
     border-radius: 10px 10px 0px 0px;
     border-bottom: none;
+    */
     color: #FDFBFB;
     overflow: auto;
     pointer-events: none;
@@ -146,9 +124,11 @@ input[type="submit"]:hover {
     width: 100%;
     height: 100%;
     background: #0D1B2A;
-    border: solid thick #1B263B;
+    border: solid thick #0D1B2A;
+    /*
     border-radius: 0px 0px 10px 10px;
     border-top: none;
+     */
     color: #A3C9A8;
     outline: none;
     overflow: auto;
@@ -163,6 +143,44 @@ input[type="submit"]:hover {
     background: #0D1B2A;
     outline: none;
     justify-items: center;
+}
+
+#task-modal-bg {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    display: none;
+}
+
+#task-modal-content {
+    width: 500px;
+    height: 300px;
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+#task-modal-notes-input {
+    width: 80%;
+    display: block;
+    margin: 10px auto;
+}
+
+#task-modal-close {
+    position: absolute;
+    user-select: none;
+    top: 0;
+    right: 15px;
+    font-size: 40px;
+    transform: rotate(45deg);
+    cursor: pointer;
 }
 
 ::placeholder {

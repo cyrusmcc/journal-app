@@ -1,5 +1,3 @@
-var currentJournalEntry = document.getElementById("journalEntry").innerText;
-
 var currentDayOfMonth = document.getElementById('dayOfMonth').innerText;
 
 var tasksCompletedCounter;
