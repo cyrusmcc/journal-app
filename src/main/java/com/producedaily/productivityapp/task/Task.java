@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.producedaily.productivityapp.user.model.User;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="task")
@@ -20,6 +22,8 @@ public class  Task {
     private String note;
 
     private boolean isFinished;
+
+    private String taskDate;
 
     //private TaskStatus taskStatus;
 
@@ -74,6 +78,14 @@ public class  Task {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getTaskDate() {
+        return taskDate;
+    }
+
+    public void setTaskDate(String taskDate) {
+        this.taskDate = taskDate;
     }
 
     @Override

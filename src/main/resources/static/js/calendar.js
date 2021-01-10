@@ -12,35 +12,40 @@ var userTasks = JSON.parse(document.getElementById("userTasks").innerText);
 // iterate over calendar grid and assign dates according to number of days in month
 for(i=1; i < childDivs.length; i++ ) {
 
-    var divName = "day" + (i);
+    var dateNumber = "dateNumber" + (i);
+
+    var dayGridBox = "day" + (i);
 
     if(i <= daysInMonth) {
 
-        document.getElementById(divName).innerText = (i);
+        document.getElementById(dateNumber).innerText = (i);
+        document.getElementById(dateNumber).style.margin = ".5em";
 
     }
     if(i == dayOfMonth) {
 
-        document.getElementById(divName).style.background = '#FCFAF9';
+        document.getElementById(dayGridBox).style.background = '#FCFAF9';
 
-        document.getElementById(divName).style.color = 'black';
+        document.getElementById(dateNumber).style.color = 'black';
 
-        document.getElementById(divName).style.border = "thick solid #586994";
+        document.getElementById(dayGridBox).style.border = "thick solid #586994";
+
+        if(userTasks.length > 0) {
 
         var numberOfTaskCircle = document.createElement("div");
 
+        numberOfTaskCircle.style.gridArea = "grid-area: 1 / 1 / 3 / 3";
+        numberOfTaskCircle.style.textAlign = "center";
+        numberOfTaskCircle.style.margin = ".5em";
         numberOfTaskCircle.style.background = '#586994';
         numberOfTaskCircle.style.color = '#FCFAF9';
         numberOfTaskCircle.style.borderRadius = "50%";
         numberOfTaskCircle.style.width = "25px";
         numberOfTaskCircle.style.height = "25px";
-        numberOfTaskCircle.style.marginBottom = "5em"
-        numberOfTaskCircle.style.marginRight = "1.5em";
-        numberOfTaskCircle.style.textAlign = "center";
         numberOfTaskCircle.innerText = userTasks.length;
 
-
-        document.getElementById(divName).appendChild(numberOfTaskCircle);
+        document.getElementById(dayGridBox).appendChild(numberOfTaskCircle);
+        }
     }
 }
     for (var i = 0; i < userEvents.length; i++) {
@@ -59,18 +64,16 @@ for(i=1; i < childDivs.length; i++ ) {
 
                 var eventNameForGrid = document.createElement("div");
                 eventNameForGrid.innerText = eventName;
+
+                eventNameForGrid.style.gridArea = "4 / 2 / 5 / 8";
                 eventNameForGrid.style.background = '#7a77a9';
+                eventNameForGrid.style.marginBottom = "1em";
                 eventNameForGrid.style.fontSize = ".5em";
                 eventNameForGrid.style.borderRadius = "10px 10px 10px 10px";
-                eventNameForGrid.style.padding= "5px";
-                eventNameForGrid.style.alignContent = "end";
-                eventNameForGrid.style.display = "flex";
-                eventNameForGrid.style.width = "100%";
-                eventNameForGrid.style.marginTop = "20px";
+                eventNameForGrid.style.padding = "5px";
 
                 document.getElementById(day).appendChild(eventNameForGrid);
 
             }
         }
 }
-

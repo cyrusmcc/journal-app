@@ -10,5 +10,5 @@ public interface JournalService {
 
     JournalEntry findEntryByDate(Principal principal);
 
-    void updateEntry(JournalEntry journalEntry);
+    void saveEntry(JournalEntry journalEntry);
 }

@@ -25,7 +25,7 @@ public class JournalServiceImpl implements JournalService {
     public Journal findJournal(Principal principal) {
         return userService.findByUsername(principal.getName()).getJournal();
     }
-    
+
     public JournalEntry findEntryById(long id) {
 
         JournalEntry entry = jEntryRepo.findJournalEntryById(id);
@@ -47,7 +47,6 @@ public class JournalServiceImpl implements JournalService {
         JournalEntry journalEntry = jEntryRepo.
                findJournalEntryByJournalAndEntryDate(userJournal, date);
 
-
         // check if entry already exists with user's date, if not create new entry
         if(journalEntry == null) {
 
@@ -63,7 +62,7 @@ public class JournalServiceImpl implements JournalService {
     }
 
     @Override
-    public void updateEntry(JournalEntry journalEntry) {
+    public void saveEntry(JournalEntry journalEntry) {
 
         jEntryRepo.save(journalEntry);
 

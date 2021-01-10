@@ -9,8 +9,7 @@ public interface TaskService {
 
     String findByUserName(Principal principal) throws JsonProcessingException;
 
-    public void saveTask(Principal principal, Task theTask);
+    void saveTask(Principal principal, Task task);
 
-    public void deleteById(long id);
-
+    void deleteById(long id);
 }

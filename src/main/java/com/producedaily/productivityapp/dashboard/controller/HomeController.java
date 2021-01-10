@@ -100,9 +100,7 @@ public class HomeController {
     @PostMapping("/saveEntry")
     public String saveJournalEntry(@ModelAttribute("entry") JournalEntry entry) {
 
-
-
-        journalService.updateEntry(entry);
+        journalService.saveEntry(entry);
 
         return "redirect:/home";
     }
