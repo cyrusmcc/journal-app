@@ -26,29 +26,31 @@ public class TaskServiceImpl implements TaskService {
 
         User user = userService.findByUsername(principal.getName());
 
+        List<Task> userTasks = user.getTasks();
+
+        user.isTaskFinished(userTasks);
+
         String json = new ObjectMapper().writeValueAsString(user.getTasks());
 
         return json;
     }
 
     @Override
-    public void saveTask(Principal principal, Task theTask) {
+    public void saveTask(Principal principal, Task task) {
 
         User user = userService.findByUsername(principal.getName());
 
-        theTask.setUser(user);
+        task.setUser(user);
 
-        theTask.setFinished(false);
+        task.setFinished(false);
 
-        taskRepository.save(theTask);
+        task.setTaskDate(user.getLocalDate());
+
+        taskRepository.save(task);
     }
 
     @Override
     public void deleteById(long event_id) {
         taskRepository.deleteById(event_id);
-    }
-
-    public boolean isExistByUserId(long id) {
-        return taskRepository.existsById(id);
     }
 }

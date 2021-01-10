@@ -158,6 +158,24 @@ public class User {
         return sortedEventList;
     }
 
+    public void isTaskFinished(List<Task> tasks) {
+
+        for(int i = 0; i < tasks.size(); i++) {
+
+            Task currentTask = tasks.get(i);
+
+            LocalDate theTaskDate = LocalDate.parse(currentTask.getTaskDate());
+
+            if(LocalDate.now().isAfter(theTaskDate)) {
+                currentTask.setFinished(true);
+            }
+            else {
+                currentTask.setFinished(false);
+            }
+        }
+    }
+
+
     @Override
     public String toString() {
         return "User{" +

@@ -21,6 +21,9 @@ if(userTasks[0] != null) {
 
 for(i = 1; i < userTasks.length; i++) {
 
+    if(userTasks.isFinish === false) {
+
+
     var taskName = userTasks[i].name;
 
     var taskDiv = document.createElement("div");
@@ -35,4 +38,5 @@ for(i = 1; i < userTasks.length; i++) {
     taskDiv.style.border = "thin solid #FCFAF9";
 
     document.getElementById("taskList").appendChild(taskDiv);
+    }
 }
