@@ -21,6 +21,11 @@
         <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
         <div class="var" id="userTasks" style="display:none;" th:text="${userTasks}"></div>
 
+
+        <script th:inline="javascript">
+            var userTasks = [[${userTasks}]];
+        </script>
+
         <div class="container">
             <form id="logoutForm" method="post" th:action="@{/logout}">
                 <input class="btn btn-primary" type="submit" value="Logout"/>
@@ -209,10 +214,21 @@
 
         <div id="task-modal-title">Temp</div>
 
-        <form action="">
-            <textarea name="" id="task-modal-notes-input" cols="30" rows="5"></textarea>
+        <div class="var" id="userTasks" style="display:none;" th:text="${currentTask.id}"></div>
 
-            <input type="submit" value="finish task"/>
+        <form method="PUT" th:action="@{/updateTask}" th:object="${currentTask}">
+
+            <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{name}">
+            <input type="hidden" th:field="*{finished}"/>
+            <input type="hidden" th:field="*{taskDate}"/>
+            <input type="hidden" th:field="*{user}"/>
+
+            <textarea id="task-modal-notes-input" cols="30" rows="5" th:field="*{note}"></textarea>
+
+            <input type="submit" value="Finish" id="updateTaskButton"/>
+
+
         </form>
 
     </div>

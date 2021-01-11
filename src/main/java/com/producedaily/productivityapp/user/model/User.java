@@ -2,8 +2,12 @@ package com.producedaily.productivityapp.user.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.producedaily.productivityapp.event.model.Event;
-import com.producedaily.productivityapp.journal.Journal;
+import com.producedaily.productivityapp.journal.model.Journal;
+import com.producedaily.productivityapp.journal.model.JournalEntry;
+import com.producedaily.productivityapp.journal.repository.JournalEntryRepository;
+import com.producedaily.productivityapp.journal.service.JournalService;
 import com.producedaily.productivityapp.task.Task;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -167,14 +171,11 @@ public class User {
             LocalDate theTaskDate = LocalDate.parse(currentTask.getTaskDate());
 
             if(LocalDate.now().isAfter(theTaskDate)) {
+
                 currentTask.setFinished(true);
-            }
-            else {
-                currentTask.setFinished(false);
             }
         }
     }
-
 
     @Override
     public String toString() {

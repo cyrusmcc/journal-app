@@ -7,8 +7,6 @@ var childDivs = document.getElementById('calendarGrid')
 
 var userEvents = JSON.parse(document.getElementById("userEvents").innerText);
 
-var userTasks = JSON.parse(document.getElementById("userTasks").innerText);
-
 var activeUserTasks = 0;
 
 for(i = 0; i < userTasks.length; i++) {

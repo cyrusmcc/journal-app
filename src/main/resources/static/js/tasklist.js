@@ -1,7 +1,4 @@
-var userTasks = JSON.parse(document.getElementById("userTasks").innerText);
-
 var activeUserTasks = 0;
-
 
 // open finish task modal
 document.getElementById("finishTaskButton").addEventListener("click",
@@ -66,3 +63,4 @@ for(i = 1; i < userTasks.length; i++) {
     document.getElementById("taskList").appendChild(taskDiv);
     }
 }
+

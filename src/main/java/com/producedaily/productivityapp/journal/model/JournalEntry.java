@@ -1,6 +1,10 @@
-package com.producedaily.productivityapp.journal;
+package com.producedaily.productivityapp.journal.model;
+
+import com.producedaily.productivityapp.journal.model.Journal;
+import com.producedaily.productivityapp.task.Task;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class JournalEntry {
@@ -13,6 +17,8 @@ public class JournalEntry {
     private String entryDate;
 
     private String text;
+
+    private String taskSummary;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "journal_id")
@@ -55,6 +61,14 @@ public class JournalEntry {
 
     public void setJournal(Journal journal) {
         this.journal = journal;
+    }
+
+    public String getTaskSummary() {
+        return taskSummary;
+    }
+
+    public void setTaskSummary(String taskSummary) {
+        this.taskSummary = taskSummary;
     }
 
     @Override

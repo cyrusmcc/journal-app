@@ -23,6 +23,8 @@ public class  Task {
 
     private boolean isFinished;
 
+    private boolean isCurrentTask;
+
     private String taskDate;
 
     //private TaskStatus taskStatus;
@@ -88,11 +90,11 @@ public class  Task {
         this.taskDate = taskDate;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public boolean isCurrentTask() {
+        return isCurrentTask;
+    }
+
+    public void setCurrentTask(boolean currentTask) {
+        isCurrentTask = currentTask;
     }
 }

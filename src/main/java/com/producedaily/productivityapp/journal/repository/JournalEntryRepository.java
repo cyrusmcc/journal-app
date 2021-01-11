@@ -1,5 +1,7 @@
-package com.producedaily.productivityapp.journal;
+package com.producedaily.productivityapp.journal.repository;
 
+import com.producedaily.productivityapp.journal.model.Journal;
+import com.producedaily.productivityapp.journal.model.JournalEntry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

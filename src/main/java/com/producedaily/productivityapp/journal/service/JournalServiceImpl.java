@@ -1,5 +1,10 @@
-package com.producedaily.productivityapp.journal;
+package com.producedaily.productivityapp.journal.service;
 
+import com.producedaily.productivityapp.journal.model.Journal;
+import com.producedaily.productivityapp.journal.model.JournalEntry;
+import com.producedaily.productivityapp.journal.repository.JournalEntryRepository;
+import com.producedaily.productivityapp.journal.repository.JournalRepository;
+import com.producedaily.productivityapp.journal.service.JournalService;
 import com.producedaily.productivityapp.user.model.User;
 import com.producedaily.productivityapp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Service
 public class JournalServiceImpl implements JournalService {
@@ -59,6 +63,14 @@ public class JournalServiceImpl implements JournalService {
         } else {
             return journalEntry;
         }
+    }
+
+    @Override
+    public JournalEntry findEntryByJournalAndDate(Journal journal, String userDate) {
+        JournalEntry entry =
+            jEntryRepo.findJournalEntryByJournalAndEntryDate(journal, userDate);
+
+        return entry;
     }
 
     @Override

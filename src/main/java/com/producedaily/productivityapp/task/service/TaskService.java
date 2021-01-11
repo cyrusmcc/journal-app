@@ -4,12 +4,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.producedaily.productivityapp.task.Task;
 
 import java.security.Principal;
+import java.util.List;
 
 public interface TaskService {
 
-    String findByUserName(Principal principal) throws JsonProcessingException;
+    List<Task> findTasksByUserName(Principal principal);
 
-    void saveTask(Principal principal, Task task);
+    Task findCurrentTaskByUserName(Principal principal);
 
-    void deleteById(long id);
+    void saveNewTask(Principal principal, Task task);
+
+    void updateTask(Principal principal, Task task);
+
 }

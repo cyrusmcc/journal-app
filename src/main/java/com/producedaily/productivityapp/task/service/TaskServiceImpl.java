@@ -2,6 +2,9 @@ package com.producedaily.productivityapp.task.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.producedaily.productivityapp.journal.model.Journal;
+import com.producedaily.productivityapp.journal.model.JournalEntry;
+import com.producedaily.productivityapp.journal.service.JournalService;
 import com.producedaily.productivityapp.task.Task;
 import com.producedaily.productivityapp.task.repository.TaskRepository;
 import com.producedaily.productivityapp.user.model.User;
@@ -21,8 +24,11 @@ public class TaskServiceImpl implements TaskService {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    JournalService journalService;
+
     @Override
-    public String findByUserName(Principal principal) throws JsonProcessingException {
+    public List<Task> findTasksByUserName(Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
 
@@ -30,13 +36,34 @@ public class TaskServiceImpl implements TaskService {
 
         user.isTaskFinished(userTasks);
 
-        String json = new ObjectMapper().writeValueAsString(user.getTasks());
-
-        return json;
+        return userTasks;
     }
 
     @Override
-    public void saveTask(Principal principal, Task task) {
+    public Task findCurrentTaskByUserName(Principal principal) {
+
+        List<Task> tasks =  findTasksByUserName(principal);
+
+        Task currentTask = null;
+
+        for(int i = 0; i < tasks.size(); i++) {
+
+            if(tasks.get(i).isFinished() == false) {
+                tasks.get(i).setCurrentTask(true);
+
+                System.out.println("inside if and " + tasks.get(i).isCurrentTask());
+
+                currentTask = tasks.get(i);
+
+                taskRepository.save(currentTask);
+                break;
+            }
+        }
+        return currentTask;
+    }
+
+    @Override
+    public void saveNewTask(Principal principal, Task task) {
 
         User user = userService.findByUsername(principal.getName());
 
@@ -50,7 +77,26 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void deleteById(long event_id) {
-        taskRepository.deleteById(event_id);
+    public void updateTask(Principal principal, Task task) {
+
+        journalService.findJournal(principal);
+
+        // add task note to journal before deletion
+        if(task.getNote() != null) {
+
+            JournalEntry entry = journalService.findEntryByJournalAndDate(
+                    journalService.findJournal(principal), task.getTaskDate());
+
+            String taskSummary = entry.getTaskSummary() + task.getNote();
+
+            entry.setTaskSummary(taskSummary);
+
+            journalService.saveEntry(entry);
+
+        }
+
+        task.setFinished(true);
+
+        taskRepository.save(task);
     }
 }
