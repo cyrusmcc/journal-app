@@ -162,17 +162,20 @@ public class User {
         return sortedEventList;
     }
 
+    // tasks that are older than current date are considered finished
     public void isTaskFinished(List<Task> tasks) {
 
         for(int i = 0; i < tasks.size(); i++) {
 
-            Task currentTask = tasks.get(i);
+            Task theTask = tasks.get(i);
 
-            LocalDate theTaskDate = LocalDate.parse(currentTask.getTaskDate());
+            LocalDate theTaskDate = LocalDate.parse(theTask.getTaskDate());
 
             if(LocalDate.now().isAfter(theTaskDate)) {
 
-                currentTask.setFinished(true);
+                theTask.setFinished(true);
+
+                theTask.setCurrentTask(false);
             }
         }
     }

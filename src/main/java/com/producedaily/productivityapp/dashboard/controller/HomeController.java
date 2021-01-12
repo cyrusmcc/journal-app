@@ -106,7 +106,7 @@ public class HomeController {
         return "redirect:/home";
     }
 
-    @PutMapping("/updateTask")
+    @PostMapping("/updateTask")
     public String updateTask(Principal principal, @ModelAttribute("theTask") Task theTask) {
 
         theTask.setCurrentTask(false);
@@ -115,5 +115,4 @@ public class HomeController {
         return "redirect:/home";
 
     }
-
 }

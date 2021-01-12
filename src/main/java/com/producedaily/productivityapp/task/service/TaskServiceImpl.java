@@ -87,12 +87,24 @@ public class TaskServiceImpl implements TaskService {
             JournalEntry entry = journalService.findEntryByJournalAndDate(
                     journalService.findJournal(principal), task.getTaskDate());
 
-            String taskSummary = entry.getTaskSummary() + task.getNote();
+            if(entry.getTaskSummary() != null ) {
 
-            entry.setTaskSummary(taskSummary);
+                String taskSummary = entry.getTaskSummary() + " ### " + task.getName() + ": " + task.getNote();
 
-            journalService.saveEntry(entry);
+                entry.setTaskSummary(taskSummary);
 
+                journalService.saveEntry(entry);
+            }
+
+            if(entry.getTaskSummary() == null) {
+
+                String taskSummary = "### " + task.getName() + ": " + task.getNote();
+
+                entry.setTaskSummary(taskSummary);
+
+                journalService.saveEntry(entry);
+
+            }
         }
 
         task.setFinished(true);

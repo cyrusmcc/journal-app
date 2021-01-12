@@ -9,7 +9,6 @@ document.getElementById("finishTaskButton").addEventListener("click",
 // close finish task modal
 document.getElementById("task-modal-close").addEventListener("click",
     function() {
-        console.log("CLOSE: I'm being called but I do nothing")
         document.querySelector("#task-modal-bg").style.display = "none";
     });
 

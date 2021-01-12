@@ -167,14 +167,16 @@
     <div class="div5" id="dailyJournal">
 
         <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry}"></div>
-        <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry.id}"></div>
-        <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry.text}"></div>
+        <div class="var" id="journalEntryText" style="display:none;" th:text="${journalEntry.text}"></div>
+        <div class="var" id="journalEntrySummary" style="display:none;" th:text="${journalEntry.taskSummary}"></div>
 
         <div id="dailyGeneratedSummary">
             <span class="generatedPart" id="genStart"></span>
             <span class="generatedPart" id="genMid"></span>
             <span class="generatedPart" id="genEnd"></span>
         </div>
+
+        <div id="dailyTaskSummary" th:text="${journalEntry.taskSummary}"></div>
 
         <form method="post" th:action="@{/saveEntry}" th:object="${journalEntry}">
 
@@ -216,7 +218,7 @@
 
         <div class="var" id="userTasks" style="display:none;" th:text="${currentTask.id}"></div>
 
-        <form method="PUT" th:action="@{/updateTask}" th:object="${currentTask}">
+        <form method="POST" th:action="@{/updateTask}" th:object="${currentTask}">
 
             <input type="hidden" th:field="*{id}">
             <input type="hidden" th:field="*{name}">
