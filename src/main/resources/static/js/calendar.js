@@ -7,7 +7,13 @@ var childDivs = document.getElementById('calendarGrid')
 
 var userEvents = JSON.parse(document.getElementById("userEvents").innerText);
 
-var userTasks = JSON.parse(document.getElementById("userTasks").innerText);
+var activeUserTasks = 0;
+
+for(i = 0; i < userTasks.length; i++) {
+    if(userTasks[i].finished === false) {
+        activeUserTasks += 1;
+    }
+}
 
 // iterate over calendar grid and assign dates according to number of days in month
 for(i=1; i < childDivs.length; i++ ) {
@@ -30,24 +36,29 @@ for(i=1; i < childDivs.length; i++ ) {
 
         document.getElementById(dayGridBox).style.border = "thick solid #586994";
 
-        if(userTasks.length > 0) {
+        // display task bubble on current date
+        if(activeUserTasks > 0) {
 
+            console.log(activeUserTasks);
         var numberOfTaskCircle = document.createElement("div");
 
         numberOfTaskCircle.style.gridArea = "grid-area: 1 / 1 / 3 / 3";
         numberOfTaskCircle.style.textAlign = "center";
+        numberOfTaskCircle.style.lineHeight = ""
         numberOfTaskCircle.style.margin = ".5em";
         numberOfTaskCircle.style.background = '#586994';
         numberOfTaskCircle.style.color = '#FCFAF9';
         numberOfTaskCircle.style.borderRadius = "50%";
-        numberOfTaskCircle.style.width = "25px";
-        numberOfTaskCircle.style.height = "25px";
-        numberOfTaskCircle.innerText = userTasks.length;
+        numberOfTaskCircle.style.width = "20px";
+        numberOfTaskCircle.style.height = "20px";
+        numberOfTaskCircle.innerText = activeUserTasks;
 
         document.getElementById(dayGridBox).appendChild(numberOfTaskCircle);
         }
     }
 }
+
+    // display event bubbles on calendar
     for (var i = 0; i < userEvents.length; i++) {
 
         var eventDate = new Date(userEvents[i].eventDate);

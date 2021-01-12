@@ -2,8 +2,12 @@ package com.producedaily.productivityapp.user.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.producedaily.productivityapp.event.model.Event;
-import com.producedaily.productivityapp.journal.Journal;
+import com.producedaily.productivityapp.journal.model.Journal;
+import com.producedaily.productivityapp.journal.model.JournalEntry;
+import com.producedaily.productivityapp.journal.repository.JournalEntryRepository;
+import com.producedaily.productivityapp.journal.service.JournalService;
 import com.producedaily.productivityapp.task.Task;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -158,23 +162,23 @@ public class User {
         return sortedEventList;
     }
 
+    // tasks that are older than current date are considered finished
     public void isTaskFinished(List<Task> tasks) {
 
         for(int i = 0; i < tasks.size(); i++) {
 
-            Task currentTask = tasks.get(i);
+            Task theTask = tasks.get(i);
 
-            LocalDate theTaskDate = LocalDate.parse(currentTask.getTaskDate());
+            LocalDate theTaskDate = LocalDate.parse(theTask.getTaskDate());
 
             if(LocalDate.now().isAfter(theTaskDate)) {
-                currentTask.setFinished(true);
-            }
-            else {
-                currentTask.setFinished(false);
+
+                theTask.setFinished(true);
+
+                theTask.setCurrentTask(false);
             }
         }
     }
-
 
     @Override
     public String toString() {

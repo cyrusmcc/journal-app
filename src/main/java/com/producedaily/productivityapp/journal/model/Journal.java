@@ -1,4 +1,4 @@
-package com.producedaily.productivityapp.journal;
+package com.producedaily.productivityapp.journal.model;
 
 import com.producedaily.productivityapp.user.model.User;
 

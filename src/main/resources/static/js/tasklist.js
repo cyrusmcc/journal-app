@@ -1,28 +1,50 @@
-var userTasks = JSON.parse(document.getElementById("userTasks").innerText);
-console.log(userTasks);
+var activeUserTasks = 0;
 
-if(userTasks[0] != null) {
+// open finish task modal
+document.getElementById("finishTaskButton").addEventListener("click",
+    function() {
+        document.querySelector("#task-modal-bg").style.display = "flex";
+    });
 
-    var currentTaskName = userTasks[0].name;
+// close finish task modal
+document.getElementById("task-modal-close").addEventListener("click",
+    function() {
+        document.querySelector("#task-modal-bg").style.display = "none";
+    });
 
-    var currentTask= document.createElement("span");
+for(i = 0; i < userTasks.length; i++) {
+    if(userTasks[i].finished === false) {
+        activeUserTasks += 1;
+    }
+}
 
-    currentTask.innerHTML = currentTaskName;
-    currentTask.style.color = '#FCFAF9';
-    currentTask.style.padding = "5px";
-    currentTask.style.justifyContent = "center";
-    currentTask.style.alignContent = "center";
-    currentTask.style.background = '#586994';
-    currentTask.style.margin = "5px";
-    currentTask.style.borderRadius = "10px 10px 10px 10px";
+for(i = 0; i < userTasks.length; i++) {
 
-    document.getElementById("currentTaskBar").appendChild(currentTask);
+    if(userTasks[i].finished == false) {
+
+        var currentTaskName = userTasks[i].name;
+
+        var currentTask = document.createElement("span");
+
+        currentTask.innerHTML = currentTaskName;
+        currentTask.style.color = '#FCFAF9';
+        currentTask.style.padding = "5px";
+        currentTask.style.justifyContent = "center";
+        currentTask.style.alignContent = "center";
+        currentTask.style.background = '#586994';
+        currentTask.style.margin = "5px";
+        currentTask.style.borderRadius = "10px 10px 10px 10px";
+
+        document.getElementById("currentTaskBar").appendChild(currentTask);
+
+        break
+    }
+
 }
 
 for(i = 1; i < userTasks.length; i++) {
 
-    if(userTasks.isFinish === false) {
-
+    if(userTasks[i].finished === false) {
 
     var taskName = userTasks[i].name;
 
@@ -40,3 +62,4 @@ for(i = 1; i < userTasks.length; i++) {
     document.getElementById("taskList").appendChild(taskDiv);
     }
 }
+

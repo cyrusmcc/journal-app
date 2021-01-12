@@ -3,16 +3,14 @@ package com.producedaily.productivityapp.dashboard.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.producedaily.productivityapp.event.model.Event;
 import com.producedaily.productivityapp.event.service.EventService;
-import com.producedaily.productivityapp.journal.JournalEntry;
-import com.producedaily.productivityapp.journal.JournalService;
+import com.producedaily.productivityapp.journal.model.JournalEntry;
+import com.producedaily.productivityapp.journal.service.JournalService;
 import com.producedaily.productivityapp.task.Task;
 import com.producedaily.productivityapp.task.service.TaskService;
-import com.producedaily.productivityapp.user.model.User;
 import com.producedaily.productivityapp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -53,7 +51,10 @@ public class HomeController {
                 eventService.findByUserName(principal));
 
         model.addAttribute("userTasks",
-            taskService.findByUserName(principal));
+                taskService.findTasksByUserName(principal));
+
+        model.addAttribute("currentTask",
+                taskService.findCurrentTaskByUserName(principal));
 
         model.addAttribute("journalEntry",
                 journalService.findEntryByDate(principal));
@@ -92,7 +93,7 @@ public class HomeController {
     @PostMapping("/saveTask")
     public String saveTask(Principal principal, @ModelAttribute("task") Task task) {
 
-        taskService.saveTask(principal, task);
+        taskService.saveNewTask(principal, task);
 
         return "redirect:/home";
     }
@@ -103,5 +104,15 @@ public class HomeController {
         journalService.saveEntry(entry);
 
         return "redirect:/home";
+    }
+
+    @PostMapping("/updateTask")
+    public String updateTask(Principal principal, @ModelAttribute("theTask") Task theTask) {
+
+        theTask.setCurrentTask(false);
+        taskService.updateTask(principal, theTask);
+
+        return "redirect:/home";
+
     }
 }
