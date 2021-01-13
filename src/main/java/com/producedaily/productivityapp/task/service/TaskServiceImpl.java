@@ -1,8 +1,5 @@
 package com.producedaily.productivityapp.task.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.producedaily.productivityapp.journal.model.Journal;
 import com.producedaily.productivityapp.journal.model.JournalEntry;
 import com.producedaily.productivityapp.journal.service.JournalService;
 import com.producedaily.productivityapp.task.Task;
@@ -13,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,31 +26,53 @@ public class TaskServiceImpl implements TaskService {
     JournalService journalService;
 
     @Override
-    public List<Task> findTasksByUserName(Principal principal) {
+    public List<Task> findAllDailyTasksByUsername(Principal principal) {
+
+        User user = userService.findByUsername(principal.getName());
+
+        List<Task> allUserTasks = user.getTasks();
+
+        List<Task> currentDateTasks = new ArrayList<>();
+
+        for(int i = 0; i < allUserTasks.size(); i++) {
+
+            String taskDate = allUserTasks.get(i).getTaskDate();
+
+            String userDate = userService.findLocalDate(principal);
+
+            if(taskDate.equals(userDate)) {
+
+                currentDateTasks.add(allUserTasks.get(i));
+
+            }
+        }
+        return currentDateTasks;
+    }
+
+    @Override
+    public List<Task> findUnfinishedTasksByUserName(Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
 
         List<Task> userTasks = user.getTasks();
 
-        user.isTaskFinished(userTasks);
+        List<Task> unfinishedTasks = user.getFinishedTasks(userTasks);
 
-        user.getFinishedTasks(userTasks);
+        System.out.println(unfinishedTasks);
 
-        List<Task> finishedTasks = user.getFinishedTasks(userTasks);
-
-        return finishedTasks;
+        return unfinishedTasks;
     }
 
     @Override
     public Task findCurrentTaskByUserName(Principal principal) {
 
-        List<Task> tasks =  findTasksByUserName(principal);
+        List<Task> tasks =  findUnfinishedTasksByUserName(principal);
 
         Task currentTask = null;
 
         for(int i = 0; i < tasks.size(); i++) {
 
-            if(tasks.get(i).isCurrentTask() == true) {
+            if(tasks.get(i).isCurrentTask(true) == true) {
                 currentTask = tasks.get(i);
             }
 
@@ -79,7 +99,8 @@ public class TaskServiceImpl implements TaskService {
     // first unfinished task set to current until user specifies new current task
     public void setInitialCurrentTask(List<Task> tasks) {
 
-        List<Task> unfinshedTasks = null;
+        List<Task> unfinshedTasks = new ArrayList<>();
+        boolean currentTaskExists = false;
 
         for(int i = 0; i < tasks.size(); i++) {
 
@@ -89,9 +110,15 @@ public class TaskServiceImpl implements TaskService {
 
                 unfinshedTasks.add(unfinishedTask);
             }
+
+            currentTaskExists = unfinshedTasks.stream().anyMatch(
+                    task -> task.isCurrentTask(true));
+
         }
 
-        if(unfinshedTasks.size() == 1) {
+        System.out.println("THERE IS CURRENT TASK = " + currentTaskExists);
+
+        if(currentTaskExists == false) {
 
             Task newCurrentTask = unfinshedTasks.get(0);
 
@@ -102,7 +129,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void setCurrentTaskById(Principal principal, long id) {
+    public void setCurrentTaskById(Principal principal, long taskId) {
+
+        Task task = taskRepository.findTaskById(taskId);
 
         List<Task> userTasks = userService.findTasks(principal);
 
@@ -110,17 +139,12 @@ public class TaskServiceImpl implements TaskService {
             userTasks.get(i).setCurrentTask(false);
         }
 
-        Task task = taskRepository.findTaskById(id);
-
         task.setCurrentTask(true);
-
         taskRepository.save(task);
     }
 
     @Override
-    public void updateTask(Principal principal, Task task) {
-
-        journalService.findJournal(principal);
+    public void updateTaskToFinished(Principal principal, Task task) {
 
         // add task note to journal before deletion
         if(task.getNote() != null) {
@@ -151,5 +175,7 @@ public class TaskServiceImpl implements TaskService {
         task.setFinished(true);
 
         taskRepository.save(task);
+
+        setInitialCurrentTask(userService.findTasks(principal));
     }
 }

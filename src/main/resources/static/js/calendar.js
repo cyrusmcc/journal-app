@@ -5,7 +5,7 @@ var dayOfMonth = document.getElementById('dayOfMonth').innerText;
 var childDivs = document.getElementById('calendarGrid')
     .getElementsByTagName('div');
 
-var userEvents = JSON.parse(document.getElementById("userEvents").innerText);
+var userEvents = JSON.parse(document.getElementById("unfinishedDailyUserTasks").innerText);
 
 var activeUserTasks = 0;
 

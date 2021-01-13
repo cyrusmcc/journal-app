@@ -20,11 +20,13 @@
 
         <div class="var" id="username" style="display:none;" th:text="${username}"></div>
         <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
-        <div class="var" id="userTasks" style="display:none;" th:text="${userTasks}"></div>
+        <div class="var" id="allDailyUserTasks" style="display:none;" th:text="${allDailyUserTasks}"></div>
+        <div class="var" id="unfinishedDailyUserTasks" style="display:none;" th:text="${unfinishedDailyUserTasks}"></div>
+
 
 
         <script th:inline="javascript">
-            var userTasks = [[${userTasks}]];
+            var userTasks = [[${allDailyUserTasks}]];
         </script>
 
         <div class="container">
@@ -162,6 +164,19 @@
         <a href="#" id="finishTaskButton" class="btn btn-primary">
             Finish task
         </a>
+
+        <!--
+        <form id="updateCurrentTask" th:action="@{/updateCurrentTask}" method="POST" th:object="${taskId}">
+            <select th:field="*{name}">
+                <option value="">Change current task</option>
+                <option th:each="i : ${finishedDailyUserTasks}"
+                        th:value="${i.name}"
+                        th:text="${i.name}">
+                </option>
+            </select>
+            <button type="submit">CHANGE</button>
+        </form>
+        -->
 
     </div>
 

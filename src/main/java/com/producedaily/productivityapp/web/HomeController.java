@@ -50,14 +50,18 @@ public class HomeController {
         model.addAttribute("userEvents",
                 eventService.findByUserName(principal));
 
-        model.addAttribute("userTasks",
-                taskService.findTasksByUserName(principal));
+        model.addAttribute("unfinishedDailyUserTasks",
+                taskService.findUnfinishedTasksByUserName(principal));
+
+        model.addAttribute("allDailyUserTasks",
+                taskService.findAllDailyTasksByUsername(principal));
 
         model.addAttribute("currentTask",
                 taskService.findCurrentTaskByUserName(principal));
 
         model.addAttribute("journalEntry",
                 journalService.findEntryByDate(principal));
+
 
         return model;
     }
@@ -107,12 +111,27 @@ public class HomeController {
     }
 
     @PostMapping("/updateTask")
-    public String updateTask(Principal principal, @ModelAttribute("theTask") Task theTask) {
+    public String updateTaskToFinished(Principal principal, @ModelAttribute("theTask") Task theTask) {
 
         theTask.setCurrentTask(false);
-        taskService.updateTask(principal, theTask);
+        taskService.updateTaskToFinished(principal, theTask);
 
         return "redirect:/home";
 
     }
+
+    /*
+    @PostMapping("/updateCurrentTask")
+    public String updateCurrentTask(Principal principal, @ModelAttribute("newCurrentTask") Task task) {
+
+
+        System.out.println(task.getName());
+
+        //taskService.setCurrentTaskById(principal, newCurrentTaskId);
+
+        return "redirect:/home";
+
+    }
+
+     */
 }
