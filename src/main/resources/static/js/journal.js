@@ -4,6 +4,8 @@ var userMonth = document.getElementById("month").innerText;
 
 var userDate = document.getElementById("userLocalDate").innerText;
 
+var username = document.getElementById("username").innerText;
+
 var totalTasksComplete = 0;
 
 var totalDailyTasks = 0;
@@ -25,7 +27,7 @@ for(i = 0; i < userTasks.length; i++) {
 
 tasksCompletedCounter = totalTasksComplete + "/" + totalDailyTasks;
 
-document.getElementById("genStart").innerText = "Today, " + userMonth + " "
+document.getElementById("genStart").innerText = "Hey, "+ username + ". Today, " + userMonth + " "
                         + currentDayOfMonth + "," + " you have completed [";
 
 document.getElementById("genMid").innerText = tasksCompletedCounter;

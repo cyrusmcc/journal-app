@@ -16,4 +16,8 @@ public interface TaskService {
 
     void updateTask(Principal principal, Task task);
 
+    void setInitialCurrentTask(List<Task> tasks);
+
+    void setCurrentTaskById(Principal principal, long id);
+
 }

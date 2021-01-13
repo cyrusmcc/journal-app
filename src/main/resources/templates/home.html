@@ -18,6 +18,7 @@
 
     <div class="div1">
 
+        <div class="var" id="username" style="display:none;" th:text="${username}"></div>
         <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
         <div class="var" id="userTasks" style="display:none;" th:text="${userTasks}"></div>
 
@@ -170,27 +171,32 @@
         <div class="var" id="journalEntryText" style="display:none;" th:text="${journalEntry.text}"></div>
         <div class="var" id="journalEntrySummary" style="display:none;" th:text="${journalEntry.taskSummary}"></div>
 
-        <div id="dailyGeneratedSummary">
-            <span class="generatedPart" id="genStart"></span>
-            <span class="generatedPart" id="genMid"></span>
-            <span class="generatedPart" id="genEnd"></span>
+        <div id="generatedStatement">
+            <div id="dailyGeneratedSummary">
+                <span class="generatedPart" id="genStart"></span>
+                <span class="generatedPart" id="genMid"></span>
+                <span class="generatedPart" id="genEnd"></span>
+            </div>
+
+            <div id="dailyTaskSummary" th:text="${journalEntry.taskSummary}"></div>
         </div>
 
-        <div id="dailyTaskSummary" th:text="${journalEntry.taskSummary}"></div>
+        <div id="journalEntryForm">
+            <form method="post" th:action="@{/saveEntry}" th:object="${journalEntry}">
 
-        <form method="post" th:action="@{/saveEntry}" th:object="${journalEntry}">
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{entryDate}"/>
+                <input type="hidden" th:field="*{journal}"/>
 
-            <input type="hidden" th:field="*{id}">
-            <input type="hidden" th:field="*{entryDate}"/>
-            <input type="hidden" th:field="*{journal}"/>
+                <textarea id="userJournalNotes" rows="10"
+                        placeholder="### Daily Journal - Thoughts & feelings about today's happenings can go here"
+                        th:field="*{text}">
+                </textarea>
 
-            <textarea id="userJournalNotes" rows="10"
-                      placeholder="### Daily Journal" th:field="*{text}">
-            </textarea>
-
-            <input type="submit" value="Save" id="saveEntryButton"/>
+                <input type="submit" value="Save" id="saveEntryButton"/>
             
-        </form>
+            </form>
+        </div>
 
         <script src="js/journal.js"></script>
 

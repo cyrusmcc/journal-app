@@ -75,7 +75,7 @@ body {
 }
 
 #calendarGrid > div:nth-child(odd) {
-    background: #1B263B;
+    background: #1b263b;
 }
 
 .calendarDay {
@@ -100,6 +100,7 @@ body {
     background: #0D1B2A;
     height: 5em;
     width: auto;
+    padding-left:10px;
 }
 
 #dailyGeneratedSummary {
@@ -183,6 +184,10 @@ body {
     font-size: 40px;
     transform: rotate(45deg);
     cursor: pointer;
+}
+
+#journalEntryForm {
+    border-radius: 10px 10px 10px 10px;
 }
 
 ::placeholder {

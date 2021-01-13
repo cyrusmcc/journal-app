@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -178,6 +179,22 @@ public class User {
                 theTask.setCurrentTask(false);
             }
         }
+    }
+
+    public List<Task> getFinishedTasks(List<Task> tasks) {
+
+        List<Task> unfinishedTasks = new ArrayList<>();
+
+        for(int i = 0; i < tasks.size(); i++) {
+
+            if((tasks.get(i).isFinished() == false) && (tasks.get(i) != null)) {
+
+                Task finished = tasks.get(i);
+
+                unfinishedTasks.add(tasks.get(i));
+            }
+        }
+        return unfinishedTasks;
     }
 
     @Override

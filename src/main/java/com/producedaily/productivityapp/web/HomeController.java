@@ -1,4 +1,4 @@
-package com.producedaily.productivityapp.dashboard.controller;
+package com.producedaily.productivityapp.web;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.producedaily.productivityapp.event.model.Event;

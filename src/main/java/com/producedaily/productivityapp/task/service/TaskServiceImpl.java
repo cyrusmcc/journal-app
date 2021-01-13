@@ -36,7 +36,11 @@ public class TaskServiceImpl implements TaskService {
 
         user.isTaskFinished(userTasks);
 
-        return userTasks;
+        user.getFinishedTasks(userTasks);
+
+        List<Task> finishedTasks = user.getFinishedTasks(userTasks);
+
+        return finishedTasks;
     }
 
     @Override
@@ -48,16 +52,10 @@ public class TaskServiceImpl implements TaskService {
 
         for(int i = 0; i < tasks.size(); i++) {
 
-            if(tasks.get(i).isFinished() == false) {
-                tasks.get(i).setCurrentTask(true);
-
-                System.out.println("inside if and " + tasks.get(i).isCurrentTask());
-
+            if(tasks.get(i).isCurrentTask() == true) {
                 currentTask = tasks.get(i);
-
-                taskRepository.save(currentTask);
-                break;
             }
+
         }
         return currentTask;
     }
@@ -72,6 +70,49 @@ public class TaskServiceImpl implements TaskService {
         task.setFinished(false);
 
         task.setTaskDate(user.getLocalDate());
+
+        taskRepository.save(task);
+
+        setInitialCurrentTask(user.getTasks());
+    }
+
+    // first unfinished task set to current until user specifies new current task
+    public void setInitialCurrentTask(List<Task> tasks) {
+
+        List<Task> unfinshedTasks = null;
+
+        for(int i = 0; i < tasks.size(); i++) {
+
+            if(tasks.get(i).isFinished() == false) {
+
+                Task unfinishedTask = tasks.get(i);
+
+                unfinshedTasks.add(unfinishedTask);
+            }
+        }
+
+        if(unfinshedTasks.size() == 1) {
+
+            Task newCurrentTask = unfinshedTasks.get(0);
+
+            newCurrentTask.setCurrentTask(true);
+
+            taskRepository.save(newCurrentTask);
+        }
+    }
+
+    @Override
+    public void setCurrentTaskById(Principal principal, long id) {
+
+        List<Task> userTasks = userService.findTasks(principal);
+
+        for(int i = 0; i < userTasks.size(); i++) {
+            userTasks.get(i).setCurrentTask(false);
+        }
+
+        Task task = taskRepository.findTaskById(id);
+
+        task.setCurrentTask(true);
 
         taskRepository.save(task);
     }

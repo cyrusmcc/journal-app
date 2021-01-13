@@ -1,5 +1,6 @@
 package com.producedaily.productivityapp.user.service;
 
+import com.producedaily.productivityapp.task.Task;
 import com.producedaily.productivityapp.user.model.User;
 
 import java.security.Principal;
@@ -24,5 +25,7 @@ public interface UserService {
     int findDayOfMonth(Principal principal);
 
     int findDaysInMonth(Principal principal);
+
+    List<Task> findTasks(Principal principal);
 
 }

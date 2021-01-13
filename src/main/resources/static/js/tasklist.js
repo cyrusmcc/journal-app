@@ -33,7 +33,7 @@ for(i = 0; i < userTasks.length; i++) {
         currentTask.style.alignContent = "center";
         currentTask.style.background = '#586994';
         currentTask.style.margin = "5px";
-        currentTask.style.borderRadius = "10px 10px 10px 10px";
+        currentTask.style.borderRadius = "3px 3px 3px 3px";
 
         document.getElementById("currentTaskBar").appendChild(currentTask);
 
@@ -54,10 +54,10 @@ for(i = 1; i < userTasks.length; i++) {
     taskDiv.innerHTML = taskName;
     taskDiv.style.background = '#586994';
     taskDiv.style.color = '#FCFAF9';
-    taskDiv.style.borderRadius = "10px 10px 10px 10px";
+    taskDiv.style.borderRadius = "3px 3px 3px 3px";
     taskDiv.style.margin = "1em";
     taskDiv.style.padding = "5px";
-    taskDiv.style.border = "thin solid #FCFAF9";
+    taskDiv.style.border = "medium solid #FCFAF9";
 
     document.getElementById("taskList").appendChild(taskDiv);
     }

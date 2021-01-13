@@ -1,6 +1,7 @@
 package com.producedaily.productivityapp.user.service;
 
 import com.producedaily.productivityapp.journal.model.Journal;
+import com.producedaily.productivityapp.task.Task;
 import com.producedaily.productivityapp.user.model.User;
 import com.producedaily.productivityapp.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,5 +127,15 @@ public class  UserServiceImpl implements UserService {
         LocalDate date = LocalDate.parse(findLocalDate(principal));
 
         return date.lengthOfMonth();
+    }
+
+    @Override
+    public List<Task> findTasks(Principal principal) {
+
+        User user = findByUsername(principal.getName());
+
+        List<Task> tasks = user.getTasks();
+
+        return tasks;
     }
 }
