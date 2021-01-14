@@ -55,11 +55,15 @@ public class JournalServiceImpl implements JournalService {
         if(journalEntry == null) {
 
             JournalEntry newEntry = new JournalEntry();
+
             newEntry.setJournal(user.getJournal());
+
             newEntry.setEntryDate(LocalDate.now().toString());
 
             jEntryRepo.save(newEntry);
+
             return newEntry;
+
         } else {
             return journalEntry;
         }

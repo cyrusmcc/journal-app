@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.producedaily.productivityapp.user.model.User;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name="task")
@@ -90,7 +88,7 @@ public class  Task {
         this.taskDate = taskDate;
     }
 
-    public boolean isCurrentTask() {
+    public boolean isCurrentTask(boolean b) {
         return isCurrentTask;
     }
 

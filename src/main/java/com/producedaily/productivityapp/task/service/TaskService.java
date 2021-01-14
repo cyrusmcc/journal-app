@@ -8,16 +8,21 @@ import java.util.List;
 
 public interface TaskService {
 
-    List<Task> findTasksByUserName(Principal principal);
+    // finished and unfinished tasks for day
+    List<Task> findAllDailyTasksByUsername(Principal principal);
+
+    List<Task> findUnfinishedTasksByUserName(Principal principal);
 
     Task findCurrentTaskByUserName(Principal principal);
 
+    Task findTaskById(long taskId);
+
     void saveNewTask(Principal principal, Task task);
 
-    void updateTask(Principal principal, Task task);
+    void updateTaskToFinished(Principal principal, Task task);
 
     void setInitialCurrentTask(List<Task> tasks);
 
-    void setCurrentTaskById(Principal principal, long id);
+    void setCurrentTaskById(Principal principal, long taskId);
 
 }

@@ -11,6 +11,7 @@ import com.producedaily.productivityapp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -50,14 +51,20 @@ public class HomeController {
         model.addAttribute("userEvents",
                 eventService.findByUserName(principal));
 
-        model.addAttribute("userTasks",
-                taskService.findTasksByUserName(principal));
+        model.addAttribute("unfinishedDailyUserTasks",
+                taskService.findUnfinishedTasksByUserName(principal));
+
+        model.addAttribute("allDailyUserTasks",
+                taskService.findAllDailyTasksByUsername(principal));
 
         model.addAttribute("currentTask",
                 taskService.findCurrentTaskByUserName(principal));
 
         model.addAttribute("journalEntry",
                 journalService.findEntryByDate(principal));
+
+        model.addAttribute("testTask",
+                new Task());
 
         return model;
     }
@@ -107,10 +114,19 @@ public class HomeController {
     }
 
     @PostMapping("/updateTask")
-    public String updateTask(Principal principal, @ModelAttribute("theTask") Task theTask) {
+    public String updateTaskToFinished(Principal principal, @ModelAttribute("theTask") Task theTask) {
 
         theTask.setCurrentTask(false);
-        taskService.updateTask(principal, theTask);
+        taskService.updateTaskToFinished(principal, theTask);
+
+        return "redirect:/home";
+
+    }
+
+    @PostMapping("/updateCurrentTask")
+    public String updateCurrentTask(Principal principal,Task task) {
+
+        taskService.setCurrentTaskById(principal, task.getId());
 
         return "redirect:/home";
 

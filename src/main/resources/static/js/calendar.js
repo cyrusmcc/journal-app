@@ -1,6 +1,6 @@
-var daysInMonth = document.getElementById('daysInMonth').innerText;
-
 var dayOfMonth = document.getElementById('dayOfMonth').innerText;
+
+var daysInMonth = document.getElementById('daysInMonth').innerText;
 
 var childDivs = document.getElementById('calendarGrid')
     .getElementsByTagName('div');
