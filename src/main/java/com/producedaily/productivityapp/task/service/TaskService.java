@@ -15,6 +15,8 @@ public interface TaskService {
 
     Task findCurrentTaskByUserName(Principal principal);
 
+    Task findTaskById(long taskId);
+
     void saveNewTask(Principal principal, Task task);
 
     void updateTaskToFinished(Principal principal, Task task);

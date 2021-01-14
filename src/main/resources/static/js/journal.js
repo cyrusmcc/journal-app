@@ -34,7 +34,6 @@ document.getElementById("genMid").innerText = tasksCompletedCounter;
 
 document.getElementById('genEnd').innerText = "] tasks.";
 
-
 if(totalTasksComplete == userTasks.length) {
     document.getElementById("genMid").style.color = '#A3C9A8';
 } else {

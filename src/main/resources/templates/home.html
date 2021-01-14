@@ -8,26 +8,27 @@
 
     <link href="index.css" rel="stylesheet" type="text/css">
 
-    <script src="js/calendar.js"></script>
-
 </head>
 
 <body>
 
+<div id="dataContainer">
+
+    <div class="var" id="username" style="display:none;" th:text="${username}"></div>
+    <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
+    <div class="var" id="allDailyUserTasks" style="display:none;" th:text="${allDailyUserTasks}"></div>
+    <div class="var" id="unfinishedDailyUserTasks" style="display:none;" th:text="${unfinishedDailyUserTasks}"></div>
+    <div class="var" id="currentTaskName" style="display:none;" th:text="${currentTask.name}"></div>
+
+    <script th:inline="javascript">
+        var userTasks = [[${allDailyUserTasks}]];
+    </script>
+
+</div>
+
 <div class="parent">
 
     <div class="div1">
-
-        <div class="var" id="username" style="display:none;" th:text="${username}"></div>
-        <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
-        <div class="var" id="allDailyUserTasks" style="display:none;" th:text="${allDailyUserTasks}"></div>
-        <div class="var" id="unfinishedDailyUserTasks" style="display:none;" th:text="${unfinishedDailyUserTasks}"></div>
-
-
-
-        <script th:inline="javascript">
-            var userTasks = [[${allDailyUserTasks}]];
-        </script>
 
         <div class="container">
             <form id="logoutForm" method="post" th:action="@{/logout}">
@@ -165,18 +166,19 @@
             Finish task
         </a>
 
-        <!--
-        <form id="updateCurrentTask" th:action="@{/updateCurrentTask}" method="POST" th:object="${taskId}">
-            <select th:field="*{name}">
+        <form id="updateCurrentTask" th:action="@{/updateCurrentTask}" method="POST">
+
+            <!-- Use name for object type here in combination with value instead of th:field
+                as field is a combination of name and value.-->
+            <select th:object="${testTask}" th:name="task">
                 <option value="">Change current task</option>
-                <option th:each="i : ${finishedDailyUserTasks}"
-                        th:value="${i.name}"
+                <option th:each="i : ${unfinishedDailyUserTasks}"
+                        th:value="${i.id}"
                         th:text="${i.name}">
                 </option>
             </select>
             <button type="submit">CHANGE</button>
         </form>
-        -->
 
     </div>
 
@@ -237,7 +239,7 @@
 
         <div id="task-modal-title">Temp</div>
 
-        <div class="var" id="userTasks" style="display:none;" th:text="${currentTask.id}"></div>
+        <div class="var" id="currentTaskId" style="display:none;" th:text="${currentTask.id}"></div>
 
         <form method="POST" th:action="@{/updateTask}" th:object="${currentTask}">
 
@@ -251,7 +253,6 @@
 
             <input type="submit" value="Finish" id="updateTaskButton"/>
 
-
         </form>
 
     </div>
@@ -261,5 +262,4 @@
 </div>
 
 </body>
-
 </html>

@@ -11,6 +11,7 @@ import com.producedaily.productivityapp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -62,6 +63,8 @@ public class HomeController {
         model.addAttribute("journalEntry",
                 journalService.findEntryByDate(principal));
 
+        model.addAttribute("testTask",
+                new Task());
 
         return model;
     }
@@ -120,18 +123,12 @@ public class HomeController {
 
     }
 
-    /*
     @PostMapping("/updateCurrentTask")
-    public String updateCurrentTask(Principal principal, @ModelAttribute("newCurrentTask") Task task) {
+    public String updateCurrentTask(Principal principal,Task task) {
 
-
-        System.out.println(task.getName());
-
-        //taskService.setCurrentTaskById(principal, newCurrentTaskId);
+        taskService.setCurrentTaskById(principal, task.getId());
 
         return "redirect:/home";
 
     }
-
-     */
 }

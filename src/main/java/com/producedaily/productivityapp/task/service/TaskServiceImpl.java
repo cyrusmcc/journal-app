@@ -58,8 +58,6 @@ public class TaskServiceImpl implements TaskService {
 
         List<Task> unfinishedTasks = user.getFinishedTasks(userTasks);
 
-        System.out.println(unfinishedTasks);
-
         return unfinishedTasks;
     }
 
@@ -78,6 +76,12 @@ public class TaskServiceImpl implements TaskService {
 
         }
         return currentTask;
+    }
+
+    @Override
+    public Task findTaskById(long taskId) {
+
+        return taskRepository.findTaskById(taskId);
     }
 
     @Override
@@ -116,8 +120,6 @@ public class TaskServiceImpl implements TaskService {
 
         }
 
-        System.out.println("THERE IS CURRENT TASK = " + currentTaskExists);
-
         if(currentTaskExists == false) {
 
             Task newCurrentTask = unfinshedTasks.get(0);
@@ -140,6 +142,7 @@ public class TaskServiceImpl implements TaskService {
         }
 
         task.setCurrentTask(true);
+
         taskRepository.save(task);
     }
 

@@ -1,11 +1,11 @@
-var daysInMonth = document.getElementById('daysInMonth').innerText;
-
 var dayOfMonth = document.getElementById('dayOfMonth').innerText;
+
+var daysInMonth = document.getElementById('daysInMonth').innerText;
 
 var childDivs = document.getElementById('calendarGrid')
     .getElementsByTagName('div');
 
-var userEvents = JSON.parse(document.getElementById("unfinishedDailyUserTasks").innerText);
+var userEvents = JSON.parse(document.getElementById("userEvents").innerText);
 
 var activeUserTasks = 0;
 
