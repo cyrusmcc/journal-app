@@ -11,7 +11,7 @@ produceDaily is a task based calendar & journal application for productivity tra
   - Day journal which auto-populates with task notes and daily statistics regarding user's productivity level
 
  ### WIP Dashboard client
-![Picture of productivity dashboard WIP](https://i.imgur.com/0mtLC6d.png)
+![Picture of productivity dashboard WIP](https://i.imgur.com/PoMwxak.png)
 
 ### Tech
 
