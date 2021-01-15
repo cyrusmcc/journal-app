@@ -32,6 +32,8 @@ public class TaskServiceImpl implements TaskService {
 
         List<Task> allUserTasks = user.getTasks();
 
+        user.setPastTasksToFinished(allUserTasks);
+
         List<Task> currentDateTasks = new ArrayList<>();
 
         for(int i = 0; i < allUserTasks.size(); i++) {
@@ -46,6 +48,7 @@ public class TaskServiceImpl implements TaskService {
 
             }
         }
+
         return currentDateTasks;
     }
 
@@ -120,13 +123,16 @@ public class TaskServiceImpl implements TaskService {
 
         }
 
-        if(currentTaskExists == false) {
+        if((currentTaskExists == false) && (!unfinshedTasks.isEmpty())) {
 
             Task newCurrentTask = unfinshedTasks.get(0);
 
             newCurrentTask.setCurrentTask(true);
 
             taskRepository.save(newCurrentTask);
+        }
+        else if(unfinshedTasks.isEmpty()) {
+
         }
     }
 

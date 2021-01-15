@@ -164,7 +164,7 @@ public class User {
     }
 
     // tasks that are older than current date are considered finished
-    public void isTaskFinished(List<Task> tasks) {
+    public void setPastTasksToFinished(List<Task> tasks) {
 
         for(int i = 0; i < tasks.size(); i++) {
 

@@ -27,12 +27,16 @@ for(i = 0; i < userTasks.length; i++) {
 
 tasksCompletedCounter = totalTasksComplete + "/" + totalDailyTasks;
 
-document.getElementById("genStart").innerText = "Hey, "+ username + ". Today, " + userMonth + " "
+document.getElementById("genStart").innerText = "Hey, "+ username + "! Today, " + userMonth + " "
                         + currentDayOfMonth + "," + " you have completed [";
+
+document.getElementById("genStart").style.color = "#fbf7f4";
 
 document.getElementById("genMid").innerText = tasksCompletedCounter;
 
 document.getElementById('genEnd').innerText = "] tasks.";
+
+document.getElementById("genEnd").style.color = "#fbf7f4";
 
 if(totalTasksComplete == userTasks.length) {
     document.getElementById("genMid").style.color = '#A3C9A8';

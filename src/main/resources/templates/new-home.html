@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="eng" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">  
+    <title></title>
+
+      <link href="css/main.css" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <div id="dataContainer">
+
+      <div class="var" id="daysInMonth" style="display:none;" th:text="${daysInMonth}"></div>
+      <div class="var" id="dayOfMonth" style="display:none;" th:text="${dayOfMonth}"></div>
+      <div class="var" id="month" style="display:none;" th:text="${month}"></div>
+      <div class="var" id="userLocalDate" style="display:none;" th:text="${userLocalDate}"></div>
+      <div class="var" id="username" style="display:none;" th:text="${username}"></div>
+      <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
+      <div class="var" id="allDailyUserTasks" style="display:none;" th:text="${allDailyUserTasks}"></div>
+      <div class="var" id="unfinishedDailyUserTasks" style="display:none;" th:text="${unfinishedDailyUserTasks}"></div>
+      <div class="var" id="currentTask" style="display:none;" th:text="${currentTask}"></div>
+      <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry}"></div>
+      <div class="var" id="journalEntryText" style="display:none;" th:text="${journalEntry.text}"></div>
+      <div class="var" id="journalEntrySummary" style="display:none;" th:text="${journalEntry.taskSummary}"></div>
+
+      <script th:inline="javascript">
+          var userTasks = [[${allDailyUserTasks}]];
+
+          var theCurrentTask = [[${currentTask}]];
+          console.log(theCurrentTask);
+
+      </script>
+
+  </div>
+
+  <body>
+
+    <nav id="nav">
+        <div class="projectTitle" id="titleContainer">
+           <span class="projectTitle" id="titleProduce">produce</span><!--
+        --><span class="projectTitle" id="titleDaily">Daily</span>
+        </div>
+    </nav>
+
+    <div class="parent">
+
+      <div id="calendar">
+          
+        <div id="dateDisplay" th:text="${month}"></div>
+
+        <div class="grid" id="calendarGrid">
+
+          <div class="calendarDay" id="day1">
+              <div class="dateNumber" id="dateNumber1"></div>
+          </div>
+          <div class="calendarDay" id="day2">
+              <div class="dateNumber" id="dateNumber2"></div>
+          </div>
+          <div class="calendarDay" id="day3">
+              <div class="dateNumber" id="dateNumber3"></div>
+          </div>
+          <div class="calendarDay" id="day4">
+              <div class="dateNumber" id="dateNumber4"></div>
+          </div>
+          <div class="calendarDay" id="day5">
+              <div class="dateNumber" id="dateNumber5"></div>
+          </div>
+          <div class="calendarDay" id="day6">
+              <div class="dateNumber" id="dateNumber6"></div>
+          </div>
+          <div class="calendarDay" id="day7">
+              <div class="dateNumber" id="dateNumber7"></div>
+          </div>
+          <div class="calendarDay" id="day8">
+              <div class="dateNumber" id="dateNumber8"></div>
+          </div>
+          <div class="calendarDay" id="day9">
+              <div class="dateNumber" id="dateNumber9"></div>
+          </div>
+          <div class="calendarDay" id="day10">
+              <div class="dateNumber" id="dateNumber10"></div>
+          </div>
+          <div class="calendarDay" id="day11">
+              <div class="dateNumber" id="dateNumber11"></div>
+          </div>
+          <div class="calendarDay" id="day12">
+              <div class="dateNumber" id="dateNumber12"></div>
+          </div>
+          <div class="calendarDay" id="day13">
+              <div class="dateNumber" id="dateNumber13"></div>
+          </div>
+          <div class="calendarDay" id="day14">
+              <div class="dateNumber" id="dateNumber14"></div>
+          </div>
+          <div class="calendarDay" id="day15">
+              <div class="dateNumber" id="dateNumber15"></div>
+          </div>
+          <div class="calendarDay" id="day16">
+              <div class="dateNumber" id="dateNumber16"></div>
+          </div>
+          <div class="calendarDay" id="day17">
+              <div class="dateNumber" id="dateNumber17"></div>
+          </div>
+          <div class="calendarDay" id="day18">
+              <div class="dateNumber" id="dateNumber18"></div>
+          </div>
+          <div class="calendarDay" id="day19">
+              <div class="dateNumber" id="dateNumber19"></div>
+          </div>
+          <div class="calendarDay" id="day20">
+              <div class="dateNumber" id="dateNumber20"></div>
+          </div>
+          <div class="calendarDay" id="day21">
+              <div class="dateNumber" id="dateNumber21"></div>
+          </div>
+          <div class="calendarDay" id="day22">
+              <div class="dateNumber" id="dateNumber22"></div>
+          </div>
+          <div class="calendarDay" id="day23">
+              <div class="dateNumber" id="dateNumber23"></div>
+          </div>
+          <div class="calendarDay" id="day24">
+              <div class="dateNumber" id="dateNumber24"></div>
+          </div>
+          <div class="calendarDay" id="day25">
+              <div class="dateNumber" id="dateNumber25"></div>
+          </div>
+          <div class="calendarDay" id="day26">
+              <div class="dateNumber" id="dateNumber26"></div>
+          </div>
+          <div class="calendarDay" id="day27">
+              <div class="dateNumber" id="dateNumber27"></div>
+          </div>
+          <div class="calendarDay" id="day28">
+              <div class="dateNumber" id="dateNumber28"></div>
+          </div>
+          <div class="calendarDay" id="day29">
+              <div class="dateNumber" id="dateNumber29"></div>
+          </div>
+          <div class="calendarDay" id="day30">
+              <div class="dateNumber" id="dateNumber30"></div>
+          </div>
+          <div class="calendarDay" id="day31">
+              <div class="dateNumber" id="dateNumber31"></div>
+          </div>
+
+      </div>
+
+      </div>
+
+      <div id="currentTaskBar">
+        <div id="currentTaskContents">Current task</div>
+       </div>
+
+      <div id="taskList">tasks</div>
+
+      <div id="eventList">events</div>
+
+      <div id="journal">
+
+          <div id="generatedStatement">
+              <div id="dailyGeneratedSummary">
+                  <span class="generatedPart" id="genStart"></span>
+                  <span class="generatedPart" id="genMid"></span>
+                  <span class="generatedPart" id="genEnd"></span>
+              </div>
+
+              <div id="dailyTaskSummary" th:text="${journalEntry.taskSummary}"></div>
+
+          </div>
+
+          <div id="journalEntryContainer">
+              <form id="journalEntryForm" method="post" th:action="@{/saveEntry}" th:object="${journalEntry}">
+
+                  <input type="hidden" th:field="*{id}">
+                  <input type="hidden" th:field="*{entryDate}"/>
+                  <input type="hidden" th:field="*{journal}"/>
+
+                  <textarea id="userJournalNotes" rows="10"
+                            placeholder="### Daily Journal - Thoughts & feelings about today's happenings can go here"
+                            th:field="*{text}">
+                  </textarea>
+
+                  <input class="button" type="submit" value="Save" id="saveEntryButton"/>
+
+              </form>
+          </div>
+
+
+      </div>
+
+      <div id="div7">div7</div>
+
+    </div>
+
+  </body>
+
+<div id="scripts">
+    <script src="js/calendar.js"></script>
+    <script src="js/tasklist.js"></script>
+    <script src="js/eventlist.js"></script>
+    <script src="js/journal.js"></script>
+</div>
+
+</html>

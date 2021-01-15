@@ -18,10 +18,14 @@
     <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
     <div class="var" id="allDailyUserTasks" style="display:none;" th:text="${allDailyUserTasks}"></div>
     <div class="var" id="unfinishedDailyUserTasks" style="display:none;" th:text="${unfinishedDailyUserTasks}"></div>
-    <div class="var" id="currentTaskName" style="display:none;" th:text="${currentTask.name}"></div>
+    <div class="var" id="currentTask" style="display:none;" th:text="${currentTask}"></div>
 
     <script th:inline="javascript">
         var userTasks = [[${allDailyUserTasks}]];
+
+        var theCurrentTask = [[${currentTask}]];
+        console.log(theCurrentTask);
+
     </script>
 
 </div>
@@ -170,7 +174,7 @@
 
             <!-- Use name for object type here in combination with value instead of th:field
                 as field is a combination of name and value.-->
-            <select th:object="${testTask}" th:name="task">
+            <select th:object="${theNewCurrentTask}" th:name="task">
                 <option value="">Change current task</option>
                 <option th:each="i : ${unfinishedDailyUserTasks}"
                         th:value="${i.id}"
@@ -238,8 +242,6 @@
         <div id="task-modal-close">+</div>
 
         <div id="task-modal-title">Temp</div>
-
-        <div class="var" id="currentTaskId" style="display:none;" th:text="${currentTask.id}"></div>
 
         <form method="POST" th:action="@{/updateTask}" th:object="${currentTask}">
 

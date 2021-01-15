@@ -1,0 +1,246 @@
+$lightshade : #fbf7f4;
+$lightaccent : #a698da;
+$maincolor : #87bbd5;
+$darkaccent : #9a7092;
+$darkshade : #3658a9;
+$boxshadow :
+0  5px 10px rgba(154,160,185,0.05),
+0 15px 40px rgba(166,173,201,0.2);
+
+$brdr : 6px 6px 6px 6px;
+
+$screen-medium: 820px;
+$screen-large: 1224px;
+
+@mixin screen-medium {
+  @media only screen and (min-width: $screen-medium) {
+    @content;
+  }
+}
+
+@mixin screen-large {
+  @media only screen and (min-width: $screen-large) {
+    @content;
+  }
+}
+
+:root {
+  font-size: 4vw;
+}
+
+html, body {
+  background-color:$darkshade;
+  font-family: 'Poppins', sans-serif;
+  color:$darkshade;
+  margin : 0;
+}
+
+.parent {
+  display:grid;
+  grid-gap: .85em;
+  padding: 0.8em;
+  height: 157vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 0.3fr 0.7fr 0.7fr 1fr 1fr;
+  grid-template-areas: 
+        "calendar"
+        "currentTaskBar"
+        "taskList"
+        "eventList"
+        "journal"
+        "div7";
+}
+
+.button {
+  border-radius: 10px 10px 10px 10px;
+  border: medium solid $maincolor;
+  color: $darkshade;
+  background-color: $lightshade;
+}
+
+#nav {
+  font-weight: bold;
+  background-color: $lightshade;
+  box-shadow: $boxshadow;
+  border-radius: 0 0 2px 2px;
+  height: 2em;
+}
+
+#titleContainer {
+  padding-left: 0.5em;
+  padding-top: 0.1em;
+}
+
+#titleDaily {
+  color: $maincolor;
+}
+
+@include screen-large() {
+  
+  .parent {
+    font-size: 3vh;
+    height: (97vh);
+    grid-gap: .5em;
+    padding: 1.5vh;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: 
+          "div7 calendar calendar calendar currentTaskBar"
+          "div7 calendar calendar calendar taskList"
+          "div7 calendar calendar calendar taskList"
+          "div7 journal journal journal eventList"
+          "div7 journal journal journal eventList";
+    }
+
+  #nav {
+    display: none;
+  }
+
+  #div7 {
+    grid-area: div7;
+  }
+
+  #calendar {
+    display: grid;
+    grid-area: calendar;
+  }
+
+  #currentTaskBar {
+    grid-area: currentTaskBar;
+  }
+
+  #taskList {
+    grid-area: taskList;
+  }
+
+  #eventList {
+    grid-area: eventList;
+  }
+
+  #journal {
+    grid-area: journal;
+    height: 91%;
+    align-self: end;
+  }
+
+  #calendarGrid {
+    width: 85%;
+    justify-self: center;
+    grid-auto-flow: row;
+  }
+}
+
+#calendar {
+  background-color: $darkshade;
+  grid-area: calendar;
+  border-radius: $brdr;
+}
+
+#currentTaskBar {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $lightshade;
+  grid-area: currentTaskBar;
+  border-radius: $brdr;
+  box-shadow: $boxshadow;
+}
+
+#taskList {
+  background-color: $lightshade;
+  grid-area: taskList;
+  border-radius: $brdr;
+  box-shadow: $boxshadow;
+  font-weight: bold;
+  text-align: center;
+}
+
+#eventList {
+  background-color: $lightshade;
+  grid-area: eventList;
+  border-radius: $brdr;
+  box-shadow: $boxshadow;
+  font-weight: bold;
+  text-align: center;
+}
+
+#journal {
+  background-color: $darkshade;
+  grid-area: journal;
+  border-radius: $brdr;
+  border: thick solid $lightshade;
+  box-shadow: $boxshadow;
+}
+
+#saveEntryButton {
+  float: right;
+  padding: 0.5em;
+  margin-right: 0.3em;
+  margin-bottom: 0.3em;
+  background-color: $darkshade;
+  color: $lightshade;
+  border-color: $lightshade;
+  opacity: 80%;
+}
+
+#dailyGeneratedSummary {
+  padding: 0.3em;
+}
+
+#dailyTaskSummary {
+  padding-left: 10px;
+}
+
+#userJournalNotes {
+  display: block;
+  width: 97%;
+  background-color: $darkshade;
+  color: $maincolor;
+  outline: none;
+  overflow: auto;
+  word-break: break-word;
+  resize: none;
+  border-width: 0;
+  padding: 0.3em 0 0 0.5em;
+}
+
+::placeholder {
+  color: $maincolor;
+}
+
+#div7 {
+  background-color: $lightshade;
+  grid-area: div7;
+  border-radius: $brdr;
+  box-shadow: $boxshadow;
+}
+
+#calendarGrid {
+  display:grid;
+  margin: 0;
+  border-radius: $brdr;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 3.5em;
+  border: solid thick $lightshade;
+  background-color: $darkshade;
+  box-shadow: $boxshadow;
+}
+
+#calendarGrid > div {
+  background-color: $maincolor;
+  border: thin solid $lightshade;
+}
+
+#calendarGrid > div:nth-child(odd) {
+  background: $darkshade;
+  border: thin solid $lightshade;
+}
+
+#dateDisplay {
+  font-weight: bold;
+  background-color: $lightshade;
+  border-radius: $brdr;
+  padding: 5px;
+  margin-bottom: 0.6em;
+}
