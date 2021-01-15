@@ -15,12 +15,16 @@
 
       <div class="var" id="daysInMonth" style="display:none;" th:text="${daysInMonth}"></div>
       <div class="var" id="dayOfMonth" style="display:none;" th:text="${dayOfMonth}"></div>
+      <div class="var" id="month" style="display:none;" th:text="${month}"></div>
       <div class="var" id="userLocalDate" style="display:none;" th:text="${userLocalDate}"></div>
       <div class="var" id="username" style="display:none;" th:text="${username}"></div>
       <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
       <div class="var" id="allDailyUserTasks" style="display:none;" th:text="${allDailyUserTasks}"></div>
       <div class="var" id="unfinishedDailyUserTasks" style="display:none;" th:text="${unfinishedDailyUserTasks}"></div>
       <div class="var" id="currentTask" style="display:none;" th:text="${currentTask}"></div>
+      <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry}"></div>
+      <div class="var" id="journalEntryText" style="display:none;" th:text="${journalEntry.text}"></div>
+      <div class="var" id="journalEntrySummary" style="display:none;" th:text="${journalEntry.taskSummary}"></div>
 
       <script th:inline="javascript">
           var userTasks = [[${allDailyUserTasks}]];
@@ -34,7 +38,12 @@
 
   <body>
 
-    <nav id="nav">nav</nav>
+    <nav id="nav">
+        <div class="projectTitle" id="titleContainer">
+           <span class="projectTitle" id="titleProduce">produce</span><!--
+        --><span class="projectTitle" id="titleDaily">Daily</span>
+        </div>
+    </nav>
 
     <div class="parent">
 
@@ -148,9 +157,40 @@
 
       <div id="taskList">tasks</div>
 
-      <div id="eventList">event list</div>
+      <div id="eventList">events</div>
 
-      <div id="journal">journal</div>
+      <div id="journal">
+
+          <div id="generatedStatement">
+              <div id="dailyGeneratedSummary">
+                  <span class="generatedPart" id="genStart"></span>
+                  <span class="generatedPart" id="genMid"></span>
+                  <span class="generatedPart" id="genEnd"></span>
+              </div>
+
+              <div id="dailyTaskSummary" th:text="${journalEntry.taskSummary}"></div>
+
+          </div>
+
+          <div id="journalEntryContainer">
+              <form id="journalEntryForm" method="post" th:action="@{/saveEntry}" th:object="${journalEntry}">
+
+                  <input type="hidden" th:field="*{id}">
+                  <input type="hidden" th:field="*{entryDate}"/>
+                  <input type="hidden" th:field="*{journal}"/>
+
+                  <textarea id="userJournalNotes" rows="10"
+                            placeholder="### Daily Journal - Thoughts & feelings about today's happenings can go here"
+                            th:field="*{text}">
+                  </textarea>
+
+                  <input class="button" type="submit" value="Save" id="saveEntryButton"/>
+
+              </form>
+          </div>
+
+
+      </div>
 
       <div id="div7">div7</div>
 
@@ -162,6 +202,7 @@
     <script src="js/calendar.js"></script>
     <script src="js/tasklist.js"></script>
     <script src="js/eventlist.js"></script>
+    <script src="js/journal.js"></script>
 </div>
 
 </html>

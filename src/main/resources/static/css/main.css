@@ -19,20 +19,32 @@ html, body {
       grid-template-columns: 1fr;
   -ms-grid-rows: auto 0.3fr 0.7fr 0.7fr 1fr 1fr;
       grid-template-rows: auto 0.3fr 0.7fr 0.7fr 1fr 1fr;
-      grid-template-areas: "calendar"
- "currentTaskBar"
- "taskList"
- "eventList"
- "journal"
- "div7";
+      grid-template-areas: "calendar" "currentTaskBar" "taskList" "eventList" "journal" "div7";
+}
+
+.button {
+  border-radius: 10px 10px 10px 10px;
+  border: medium solid #87bbd5;
+  color: #3658a9;
+  background-color: #fbf7f4;
 }
 
 #nav {
+  font-weight: bold;
   background-color: #fbf7f4;
   -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
           box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
   border-radius: 0 0 2px 2px;
   height: 2em;
+}
+
+#titleContainer {
+  padding-left: 0.5em;
+  padding-top: 0.1em;
+}
+
+#titleDaily {
+  color: #87bbd5;
 }
 
 @media only screen and (min-width: 1224px) {
@@ -45,11 +57,7 @@ html, body {
         grid-template-columns: repeat(5, 1fr);
     -ms-grid-rows: (1fr)[5];
         grid-template-rows: repeat(5, 1fr);
-        grid-template-areas: "div7 calendar calendar calendar currentTaskBar"
- "div7 calendar calendar calendar taskList"
- "div7 calendar calendar calendar taskList"
- "div7 journal journal journal eventList"
- "div7 journal journal journal eventList";
+        grid-template-areas: "div7 calendar calendar calendar currentTaskBar" "div7 calendar calendar calendar taskList" "div7 calendar calendar calendar taskList" "div7 journal journal journal eventList" "div7 journal journal journal eventList";
   }
   #nav {
     display: none;
@@ -114,8 +122,8 @@ html, body {
 }
 
 #currentTaskBar {
-    font-weight: bold;
-    display: -webkit-box;
+  font-weight: bold;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
@@ -158,13 +166,62 @@ html, body {
 }
 
 #journal {
-  background-color: #fbf7f4;
+  background-color: #3658a9;
   -ms-grid-row: 5;
   -ms-grid-column: 1;
   grid-area: journal;
   border-radius: 6px 6px 6px 6px;
+  border: thick solid #fbf7f4;
   -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
           box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+}
+
+#saveEntryButton {
+  float: right;
+  padding: 0.5em;
+  margin-right: 0.3em;
+  margin-bottom: 0.3em;
+  background-color: #3658a9;
+  color: #fbf7f4;
+  border-color: #fbf7f4;
+  opacity: 80%;
+}
+
+#dailyGeneratedSummary {
+  padding: 0.3em;
+}
+
+#dailyTaskSummary {
+  padding-left: 10px;
+}
+
+#userJournalNotes {
+  display: block;
+  width: 97%;
+  background-color: #3658a9;
+  color: #87bbd5;
+  outline: none;
+  overflow: auto;
+  word-break: break-word;
+  resize: none;
+  border-width: 0;
+  padding: 0.3em 0 0 0.5em;
+}
+
+::-webkit-input-placeholder {
+  color: #87bbd5;
+}
+
+:-ms-input-placeholder {
+  color: #87bbd5;
+}
+
+::-ms-input-placeholder {
+  color: #87bbd5;
+}
+
+::placeholder {
+  color: #87bbd5;
 }
 
 #div7 {
@@ -193,15 +250,17 @@ html, body {
 
 #calendarGrid > div {
   background-color: #87bbd5;
+  border: thin solid #fbf7f4;
 }
 
 #calendarGrid > div:nth-child(odd) {
   background: #3658a9;
+  border: thin solid #fbf7f4;
 }
 
 #dateDisplay {
-    font-weight: bold;
-    background-color: #fbf7f4;
+  font-weight: bold;
+  background-color: #fbf7f4;
   border-radius: 6px 6px 6px 6px;
   padding: 5px;
   margin-bottom: 0.6em;

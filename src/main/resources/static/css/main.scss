@@ -51,12 +51,28 @@ html, body {
         "div7";
 }
 
+.button {
+  border-radius: 10px 10px 10px 10px;
+  border: medium solid $maincolor;
+  color: $darkshade;
+  background-color: $lightshade;
+}
+
 #nav {
   font-weight: bold;
   background-color: $lightshade;
   box-shadow: $boxshadow;
   border-radius: 0 0 2px 2px;
   height: 2em;
+}
+
+#titleContainer {
+  padding-left: 0.5em;
+  padding-top: 0.1em;
+}
+
+#titleDaily {
+  color: $maincolor;
 }
 
 @include screen-large() {
@@ -150,10 +166,47 @@ html, body {
 }
 
 #journal {
-  background-color: $lightshade;
+  background-color: $darkshade;
   grid-area: journal;
   border-radius: $brdr;
+  border: thick solid $lightshade;
   box-shadow: $boxshadow;
+}
+
+#saveEntryButton {
+  float: right;
+  padding: 0.5em;
+  margin-right: 0.3em;
+  margin-bottom: 0.3em;
+  background-color: $darkshade;
+  color: $lightshade;
+  border-color: $lightshade;
+  opacity: 80%;
+}
+
+#dailyGeneratedSummary {
+  padding: 0.3em;
+}
+
+#dailyTaskSummary {
+  padding-left: 10px;
+}
+
+#userJournalNotes {
+  display: block;
+  width: 97%;
+  background-color: $darkshade;
+  color: $maincolor;
+  outline: none;
+  overflow: auto;
+  word-break: break-word;
+  resize: none;
+  border-width: 0;
+  padding: 0.3em 0 0 0.5em;
+}
+
+::placeholder {
+  color: $maincolor;
 }
 
 #div7 {
@@ -176,10 +229,12 @@ html, body {
 
 #calendarGrid > div {
   background-color: $maincolor;
+  border: thin solid $lightshade;
 }
 
 #calendarGrid > div:nth-child(odd) {
   background: $darkshade;
+  border: thin solid $lightshade;
 }
 
 #dateDisplay {

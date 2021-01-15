@@ -48,8 +48,8 @@ for(i=1; i < childDivs.length; i++ ) {
         numberOfTaskCircle.style.gridArea = "grid-area: 1 / 1 / 3 / 3";
         numberOfTaskCircle.style.textAlign = "center";
         numberOfTaskCircle.style.marginBottom = "1em";
-        numberOfTaskCircle.style.background = '#a698da';
-        numberOfTaskCircle.style.color = '#fbf7f4';
+        numberOfTaskCircle.style.background = '#fbf7f4';
+        numberOfTaskCircle.style.color = '#a698da';
         numberOfTaskCircle.style.borderRadius = "50%";
         numberOfTaskCircle.style.fontSize = ".8em";
         numberOfTaskCircle.style.width = "1.2em";
@@ -60,12 +60,7 @@ for(i=1; i < childDivs.length; i++ ) {
         document.getElementById(dayGridBox).appendChild(numberOfTaskCircle);
         }
 
-        document.getElementById(dayGridBox).style.background = '#fbf7f4';
-
-        document.getElementById(dateNumber).style.color = 'black';
-
-        document.getElementById(dayGridBox).style.border = "thick solid #a698da";
-
+        document.getElementById(dayGridBox).style.background = '#a698da';
 
     }
 }
