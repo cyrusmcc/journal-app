@@ -1,7 +1,12 @@
-currentTaskName = document.getElementById("currentTaskName").innerText;
-
 var activeUserTasks = 0;
 
+
+if(theCurrentTask != null) {
+    var currentTaskName = theCurrentTask.name;
+    console.log(currentTaskName);
+}
+
+/*
 // open finish task modal
 document.getElementById("finishTaskButton").addEventListener("click",
     function() {
@@ -14,26 +19,26 @@ document.getElementById("task-modal-close").addEventListener("click",
         document.querySelector("#task-modal-bg").style.display = "none";
     });
 
+ */
+
 for(i = 0; i < userTasks.length; i++) {
     if(userTasks[i].finished === false) {
         activeUserTasks += 1;
     }
 }
 
-    if(currentTaskName != null) {
+    if((currentTaskName != null)) {
 
         var currentTaskBarDisplay = document.createElement("span");
 
-        currentTaskName = document.getElementById("currentTaskName").innerText;
-
         currentTaskBarDisplay.innerHTML = currentTaskName;
-        currentTaskBarDisplay.style.color = '#FCFAF9';
+        currentTaskBarDisplay.style.color = '#fbf7f4';
         currentTaskBarDisplay.style.padding = "5px";
         currentTaskBarDisplay.style.justifyContent = "center";
         currentTaskBarDisplay.style.alignContent = "center";
-        currentTaskBarDisplay.style.background = '#586994';
+        currentTaskBarDisplay.style.background = '#a698da';
         currentTaskBarDisplay.style.margin = "5px";
-        currentTaskBarDisplay.style.borderRadius = "3px 3px 3px 3px";
+        currentTaskBarDisplay.style.borderRadius = "6px 6px 6px 6px";
 
         document.getElementById("currentTaskBar").appendChild(currentTaskBarDisplay);
 
@@ -42,13 +47,13 @@ for(i = 0; i < userTasks.length; i++) {
         var currentTaskBarDisplay = document.createElement("span");
 
         currentTaskBarDisplay.innerHTML = "N/A";
-        currentTaskBarDisplay.style.color = '#FCFAF9';
+        currentTaskBarDisplay.style.color = '#fbf7f4';
         currentTaskBarDisplay.style.padding = "5px";
         currentTaskBarDisplay.style.justifyContent = "center";
         currentTaskBarDisplay.style.alignContent = "center";
-        currentTaskBarDisplay.style.background = '#586994';
+        currentTaskBarDisplay.style.background = '#a698da';
         currentTaskBarDisplay.style.margin = "5px";
-        currentTaskBarDisplay.style.borderRadius = "3px 3px 3px 3px";
+        currentTaskBarDisplay.style.borderRadius = "6px 6px 6px 6px";
 
         document.getElementById("currentTaskBar").appendChild(currentTaskBarDisplay);
 
@@ -64,10 +69,10 @@ for(i = 1; i < userTasks.length; i++) {
 
     taskDiv.draggable;
     taskDiv.innerHTML = taskName;
-    taskDiv.style.background = '#586994';
-    taskDiv.style.color = '#FCFAF9';
-    taskDiv.style.borderRadius = "3px 3px 3px 3px";
-    taskDiv.style.margin = "1em";
+    taskDiv.style.background = '#a698da';
+    taskDiv.style.color = '#fbf7f4';
+    taskDiv.style.borderRadius = "6px 6px 6px 6px";
+    taskDiv.style.margin = "0 1em 1em 1em";
     taskDiv.style.padding = "5px";
     taskDiv.style.border = "medium solid #FCFAF9";
 

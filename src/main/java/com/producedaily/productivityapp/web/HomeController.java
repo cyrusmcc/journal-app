@@ -63,7 +63,7 @@ public class HomeController {
         model.addAttribute("journalEntry",
                 journalService.findEntryByDate(principal));
 
-        model.addAttribute("testTask",
+        model.addAttribute("theNewCurrentTask",
                 new Task());
 
         return model;
@@ -130,5 +130,43 @@ public class HomeController {
 
         return "redirect:/home";
 
+    }
+
+    @GetMapping("/new-home")
+    public Model getHomeUpdatePage(Principal principal, Model model) throws JsonProcessingException {
+
+        model.addAttribute("username", principal.getName());
+
+        model.addAttribute("userLocalDate",
+                userService.findLocalDate(principal));
+
+        model.addAttribute("month",
+                userService.findMonth(principal));
+
+        model.addAttribute("dayOfMonth",
+                userService.findDayOfMonth(principal));
+
+        model.addAttribute("daysInMonth",
+                userService.findDaysInMonth(principal));
+
+        model.addAttribute("userEvents",
+                eventService.findByUserName(principal));
+
+        model.addAttribute("unfinishedDailyUserTasks",
+                taskService.findUnfinishedTasksByUserName(principal));
+
+        model.addAttribute("allDailyUserTasks",
+                taskService.findAllDailyTasksByUsername(principal));
+
+        model.addAttribute("currentTask",
+                taskService.findCurrentTaskByUserName(principal));
+
+        model.addAttribute("journalEntry",
+                journalService.findEntryByDate(principal));
+
+        model.addAttribute("theNewCurrentTask",
+                new Task());
+
+        return model;
     }
 }

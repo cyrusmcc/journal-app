@@ -120,13 +120,16 @@ public class TaskServiceImpl implements TaskService {
 
         }
 
-        if(currentTaskExists == false) {
+        if((currentTaskExists == false) && (!unfinshedTasks.isEmpty())) {
 
             Task newCurrentTask = unfinshedTasks.get(0);
 
             newCurrentTask.setCurrentTask(true);
 
             taskRepository.save(newCurrentTask);
+        }
+        else if(unfinshedTasks.isEmpty()) {
+
         }
     }
 

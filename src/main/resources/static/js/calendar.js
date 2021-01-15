@@ -24,17 +24,18 @@ for(i=1; i < childDivs.length; i++ ) {
 
     if(i <= daysInMonth) {
 
+        document.getElementById(dayGridBox).style.position = "relative";
+
         document.getElementById(dateNumber).innerText = (i);
-        document.getElementById(dateNumber).style.margin = ".5em";
+        document.getElementById(dateNumber).style.fontSize = ".7em";
+        document.getElementById(dateNumber).style.color = "#fbf7f4";
+        document.getElementById(dateNumber).style.width = "fit-content";
+        document.getElementById(dateNumber).style.float = "right";
+        document.getElementById(dateNumber).style.margin = "0.3em";
 
     }
+
     if(i == dayOfMonth) {
-
-        document.getElementById(dayGridBox).style.background = '#FCFAF9';
-
-        document.getElementById(dateNumber).style.color = 'black';
-
-        document.getElementById(dayGridBox).style.border = "thick solid #586994";
 
         // display task bubble on current date
         if(activeUserTasks > 0) {
@@ -42,19 +43,30 @@ for(i=1; i < childDivs.length; i++ ) {
             console.log(activeUserTasks);
         var numberOfTaskCircle = document.createElement("div");
 
+
+        numberOfTaskCircle.style.justifySelf = "flex-start";
         numberOfTaskCircle.style.gridArea = "grid-area: 1 / 1 / 3 / 3";
         numberOfTaskCircle.style.textAlign = "center";
-        numberOfTaskCircle.style.lineHeight = ""
-        numberOfTaskCircle.style.margin = ".5em";
-        numberOfTaskCircle.style.background = '#586994';
-        numberOfTaskCircle.style.color = '#FCFAF9';
+        numberOfTaskCircle.style.marginBottom = "1em";
+        numberOfTaskCircle.style.background = '#a698da';
+        numberOfTaskCircle.style.color = '#fbf7f4';
         numberOfTaskCircle.style.borderRadius = "50%";
-        numberOfTaskCircle.style.width = "20px";
-        numberOfTaskCircle.style.height = "20px";
+        numberOfTaskCircle.style.fontSize = ".8em";
+        numberOfTaskCircle.style.width = "1.2em";
+        numberOfTaskCircle.style.height = "1.2em";
+        numberOfTaskCircle.style.margin = "0.3em";
         numberOfTaskCircle.innerText = activeUserTasks;
 
         document.getElementById(dayGridBox).appendChild(numberOfTaskCircle);
         }
+
+        document.getElementById(dayGridBox).style.background = '#fbf7f4';
+
+        document.getElementById(dateNumber).style.color = 'black';
+
+        document.getElementById(dayGridBox).style.border = "thick solid #a698da";
+
+
     }
 }
 
@@ -76,12 +88,20 @@ for(i=1; i < childDivs.length; i++ ) {
                 var eventNameForGrid = document.createElement("div");
                 eventNameForGrid.innerText = eventName;
 
-                eventNameForGrid.style.gridArea = "4 / 2 / 5 / 8";
-                eventNameForGrid.style.background = '#7a77a9';
-                eventNameForGrid.style.marginBottom = "1em";
+                eventNameForGrid.style.position = "absolute";
+                eventNameForGrid.style.bottom = "0";
+                eventNameForGrid.style.right = "0";
+                eventNameForGrid.style.left = "0";
+                eventNameForGrid.style.width = "85%";
+                eventNameForGrid.style.margin = "auto";
+                eventNameForGrid.style.marginBottom = "0.3em";
+
+                eventNameForGrid.style.background = '#9a7092';
+                eventNameForGrid.style.color = '#fbf7f4';
                 eventNameForGrid.style.fontSize = ".5em";
                 eventNameForGrid.style.borderRadius = "10px 10px 10px 10px";
-                eventNameForGrid.style.padding = "5px";
+                eventNameForGrid.style.padding = "3px";
+                eventNameForGrid.style.textAlign = "center";
 
                 document.getElementById(day).appendChild(eventNameForGrid);
 

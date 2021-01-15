@@ -1,0 +1,209 @@
+:root {
+  font-size: 4vw;
+}
+
+html, body {
+  background-color: #3658a9;
+  font-family: 'Poppins', sans-serif;
+  color: #3658a9;
+  margin: 0;
+}
+
+.parent {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: .85em;
+  padding: 0.8em;
+  height: 157vh;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: auto 0.3fr 0.7fr 0.7fr 1fr 1fr;
+      grid-template-rows: auto 0.3fr 0.7fr 0.7fr 1fr 1fr;
+      grid-template-areas: "calendar"
+ "currentTaskBar"
+ "taskList"
+ "eventList"
+ "journal"
+ "div7";
+}
+
+#nav {
+  background-color: #fbf7f4;
+  -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+          box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+  border-radius: 0 0 2px 2px;
+  height: 2em;
+}
+
+@media only screen and (min-width: 1224px) {
+  .parent {
+    font-size: 3vh;
+    height: 97vh;
+    grid-gap: .5em;
+    padding: 1.5vh;
+    -ms-grid-columns: (1fr)[5];
+        grid-template-columns: repeat(5, 1fr);
+    -ms-grid-rows: (1fr)[5];
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-areas: "div7 calendar calendar calendar currentTaskBar"
+ "div7 calendar calendar calendar taskList"
+ "div7 calendar calendar calendar taskList"
+ "div7 journal journal journal eventList"
+ "div7 journal journal journal eventList";
+  }
+  #nav {
+    display: none;
+  }
+  #div7 {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 5;
+    -ms-grid-column: 1;
+    grid-area: div7;
+  }
+  #calendar {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 3;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 3;
+    grid-area: calendar;
+  }
+  #currentTaskBar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+    grid-area: currentTaskBar;
+  }
+  #taskList {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 5;
+    grid-area: taskList;
+  }
+  #eventList {
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 5;
+    grid-area: eventList;
+  }
+  #journal {
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 3;
+    grid-area: journal;
+    height: 91%;
+    -ms-flex-item-align: end;
+        -ms-grid-row-align: end;
+        align-self: end;
+  }
+  #calendarGrid {
+    width: 85%;
+    -ms-grid-column-align: center;
+        justify-self: center;
+    grid-auto-flow: row;
+  }
+}
+
+#calendar {
+  background-color: #3658a9;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: calendar;
+  border-radius: 6px 6px 6px 6px;
+}
+
+#currentTaskBar {
+    font-weight: bold;
+    display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fbf7f4;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: currentTaskBar;
+  border-radius: 6px 6px 6px 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+          box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+}
+
+#taskList {
+  background-color: #fbf7f4;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: taskList;
+  border-radius: 6px 6px 6px 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+          box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+  font-weight: bold;
+  text-align: center;
+}
+
+#eventList {
+  background-color: #fbf7f4;
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  grid-area: eventList;
+  border-radius: 6px 6px 6px 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+          box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+  font-weight: bold;
+  text-align: center;
+}
+
+#journal {
+  background-color: #fbf7f4;
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+  grid-area: journal;
+  border-radius: 6px 6px 6px 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+          box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+}
+
+#div7 {
+  background-color: #fbf7f4;
+  -ms-grid-row: 6;
+  -ms-grid-column: 1;
+  grid-area: div7;
+  border-radius: 6px 6px 6px 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+          box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+}
+
+#calendarGrid {
+  display: -ms-grid;
+  display: grid;
+  margin: 0;
+  border-radius: 6px 6px 6px 6px;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 3.5em;
+  border: solid thick #fbf7f4;
+  background-color: #3658a9;
+  -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+          box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+}
+
+#calendarGrid > div {
+  background-color: #87bbd5;
+}
+
+#calendarGrid > div:nth-child(odd) {
+  background: #3658a9;
+}
+
+#dateDisplay {
+    font-weight: bold;
+    background-color: #fbf7f4;
+  border-radius: 6px 6px 6px 6px;
+  padding: 5px;
+  margin-bottom: 0.6em;
+}
+/*# sourceMappingURL=main.css.map */
