@@ -8,6 +8,7 @@ $boxshadow :
 0 15px 40px rgba(166,173,201,0.2);
 
 $brdr : 6px 6px 6px 6px;
+$btnbrder : 10px 10px 10px 10px;
 
 $screen-medium: 820px;
 $screen-large: 1224px;
@@ -37,11 +38,12 @@ html, body {
 
 .parent {
   display:grid;
+  max-width: 100%;
   grid-gap: .85em;
   padding: 0.8em;
-  height: 157vh;
+  height: 200vh;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 0.3fr 0.7fr 0.7fr 1fr 1fr;
+  grid-template-rows: auto 0.3fr 0.91fr 0.8fr .8fr .8fr;
   grid-template-areas: 
         "calendar"
         "currentTaskBar"
@@ -52,13 +54,15 @@ html, body {
 }
 
 .button {
-  border-radius: 10px 10px 10px 10px;
+  border-radius: $btnbrder;
   border: medium solid $maincolor;
   color: $darkshade;
   background-color: $lightshade;
 }
 
 #nav {
+  display: flex;
+  justify-content: space-between;
   font-weight: bold;
   background-color: $lightshade;
   box-shadow: $boxshadow;
@@ -66,7 +70,23 @@ html, body {
   height: 2em;
 }
 
+#logoutForm {
+  margin-top: 0.1em;
+  margin-right: 0.2em;
+  background-color: $lightshade;
+  color: $darkshade;
+}
+
+#logoutSubmit {
+  font-weight: bold;
+  outline: none;
+  border: none;
+  background-color: $lightshade;
+  color: $darkshade;
+}
+
 #titleContainer {
+  width: fit-content;
   padding-left: 0.5em;
   padding-top: 0.1em;
 }
@@ -137,6 +157,7 @@ html, body {
 }
 
 #currentTaskBar {
+  position: relative;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -147,7 +168,108 @@ html, body {
   box-shadow: $boxshadow;
 }
 
+#currentTaskTitle {
+  position: absolute;
+  top: 0;
+  margin-top: 0.6em;
+}
+
+#selectCurrentTask {
+  width: 50%;
+}
+
+.selectBox {
+  margin-top: 3em;
+  margin-bottom: 0.5em;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+.selectBox .optionsContainer {
+  background: $lightaccent;
+  color: $lightshade;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.4s;
+  border-radius: $brdr;
+  overflow: hidden;
+
+  order: 1;
+}
+
+#selectedTask {
+  background-color: $lightaccent;
+  border-radius: $brdr;
+  margin-bottom: 8px;
+  color: #fbf7f4;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  order: 0;
+}
+
+#selectedTask::after {
+  content: "";
+  background: url("/images/arrow-down.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  height: 100%;
+  width: 1.75em;
+  right: 0.2em;
+  top: 0.65em;
+
+  transition: all 0.4s;
+}
+
+.selectBox .optionsContainer.active {
+  max-height: fit-content;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.selectBox .optionsContainer.active + #selected::after {
+  transition: rotateX(180deg);
+}
+
+.selectBox .optionsContainer::-webkit-scrollbar {
+  width: 8px;
+  background-color: $darkaccent;
+  border-radius: 0 6px 6px 0;
+}
+
+.selectBox .optionsContainer::-webkit-scrollbar-thumb {
+  background-color: $lightaccent;
+  border-radius: 0 6px 6px 0;
+}
+
+.selectBox .option,
+#selectedTask {
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.option label {
+  cursor: pointer;
+}
+
+.optionsContainer .option:hover {
+  background: $darkaccent;
+}
+
+.selectBox .option .optionRadio {
+  display: none;
+}
+
+
+
 #taskList {
+  position: relative;
   background-color: $lightshade;
   grid-area: taskList;
   border-radius: $brdr;
@@ -156,13 +278,82 @@ html, body {
   text-align: center;
 }
 
+.listHeader {
+  height: 2em;
+}
+
+.listTitle {
+  margin-top: 0.6em;
+}
+
+#tasklistContents {
+  overflow-y: auto;
+  height: 16em;
+}
+
+#tasklistFooter  {
+  height: 3em;
+}
+
+#newTaskButton {
+  position: absolute;
+  font-size: 0.85em;
+  bottom: 0;
+  left: 0;
+  padding: 0.3em;
+  margin: 0.5em;
+  background-color: $lightshade;
+  color: $darkshade;
+  border: medium solid $darkshade;
+  border-radius: $btnbrder;
+  text-decoration: none;
+}
+
+#finishTaskButton {
+  position: absolute;
+  font-size: 0.85em;
+  bottom: 0;
+  left: 6.5em;
+  padding: 0.3em;
+  margin: 0.5em;
+  background-color: $lightshade;
+  color: $darkshade;
+  border: medium solid $darkshade;
+  border-radius: $btnbrder;
+  text-decoration: none;
+}
+
 #eventList {
+  overflow-y: auto;
+  position: relative;
   background-color: $lightshade;
   grid-area: eventList;
   border-radius: $brdr;
   box-shadow: $boxshadow;
   font-weight: bold;
   text-align: center;
+}
+
+#eventListContents {
+  overflow-y: auto;
+}
+
+#eventListFooter {
+  height: 3.2em;
+}
+
+#newEventButton {
+  position: absolute;
+  font-size: 0.85em;
+  bottom: 0;
+  left: 0;
+  padding: 0.3em;
+  margin: 0.5em;
+  background-color: $lightshade;
+  color: $darkshade;
+  border: medium solid $darkshade;
+  border-radius: $btnbrder;
+  text-decoration: none;
 }
 
 #journal {
@@ -181,6 +372,7 @@ html, body {
   background-color: $darkshade;
   color: $lightshade;
   border-color: $lightshade;
+  border-radius: $btnbrder;
   opacity: 80%;
 }
 

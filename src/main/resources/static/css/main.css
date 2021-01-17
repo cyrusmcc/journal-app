@@ -12,13 +12,14 @@ html, body {
 .parent {
   display: -ms-grid;
   display: grid;
+  max-width: 100%;
   grid-gap: .85em;
   padding: 0.8em;
-  height: 157vh;
+  height: 200vh;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: auto 0.3fr 0.7fr 0.7fr 1fr 1fr;
-      grid-template-rows: auto 0.3fr 0.7fr 0.7fr 1fr 1fr;
+  -ms-grid-rows: auto 0.3fr 0.91fr 0.8fr .8fr .8fr;
+      grid-template-rows: auto 0.3fr 0.91fr 0.8fr .8fr .8fr;
       grid-template-areas: "calendar" "currentTaskBar" "taskList" "eventList" "journal" "div7";
 }
 
@@ -30,6 +31,12 @@ html, body {
 }
 
 #nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   font-weight: bold;
   background-color: #fbf7f4;
   -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
@@ -38,7 +45,25 @@ html, body {
   height: 2em;
 }
 
+#logoutForm {
+  margin-top: 0.1em;
+  margin-right: 0.2em;
+  background-color: #fbf7f4;
+  color: #3658a9;
+}
+
+#logoutSubmit {
+  font-weight: bold;
+  outline: none;
+  border: none;
+  background-color: #fbf7f4;
+  color: #3658a9;
+}
+
 #titleContainer {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   padding-left: 0.5em;
   padding-top: 0.1em;
 }
@@ -122,6 +147,7 @@ html, body {
 }
 
 #currentTaskBar {
+  position: relative;
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -141,7 +167,116 @@ html, body {
           box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
 }
 
+#currentTaskTitle {
+  position: absolute;
+  top: 0;
+  margin-top: 0.6em;
+}
+
+#selectCurrentTask {
+  width: 50%;
+}
+
+.selectBox {
+  margin-top: 3em;
+  margin-bottom: 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.selectBox .optionsContainer {
+  background: #a698da;
+  color: #fbf7f4;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  border-radius: 6px 6px 6px 6px;
+  overflow: hidden;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+
+#selectedTask {
+  background-color: #a698da;
+  border-radius: 6px 6px 6px 6px;
+  margin-bottom: 8px;
+  color: #fbf7f4;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+}
+
+#selectedTask::after {
+  content: "";
+  background: url("/images/arrow-down.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 100%;
+  width: 1.75em;
+  right: 0.2em;
+  top: 0.65em;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.selectBox .optionsContainer.active {
+  max-height: -webkit-fit-content;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.selectBox .optionsContainer.active + #selected::after {
+  -webkit-transition: rotateX(180deg);
+  transition: rotateX(180deg);
+}
+
+.selectBox .optionsContainer::-webkit-scrollbar {
+  width: 8px;
+  background-color: #9a7092;
+  border-radius: 0 6px 6px 0;
+}
+
+.selectBox .optionsContainer::-webkit-scrollbar-thumb {
+  background-color: #a698da;
+  border-radius: 0 6px 6px 0;
+}
+
+.selectBox .option,
+#selectedTask {
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.option label {
+  cursor: pointer;
+}
+
+.optionsContainer .option:hover {
+  background: #9a7092;
+}
+
+.selectBox .option .optionRadio {
+  display: none;
+}
+
 #taskList {
+  position: relative;
   background-color: #fbf7f4;
   -ms-grid-row: 3;
   -ms-grid-column: 1;
@@ -153,7 +288,54 @@ html, body {
   text-align: center;
 }
 
+.listHeader {
+  height: 2em;
+}
+
+.listTitle {
+  margin-top: 0.6em;
+}
+
+#tasklistContents {
+  overflow-y: auto;
+  height: 16em;
+}
+
+#tasklistFooter {
+  height: 3em;
+}
+
+#newTaskButton {
+  position: absolute;
+  font-size: 0.85em;
+  bottom: 0;
+  left: 0;
+  padding: 0.3em;
+  margin: 0.5em;
+  background-color: #fbf7f4;
+  color: #3658a9;
+  border: medium solid #3658a9;
+  border-radius: 10px 10px 10px 10px;
+  text-decoration: none;
+}
+
+#finishTaskButton {
+  position: absolute;
+  font-size: 0.85em;
+  bottom: 0;
+  left: 6.5em;
+  padding: 0.3em;
+  margin: 0.5em;
+  background-color: #fbf7f4;
+  color: #3658a9;
+  border: medium solid #3658a9;
+  border-radius: 10px 10px 10px 10px;
+  text-decoration: none;
+}
+
 #eventList {
+  overflow-y: auto;
+  position: relative;
   background-color: #fbf7f4;
   -ms-grid-row: 4;
   -ms-grid-column: 1;
@@ -163,6 +345,28 @@ html, body {
           box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
   font-weight: bold;
   text-align: center;
+}
+
+#eventListContents {
+  overflow-y: auto;
+}
+
+#eventListFooter {
+  height: 3.2em;
+}
+
+#newEventButton {
+  position: absolute;
+  font-size: 0.85em;
+  bottom: 0;
+  left: 0;
+  padding: 0.3em;
+  margin: 0.5em;
+  background-color: #fbf7f4;
+  color: #3658a9;
+  border: medium solid #3658a9;
+  border-radius: 10px 10px 10px 10px;
+  text-decoration: none;
 }
 
 #journal {
@@ -184,6 +388,7 @@ html, body {
   background-color: #3658a9;
   color: #fbf7f4;
   border-color: #fbf7f4;
+  border-radius: 10px 10px 10px 10px;
   opacity: 80%;
 }
 
