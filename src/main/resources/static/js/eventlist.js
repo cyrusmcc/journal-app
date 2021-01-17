@@ -16,5 +16,5 @@ for(i = 0; i < userEvents.length; i++) {
     eventDiv.style.padding = "5px";
     eventDiv.style.border = "medium solid #FCFAF9";
 
-    document.getElementById("eventList").appendChild(eventDiv);
+    document.getElementById("eventListContents").appendChild(eventDiv);
 }
