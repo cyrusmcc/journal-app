@@ -178,8 +178,7 @@ html, body {
 }
 
 .selectBox {
-  margin-top: 3em;
-  margin-bottom: 0.5em;
+  margin: 3em 1em 0.3em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -241,7 +240,7 @@ html, body {
   overflow-y: scroll;
 }
 
-.selectBox .optionsContainer.active + #selected::after {
+.selectBox .optionsContainer.active + #selectedTask::after {
   -webkit-transition: rotateX(180deg);
   transition: rotateX(180deg);
 }

@@ -126,6 +126,8 @@ public class HomeController {
     @PostMapping("/updateCurrentTask")
     public String updateCurrentTask(Principal principal,Task task) {
 
+        System.out.println(task.getName());
+
         taskService.setCurrentTaskById(principal, task.getId());
 
         return "redirect:/home";

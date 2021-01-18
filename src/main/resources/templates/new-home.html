@@ -159,41 +159,56 @@
       <div id="currentTaskBar">
         <div id="currentTaskTitle">Current task</div>
 
-            <div class="selectBox">
 
-                <div class="optionsContainer">
-                    <li class="option" th:each="i : ${unfinishedDailyUserTasks}">
-                        <input class="optionRadio" type="radio" th:value="${i.id}">
-                        <label class="optionLabel" th:text="${i.name}"></label>
-                    </li>
-                </div>
+          <div class="selectBox">
 
-                <div id="selectedTask">
-                    current task
-                </div>
+              <div id="selectedTask" th:if="${currentTask.name != null}" th:text="${currentTask.name}"></div>
 
+              <!--<div id="selectedTask" th:if="${currentTask.name == null}" th:text="N/A"></div>-->
+
+              <form th:action="@{/updateCurrentTask}" method="POST"
+                    th:object="${theNewCurrentTask}">
+
+                  <div class="optionsContainer">
+                      <li class="option" th:each="i : ${unfinishedDailyUserTasks}">
+                          <input class="optionRadio" type="radio"
+                                 th:value="${i.id}"
+                                 th:field="*{id}">
+                          <label class="optionLabel"
+                                 th:text="${i.name}"
+                                 th:for="${#ids.prev('id')}"></label>
+                      </li>
+                  </div>
+
+              </form>
+          </div>
+
+
+          <!--
+              <div class="selectBox">
+
+                <form th:action="@{/updateCurrentTask}" method="POST"
+                      th:object="${theNewCurrentTask}">
+
+                  <div class="optionsContainer">
+                      <li class="option" th:each="i : ${unfinishedDailyUserTasks}">
+                          <input class="optionRadio" type="radio"
+                                 th:value="${i.id}"
+                                 th:field="*{id}">
+                          <label class="optionLabel"
+                                 th:text="${i.name}"
+                                 th:for="${#ids.prev('id')}"></label>
+                      </li>
+                  </div>
+
+                    <div id="selectedTask" th:if="${currentTask.name != null}" th:text="${currentTask.name}"></div>
+                    <div id="selectedTask" th:if="${currentTask.name == null}" th:text="N/A"></div>
+
+                </form>
             </div>
 
-          
-        <!--
-          <form id="updateCurrentTask" th:action="@{/updateCurrentTask}" method="POST">
+          -->
 
-               Use name for object type here in combination with value instead of th:field
-                  as field is a combination of name and value.
-              <select id="selectCurrentTask" th:object="${theNewCurrentTask}" th:name="task">
-                  <option value=""></option>
-                  <option th:each="i : ${unfinishedDailyUserTasks}"
-                          th:value="${i.id}"
-                          th:text="${i.name}">
-                  </option>
-              </select>
-
-
-
-              <button type="submit">CHANGE</button>
-
-          </form>
-        -->
 
        </div>
 
