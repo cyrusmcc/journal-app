@@ -2,10 +2,18 @@ var dayOfMonth = document.getElementById('dayOfMonth').innerText;
 
 var daysInMonth = document.getElementById('daysInMonth').innerText;
 
+var month = document.getElementById('month').innerText;
+
 var childDivs = document.getElementById('calendarGrid')
     .getElementsByTagName('div');
 
 var userEvents = JSON.parse(document.getElementById("userEvents").innerText);
+
+var d = new Date();
+var days = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+
+var calendarTitle = days[d.getDay()] + ", " + month + " " + dayOfMonth + ", " + d.getFullYear();
+document.getElementById('dateDisplay').innerText = calendarTitle;
 
 var activeUserTasks = 0;
 
