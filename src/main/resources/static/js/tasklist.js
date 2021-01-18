@@ -1,11 +1,5 @@
 var activeUserTasks = 0;
 
-
-if(theCurrentTask != null) {
-    var currentTaskName = theCurrentTask.name;
-    console.log(currentTaskName);
-}
-
 // open finish task modal
 document.getElementById("finishTaskButton").addEventListener("click",
     function() {
@@ -23,39 +17,7 @@ for(i = 0; i < userTasks.length; i++) {
         activeUserTasks += 1;
     }
 }
-/*
-    if((currentTaskName != null)) {
 
-        var currentTaskBarDisplay = document.createElement("span");
-
-        currentTaskBarDisplay.innerHTML = currentTaskName;
-        currentTaskBarDisplay.style.color = '#fbf7f4';
-        currentTaskBarDisplay.style.padding = "5px";
-        currentTaskBarDisplay.style.justifyContent = "center";
-        currentTaskBarDisplay.style.alignContent = "center";
-        currentTaskBarDisplay.style.background = '#a698da';
-        currentTaskBarDisplay.style.margin = "5px";
-        currentTaskBarDisplay.style.borderRadius = "6px 6px 6px 6px";
-
-        document.getElementById("currentTaskBar").appendChild(currentTaskBarDisplay);
-
-    } else if(currentTaskName == null) {
-
-        var currentTaskBarDisplay = document.createElement("span");
-
-        currentTaskBarDisplay.innerHTML = "N/A";
-        currentTaskBarDisplay.style.color = '#fbf7f4';
-        currentTaskBarDisplay.style.padding = "5px";
-        currentTaskBarDisplay.style.justifyContent = "center";
-        currentTaskBarDisplay.style.alignContent = "center";
-        currentTaskBarDisplay.style.background = '#a698da';
-        currentTaskBarDisplay.style.margin = "5px";
-        currentTaskBarDisplay.style.borderRadius = "6px 6px 6px 6px";
-
-        document.getElementById("currentTaskBar").appendChild(currentTaskBarDisplay);
-
-    }
-    */
 for(i = 1; i < userTasks.length; i++) {
 
     if(userTasks[i].finished === false) {

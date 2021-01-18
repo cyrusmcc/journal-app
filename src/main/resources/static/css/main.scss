@@ -180,6 +180,15 @@ html, body {
   margin-top: 0.6em;
 }
 
+#noCurrentTask {
+  background: $lightaccent;
+  color: $lightshade;
+  width: 5em;
+  padding: 0.5em;
+  margin: 0 auto;
+  border-radius: $brdr;
+}
+
 #selectCurrentTask {
   width: 50%;
 }

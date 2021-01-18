@@ -162,9 +162,9 @@
 
           <div class="selectBox">
 
-              <div id="selectedTask" th:if="${currentTask.name != null}" th:text="${currentTask.name}"></div>
+              <div id="noCurrentTask" style="display:none">N/A</div>
 
-              <div id="selectedTask" th:if="${currentTask.name == null}" th:text="N/A"></div>
+              <div id="selectedTask" th:if="${currentTask != null}" th:text="${currentTask.name}"></div>
 
               <form th:action="@{/updateCurrentTask}" method="POST"
                     th:object="${theNewCurrentTask}">
@@ -266,6 +266,7 @@
 
             <div id="task-modal-title">Temp</div>
 
+            <div th:if="${currentTask != null}">
             <form method="POST" th:action="@{/updateTask}" th:object="${currentTask}">
 
                 <input type="hidden" th:field="*{id}">
@@ -280,6 +281,7 @@
 
             </form>
 
+        </div>
         </div>
 
     </div>

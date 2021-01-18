@@ -30,6 +30,11 @@ public class HomeController {
 
     @Autowired
     JournalService journalService;
+    
+    @GetMapping("/")
+    public String redirectToHome() {
+        return "redirect:/home";
+    }
 
     @GetMapping("/home")
     public Model getActiveUserData(Principal principal, Model model) throws JsonProcessingException {
@@ -133,4 +138,5 @@ public class HomeController {
         return "redirect:/home";
 
     }
+
 }

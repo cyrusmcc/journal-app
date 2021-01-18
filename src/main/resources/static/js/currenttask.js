@@ -3,6 +3,16 @@ const optionsContainer = document.querySelector(".optionsContainer");
 
 const optionsList = document.querySelectorAll(".option");
 
+if(theCurrentTask == null) {
+
+    document.getElementById("noCurrentTask").style.display = "block";
+
+} else if(theCurrentTask != null) {
+
+    document.getElementById("noCurrentTask").style.display = "none";
+
+}
+
 selected.addEventListener("click", () => {
     optionsContainer.classList.toggle("active");
 })
@@ -13,3 +23,5 @@ optionsList.forEach( o => {
         optionsContainer.classList.remove("active");
     })
 })
+
+

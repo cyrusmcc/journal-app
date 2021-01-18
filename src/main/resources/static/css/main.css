@@ -176,6 +176,15 @@ html, body {
   margin-top: 0.6em;
 }
 
+#noCurrentTask {
+  background: #a698da;
+  color: #fbf7f4;
+  width: 5em;
+  padding: 0.5em;
+  margin: 0 auto;
+  border-radius: 6px 6px 6px 6px;
+}
+
 #selectCurrentTask {
   width: 50%;
 }
