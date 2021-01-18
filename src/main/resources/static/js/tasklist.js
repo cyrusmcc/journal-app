@@ -6,7 +6,6 @@ if(theCurrentTask != null) {
     console.log(currentTaskName);
 }
 
-/*
 // open finish task modal
 document.getElementById("finishTaskButton").addEventListener("click",
     function() {
@@ -18,8 +17,6 @@ document.getElementById("task-modal-close").addEventListener("click",
     function() {
         document.querySelector("#task-modal-bg").style.display = "none";
     });
-
- */
 
 for(i = 0; i < userTasks.length; i++) {
     if(userTasks[i].finished === false) {
