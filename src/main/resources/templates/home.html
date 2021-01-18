@@ -231,27 +231,29 @@
                   <span class="generatedPart" id="genEnd"></span>
               </div>
 
-              <div id="dailyTaskSummary" th:text="${journalEntry.taskSummary}"></div>
-
           </div>
 
-          <div id="journalEntryContainer">
-              <form id="journalEntryForm" method="post" th:action="@{/saveEntry}" th:object="${journalEntry}">
+          <form id="journalEntryForm" method="post" th:action="@{/saveEntry}" th:object="${journalEntry}">
+              <div id="journalEntryContainer">
+
+                  <div id="dailyTaskSummary" th:text="${journalEntry.taskSummary}"></div>
 
                   <input type="hidden" th:field="*{id}">
                   <input type="hidden" th:field="*{entryDate}"/>
+                  <input type="hidden" th:field="*{taskSummary}"/>
                   <input type="hidden" th:field="*{journal}"/>
 
                   <textarea id="userJournalNotes" rows="10"
                             placeholder="### Daily Journal - Thoughts & feelings about today's happenings can go here"
                             th:field="*{text}">
                   </textarea>
+              </div>
 
+              <div id="journalEntryFooter">
                   <input class="button" type="submit" value="Save" id="saveEntryButton"/>
+              </div>
 
-              </form>
-          </div>
-
+          </form>
 
       </div>
 
@@ -264,7 +266,7 @@
 
             <div id="task-modal-close">+</div>
 
-            <div id="task-modal-title">Temp</div>
+            <div id="task-modal-title">How did this task go?</div>
 
             <div th:if="${currentTask != null}">
             <form method="POST" th:action="@{/updateTask}" th:object="${currentTask}">
@@ -277,7 +279,7 @@
 
                 <textarea id="task-modal-notes-input" cols="30" rows="5" th:field="*{note}"></textarea>
 
-                <input type="submit" value="Finish" id="updateTaskButton"/>
+                <input type="submit" value="Finish task" id="updateTaskButton"/>
 
             </form>
 

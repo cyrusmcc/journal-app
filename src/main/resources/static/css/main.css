@@ -1,3 +1,4 @@
+/* DEFAULT COLORS*/
 :root {
   font-size: 4vw;
 }
@@ -352,7 +353,6 @@ html, body {
 
 /* EVENT LIST */
 #eventList {
-  overflow-y: auto;
   position: relative;
   background-color: #fbf7f4;
   -ms-grid-row: 4;
@@ -398,7 +398,16 @@ html, body {
   border: thick solid #fbf7f4;
   -webkit-box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
           box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+  overflow-y: hidden;
+}
+
+#journalEntryContainer {
+  height: 11.5em;
   overflow-y: scroll;
+}
+
+#journalEntryFooter {
+  height: 2.7em;
 }
 
 #saveEntryButton {
@@ -418,12 +427,14 @@ html, body {
 }
 
 #dailyTaskSummary {
-  padding: 0 10px 0 10px;
-  word-break: break-all;
-  color: #87bbd5;
+  font-size: 0.92em;
+  padding: 0.3em 0 0 0.5em;
+  word-break: break-word;
+  color: #a698da;
 }
 
 #userJournalNotes {
+  font-family: 'Poppins', sans-serif;
   display: block;
   width: 97%;
   background-color: #3658a9;
@@ -513,33 +524,51 @@ html, body {
 }
 
 #task-modal-content {
-  width: 500px;
-  height: 300px;
-  color: black;
-  background-color: white;
-  border-radius: 4px;
+  width: 20em;
+  height: 11.5em;
+  color: #3658a9;
+  font-weight: bold;
+  background-color: #fbf7f4;
+  border-radius: 6px 6px 6px 6px;
   text-align: center;
-  padding: 20px;
+  padding: 1em;
   position: relative;
 }
 
 #task-modal-notes-input {
-  width: 80%;
+  font-family: 'Poppins', sans-serif;
+  width: 90%;
   display: block;
   margin: 10px auto;
+  resize: none;
+  outline: none;
+  color: #3658a9;
+  border: medium solid #3658a9;
 }
 
 #task-modal-close {
   position: absolute;
+  color: #3658a9;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  top: 0;
-  right: 15px;
-  font-size: 40px;
+  bottom: 5.4em;
+  right: 0.1em;
+  font-size: 2em;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   cursor: pointer;
+}
+
+#updateTaskButton {
+  font-weight: bold;
+  font-size: 0.85em;
+  padding: 0.3em;
+  background-color: #fbf7f4;
+  color: #3658a9;
+  border: medium solid #3658a9;
+  border-radius: 10px 10px 10px 10px;
+  text-decoration: none;
 }
 /*# sourceMappingURL=main.css.map */

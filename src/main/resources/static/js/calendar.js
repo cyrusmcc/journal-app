@@ -63,6 +63,7 @@ for(i=1; i < childDivs.length; i++ ) {
         numberOfTaskCircle.style.width = "1.2em";
         numberOfTaskCircle.style.height = "1.2em";
         numberOfTaskCircle.style.margin = "0.3em";
+        numberOfTaskCircle.style.paddingBottom = "0.15em";
         numberOfTaskCircle.innerText = activeUserTasks;
 
         document.getElementById(dayGridBox).appendChild(numberOfTaskCircle);
