@@ -63,6 +63,7 @@ for(i=1; i < childDivs.length; i++ ) {
         numberOfTaskCircle.style.width = "1.2em";
         numberOfTaskCircle.style.height = "1.2em";
         numberOfTaskCircle.style.margin = "0.3em";
+        numberOfTaskCircle.style.paddingBottom = "0.15em";
         numberOfTaskCircle.innerText = activeUserTasks;
 
         document.getElementById(dayGridBox).appendChild(numberOfTaskCircle);
@@ -102,9 +103,12 @@ for(i=1; i < childDivs.length; i++ ) {
                 eventNameForGrid.style.background = '#9a7092';
                 eventNameForGrid.style.color = '#fbf7f4';
                 eventNameForGrid.style.fontSize = ".5em";
-                eventNameForGrid.style.borderRadius = "10px 10px 10px 10px";
-                eventNameForGrid.style.padding = "3px";
+                eventNameForGrid.style.borderRadius = "8px";
+                eventNameForGrid.style.padding = "2px";
                 eventNameForGrid.style.textAlign = "center";
+                eventNameForGrid.style.maxHeight = "3em";
+                eventNameForGrid.style.overflow = "hidden";
+                eventNameForGrid.style.wordBreak = "break-word";
 
                 document.getElementById(day).appendChild(eventNameForGrid);
 
