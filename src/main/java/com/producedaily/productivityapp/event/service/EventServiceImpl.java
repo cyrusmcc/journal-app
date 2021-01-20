@@ -28,6 +28,14 @@ public class EventServiceImpl implements EventService {
 
         List<Event> sortedEvents = user.sortEventsByDate(user.getEvents());
 
+        for(int i = 0; i < sortedEvents.size(); i++) {
+
+            String eventDate = sortedEvents.get(i).getEventDate();
+
+            sortedEvents.get(i).setEventStatus(eventDate);
+
+        }
+
         String json = new ObjectMapper().writeValueAsString(sortedEvents);
 
         return json;
