@@ -11,7 +11,7 @@ produceDaily is a task based calendar & journal application for productivity tra
   - Day journal which auto-populates with task notes and daily statistics regarding user's productivity level
 
  ### WIP Dashboard client
-![Picture of productivity dashboard WIP](https://i.imgur.com/UHCLWTY.png)
+![Picture of productivity dashboard WIP](https://i.imgur.com/ayLvy8B.png?1)
 
 
 
@@ -21,7 +21,8 @@ produceDaily is a task based calendar & journal application for productivity tra
 * Spring Boot
 * Spring MVC, Spring Security, Spring JPA
 * Thymeleaf
-* HTML, CSS, JavaScript
+* HTML, CSS, SASS
+* JavaScript
 
 ### Todos
 
