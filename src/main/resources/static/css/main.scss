@@ -292,6 +292,7 @@ html, body {
 /* TASK LIST */
 
 #taskList {
+  height: 100%;
   position: relative;
   background-color: $lightshade;
   grid-area: taskList;
@@ -301,21 +302,18 @@ html, body {
   text-align: center;
 }
 
-.listHeader {
-  height: 2em;
-}
-
 .listTitle {
-  margin-top: 0.6em;
+  margin: 0;
+  height: 15%;
 }
 
-#taskListContents {
+.listContents {
   overflow-y: scroll;
-  height: 14em;
+  height: 65%;
 }
 
-#tasklistFooter  {
-  height: 3em;
+.listFooter  {
+  height: 20%;
 }
 
 #newTaskButton {
@@ -356,15 +354,6 @@ html, body {
   box-shadow: $boxshadow;
   font-weight: bold;
   text-align: center;
-}
-
-#eventListContents {
-  height: 11.7em;
-  overflow-y: scroll;
-}
-
-#eventListFooter {
-  height: 3.2em;
 }
 
 #newEventButton {
