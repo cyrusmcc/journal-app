@@ -17,6 +17,7 @@ public class  Task {
 
     private String name;
 
+    @Column(length = 500)
     private String note;
 
     private boolean isFinished;
