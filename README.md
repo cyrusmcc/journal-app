@@ -26,12 +26,8 @@ produceDaily is a task based calendar & journal application for productivity tra
 
 ### Todos
 
- - Allow user to specify/change current task
  - Expandible journal modal to display current and past entries
  - Refactor task and event forms to utilize modal form
- - 
  - Make events in event list expandible to display description
- - Fix calendar header to display date properly
  - Add email account recovery
  - Add captcha to login & registration page
- - Rebuild client with mobile first design
