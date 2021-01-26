@@ -498,6 +498,26 @@ html, body {
   margin-bottom: 0.6em;
 }
 
+#day1 {
+  border-radius: 6px 0 0 0;
+}
+
+#day7 {
+  border-radius: 0 6px 0 0;
+}
+
+#day28 {
+  border-radius: 0 0 6px 0;
+}
+
+#day29 {
+  border-radius: 0 0 0 6px;
+}
+
+#day31 {
+  border-radius: 0 0 6px 0;
+}
+
 /* MODAL */
 #task-modal-bg {
   -webkit-box-pack: center;
