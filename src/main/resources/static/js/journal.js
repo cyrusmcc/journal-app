@@ -43,3 +43,11 @@ if(totalTasksComplete == userTasks.length) {
 } else {
     document.getElementById("genMid").style.color = '#FFD07B';
 }
+
+
+var noteText = document.getElementById("dailyTaskSummary").innerText;
+
+noteText.split("###");
+
+console.log(noteText);
+

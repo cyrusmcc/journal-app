@@ -150,6 +150,7 @@ public class TaskServiceImpl implements TaskService {
         task.setCurrentTask(true);
 
         taskRepository.save(task);
+
     }
 
     @Override

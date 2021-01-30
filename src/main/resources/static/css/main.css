@@ -48,6 +48,12 @@ html, body {
 }
 
 #logoutForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 0.1em;
   margin-right: 0.2em;
   background-color: #fbf7f4;
@@ -64,6 +70,12 @@ html, body {
 }
 
 #titleContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -181,9 +193,10 @@ html, body {
 #noCurrentTask {
   background: #a698da;
   color: #fbf7f4;
-  width: 5em;
+  width: 95%;
   padding: 0.5em;
   margin: 0 auto;
+  margin-bottom: 0.25em;
   border-radius: 6px 6px 6px 6px;
 }
 
@@ -192,8 +205,8 @@ html, body {
 }
 
 .selectBox {
-  width: 90%;
-  margin: 3em 1em 0.3em;
+  width: 95%;
+  margin: 3em 0.5em 2.8em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -293,6 +306,22 @@ html, body {
   display: none;
 }
 
+#changeTaskButton {
+  position: absolute;
+  font-size: 0.8em;
+  font-weight: bold;
+  bottom: 0;
+  left: 0;
+  padding: 0.3em;
+  margin: 0.5em;
+  background-color: #fbf7f4;
+  color: #3658a9;
+  border: medium solid #3658a9;
+  border-radius: 10px 10px 10px 10px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
 /* TASK LIST */
 #taskList {
   height: 100%;
@@ -309,8 +338,16 @@ html, body {
 }
 
 .listTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 0;
-  margin-top: 0.8em;
   height: 15%;
 }
 
@@ -381,6 +418,7 @@ html, body {
 
 /* JOURNAL */
 #journal {
+  position: relative;
   background-color: #3658a9;
   -ms-grid-row: 5;
   -ms-grid-column: 1;
@@ -392,13 +430,22 @@ html, body {
   overflow-y: hidden;
 }
 
+#dailyGeneratedSummary {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0 0.3em 0 0.3em;
+}
+
 #journalEntryContainer {
   height: 11.5em;
   overflow-y: scroll;
 }
 
 #journalEntryFooter {
-  height: 2.7em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 #saveEntryButton {
@@ -411,10 +458,6 @@ html, body {
   border-color: #fbf7f4;
   border-radius: 10px 10px 10px 10px;
   opacity: 80%;
-}
-
-#dailyGeneratedSummary {
-  padding: 0.3em;
 }
 
 #dailyTaskSummary {

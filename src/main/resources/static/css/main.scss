@@ -75,6 +75,8 @@ html, body {
 }
 
 #logoutForm {
+  display: flex;
+  align-items: center;
   margin-top: 0.1em;
   margin-right: 0.2em;
   background-color: $lightshade;
@@ -91,10 +93,13 @@ html, body {
 }
 
 #titleContainer {
+  display: flex;
+  align-items: center;
   width: fit-content;
   padding-left: 0.5em;
   padding-top: 0.1em;
 }
+
 
 #titleDaily {
   color: $maincolor;
@@ -186,9 +191,10 @@ html, body {
 #noCurrentTask {
   background: $lightaccent;
   color: $lightshade;
-  width: 5em;
+  width: 95%;
   padding: 0.5em;
   margin: 0 auto;
+  margin-bottom: 0.25em;
   border-radius: $brdr;
 }
 
@@ -197,8 +203,8 @@ html, body {
 }
 
 .selectBox {
-  width: 90%;
-  margin: 3em 1em 0.3em;
+  width: 95%;
+  margin: 3em 0.5em 2.8em;
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -290,6 +296,22 @@ html, body {
   display: none;
 }
 
+#changeTaskButton {
+  position: absolute;
+  font-size: 0.8em;
+  font-weight: bold;
+  bottom: 0;
+  left: 0;
+  padding: 0.3em;
+  margin: 0.5em;
+  background-color: $lightshade;
+  color: $darkshade;
+  border: medium solid $darkshade;
+  border-radius: $btnbrder;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
 /* TASK LIST */
 
 #taskList {
@@ -304,8 +326,10 @@ html, body {
 }
 
 .listTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  margin-top: 0.8em;
   height: 15%;
 }
 
@@ -375,6 +399,7 @@ html, body {
 /* JOURNAL */
 
 #journal {
+  position: relative;
   background-color: $darkshade;
   grid-area: journal;
   border-radius: $brdr;
@@ -383,13 +408,20 @@ html, body {
   overflow-y: hidden;
 }
 
+#dailyGeneratedSummary {
+  height: fit-content;
+  padding: 0 0.3em 0 0.3em;
+}
+
 #journalEntryContainer {
   height: 11.5em;
   overflow-y: scroll;
 }
 
 #journalEntryFooter {
-  height: 2.7em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 #saveEntryButton {
@@ -402,10 +434,6 @@ html, body {
   border-color: $lightshade;
   border-radius: $btnbrder;
   opacity: 80%;
-}
-
-#dailyGeneratedSummary {
-  padding: 0.3em;
 }
 
 #dailyTaskSummary {

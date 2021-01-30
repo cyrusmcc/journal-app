@@ -30,7 +30,6 @@
           var userTasks = [[${allDailyUserTasks}]];
 
           var theCurrentTask = [[${currentTask}]];
-          console.log(theCurrentTask);
 
       </script>
 
@@ -157,7 +156,7 @@
       </div>
 
       <div id="currentTaskBar">
-        <div id="currentTaskTitle">Current task</div>
+        <div id="currentTaskTitle" class="listTitle">Current task</div>
 
 
           <div class="selectBox">
@@ -178,6 +177,10 @@
                                  th:text="${i.name}"
                                  th:for="${#ids.prev('id')}"></label>
                       </li>
+                  </div>
+
+                  <div id="currentTaskFooter">
+                      <input type="submit" value="Change task" id="changeTaskButton">
                   </div>
 
               </form>
@@ -224,13 +227,11 @@
 
       <div id="journal">
 
-          <div id="generatedStatement">
-              <div id="dailyGeneratedSummary">
-                  <span class="generatedPart" id="genStart"></span>
-                  <span class="generatedPart" id="genMid"></span>
-                  <span class="generatedPart" id="genEnd"></span>
-              </div>
 
+          <div id="dailyGeneratedSummary">
+              <span class="generatedPart" id="genStart"></span>
+              <span class="generatedPart" id="genMid"></span>
+              <span class="generatedPart" id="genEnd"></span>
           </div>
 
           <form id="journalEntryForm" method="post" th:action="@{/saveEntry}" th:object="${journalEntry}">

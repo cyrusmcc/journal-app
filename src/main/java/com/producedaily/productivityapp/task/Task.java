@@ -89,6 +89,10 @@ public class Task {
         this.taskDate = taskDate;
     }
 
+    public boolean getCurrentTaskStatus() {
+        return isCurrentTask;
+    }
+
     public boolean isCurrentTask(boolean b) {
         return isCurrentTask;
     }
