@@ -31,7 +31,7 @@ for(i = 1; i < userTasks.length; i++) {
     taskDiv.style.background = '#a698da';
     taskDiv.style.color = '#fbf7f4';
     taskDiv.style.borderRadius = "6px 6px 6px 6px";
-    taskDiv.style.margin = "0 1em 0.3em 1em";
+    taskDiv.style.margin = "0 0.5em 0.3em";
     taskDiv.style.padding = "5px";
     taskDiv.style.border = "medium solid #FCFAF9";
 
