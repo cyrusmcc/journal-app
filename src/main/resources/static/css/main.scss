@@ -1,16 +1,24 @@
 /* DEFAULT COLORS*/ 
+/*
 $lightshade : #fbf7f4;
 $lightaccent : #a698da;
 $maincolor : #87bbd5;
 $darkaccent : #9a7092;
 $darkshade : #3658a9;
+*/
+
+$darkshade: #1b1b1b;
+$lightshade : #0d0d0e;
+$lightaccent : #4a94b7;
+$text: #e1e2ef;
+$maincolor : #87bbd5;
+$darkaccent : #9a7092;
 
 $boxshadow :
-0  5px 10px rgba(154,160,185,0.05),
-0 15px 40px rgba(166,173,201,0.2);
+none;
 
-$brdr : 6px 6px 6px 6px;
-$btnbrder : 10px 10px 10px 10px;
+$brdr : 3px;
+$btnbrder : 2px;
 
 $screen-medium: 820px;
 $screen-large: 1224px;
@@ -34,7 +42,7 @@ $screen-large: 1224px;
 html, body {
   background-color:$darkshade;
   font-family: 'Poppins', sans-serif;
-  color:$darkshade;
+  color:$text;
   margin : 0;
 }
 
@@ -56,10 +64,9 @@ html, body {
 }
 
 .button {
-  border-radius: $btnbrder;
   border: medium solid $maincolor;
-  color: $darkshade;
-  background-color: $lightshade;
+  color: $text;
+  background-color: $darkshade;
 }
 
 /* NAV BAR */
@@ -80,7 +87,7 @@ html, body {
   margin-top: 0.1em;
   margin-right: 0.2em;
   background-color: $lightshade;
-  color: $darkshade;
+  color: $text;
 }
 
 #logoutSubmit {
@@ -89,7 +96,7 @@ html, body {
   outline: none;
   border: none;
   background-color: $lightshade;
-  color: $darkshade;
+  color: $text;
 }
 
 #titleContainer {
@@ -102,7 +109,7 @@ html, body {
 
 
 #titleDaily {
-  color: $maincolor;
+  color: $text;
 }
 
 /* MEDIA QUERIES */
@@ -172,7 +179,6 @@ html, body {
 
 #currentTaskBar {
   position: relative;
-  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -190,7 +196,7 @@ html, body {
 
 #noCurrentTask {
   background: $lightaccent;
-  color: $lightshade;
+  color: $text;
   width: 95%;
   padding: 0.5em;
   margin: 0 auto;
@@ -212,7 +218,7 @@ html, body {
 
 .selectBox .optionsContainer {
   background: $lightaccent;
-  color: $lightshade;
+  color: $text;
   max-height: 0;
   width: 100%;
   opacity: 0;
@@ -227,7 +233,7 @@ html, body {
   background-color: $lightaccent;
   border-radius: $brdr;
   margin-bottom: 8px;
-  color: #fbf7f4;
+  color: $text;
   position: relative;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -299,14 +305,13 @@ html, body {
 #changeTaskButton {
   position: absolute;
   font-size: 0.8em;
-  font-weight: bold;
   bottom: 0;
   left: 0;
-  padding: 0.3em;
+  padding: 0.5em;
   margin: 0.5em;
-  background-color: $lightshade;
-  color: $darkshade;
-  border: medium solid $darkshade;
+  background-color: $darkshade;
+  border: none;
+  color: $text;
   border-radius: $btnbrder;
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
@@ -321,7 +326,6 @@ html, body {
   grid-area: taskList;
   border-radius: $brdr;
   box-shadow: $boxshadow;
-  font-weight: bold;
   text-align: center;
 }
 
@@ -347,11 +351,10 @@ html, body {
   font-size: 0.85em;
   bottom: 0;
   left: 0;
-  padding: 0.3em;
+  padding: 0.5em;
   margin: 0.5em;
-  background-color: $lightshade;
-  color: $darkshade;
-  border: medium solid $darkshade;
+  background-color: $darkshade;
+  color: $text;
   border-radius: $btnbrder;
   text-decoration: none;
 }
@@ -361,11 +364,10 @@ html, body {
   font-size: 0.85em;
   bottom: 0;
   left: 6.5em;
-  padding: 0.3em;
+  padding: 0.5em;
   margin: 0.5em;
-  background-color: $lightshade;
-  color: $darkshade;
-  border: medium solid $darkshade;
+  background-color: $darkshade;
+  color: $text;
   border-radius: $btnbrder;
   text-decoration: none;
 }
@@ -378,7 +380,6 @@ html, body {
   grid-area: eventList;
   border-radius: $brdr;
   box-shadow: $boxshadow;
-  font-weight: bold;
   text-align: center;
 }
 
@@ -387,11 +388,10 @@ html, body {
   font-size: 0.85em;
   bottom: 0;
   left: 0;
-  padding: 0.3em;
+  padding: 0.5em;
   margin: 0.5em;
-  background-color: $lightshade;
-  color: $darkshade;
-  border: medium solid $darkshade;
+  background-color: $darkshade;
+  color: $text;
   border-radius: $btnbrder;
   text-decoration: none;
 }
@@ -430,7 +430,7 @@ html, body {
   margin-right: 0.3em;
   margin-bottom: 0.3em;
   background-color: $darkshade;
-  color: $lightshade;
+  color: $text;
   border-color: $lightshade;
   border-radius: $btnbrder;
   opacity: 80%;
@@ -440,7 +440,7 @@ html, body {
   font-size: 0.92em;
   padding: 0.3em 0 0 0.5em;
   word-break: break-word;
-  color: $lightaccent;
+  color: $text;
 
 }
 
@@ -449,7 +449,7 @@ html, body {
   display: block;
   width: 97%;
   background-color: $darkshade;
-  color: $maincolor;
+  color: $text;
   outline: none;
   overflow: auto;
   word-break: break-word;
@@ -459,7 +459,7 @@ html, body {
 }
 
 ::placeholder {
-  color: $maincolor;
+  color: $text;
 }
 
 /* DIV 7 */
@@ -485,7 +485,7 @@ html, body {
 }
 
 #calendarGrid > div {
-  background-color: $maincolor;
+  background: #363738;
   border: thin solid $lightshade;
 }
 
@@ -495,7 +495,7 @@ html, body {
 }
 
 #dateDisplay {
-  font-weight: bold;
+  font-size: 1.1em;
   background-color: $lightshade;
   border-radius: $brdr;
   padding: 5px;
@@ -503,23 +503,23 @@ html, body {
 }
 
 #day1 {
-  border-radius: 6px 0 0 0;
+  border-radius: 3px 0 0 0;
 }
 
 #day7 {
-  border-radius: 0 6px 0 0;
+  border-radius: 0 3px 0 0;
 }
 
 #day28 {
-  border-radius: 0 0 6px 0;
+  border-radius: 0 0 3px 0;
 }
 
 #day29 {
-  border-radius: 0 0 0 6px;
+  border-radius: 0 0 0 3px;
 }
 
 #day31 {
-  border-radius: 0 0 6px 0;
+  border-radius: 0 0 3px 0;
 }
 
 /* MODAL */
@@ -537,7 +537,7 @@ html, body {
 #task-modal-content {
   width: 20em;
   height: 11.5em;
-  color: $darkshade;
+  color: $text;
   font-weight: bold;
   background-color: $lightshade;
   border-radius: $brdr;
@@ -553,13 +553,13 @@ html, body {
   margin: 10px auto;
   resize: none;
   outline: none;
-  color: $darkshade;
+  color: $text;
   border: medium solid $darkshade;
 }
 
 #task-modal-close {
   position: absolute;
-  color: $darkshade;
+  color: $text;
   user-select: none;
   bottom: 5.4em;
   right: 0.1em;
@@ -573,7 +573,7 @@ html, body {
   font-size: 0.85em;
   padding: 0.3em;
   background-color: $lightshade;
-  color: $darkshade;
+  color: $text;
   border: medium solid $darkshade;
   border-radius: $btnbrder;
   text-decoration: none;

@@ -10,7 +10,7 @@ var childDivs = document.getElementById('calendarGrid')
 var userEvents = JSON.parse(document.getElementById("userEvents").innerText);
 
 var d = new Date();
-var days = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 var calendarTitle = days[d.getDay()] + ", " + month + " " + dayOfMonth + ", " + d.getFullYear();
 document.getElementById('dateDisplay').innerText = calendarTitle;
@@ -69,7 +69,7 @@ for(i=1; i < childDivs.length; i++ ) {
         document.getElementById(dayGridBox).appendChild(numberOfTaskCircle);
         }
 
-        document.getElementById(dayGridBox).style.background = '#a698da';
+        document.getElementById(dayGridBox).style.background = '#4a94b7';
 
     }
 }
