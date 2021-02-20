@@ -15,7 +15,7 @@ $maincolor : #87bbd5;
 $darkaccent : #9a7092;
 
 $boxshadow :
-none;
+-3px 3px 11px -1px RGB(15 15 15 / 60%);
 
 $brdr : 3px;
 $btnbrder : 2px;
@@ -103,7 +103,7 @@ html, body {
   display: flex;
   align-items: center;
   width: fit-content;
-  padding-left: 0.5em;
+  padding-left: 1em;
   padding-top: 0.1em;
 }
 
@@ -195,8 +195,9 @@ html, body {
 }
 
 #noCurrentTask {
-  background: $lightaccent;
-  color: $text;
+  background: $darkshade;
+  color: $lightaccent;
+  font-weight: bold;
   width: 95%;
   padding: 0.5em;
   margin: 0 auto;
@@ -230,10 +231,11 @@ html, body {
 }
 
 #selectedTask {
-  background-color: $lightaccent;
+  background-color: $darkshade;
   border-radius: $brdr;
   margin-bottom: 8px;
-  color: $text;
+  font-weight: bold;
+  color: $lightaccent;
   position: relative;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -47,8 +47,8 @@ html, body {
           justify-content: space-between;
   font-weight: bold;
   background-color: #0d0d0e;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
+          box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
   border-radius: 0 0 2px 2px;
   height: 2em;
 }
@@ -85,7 +85,7 @@ html, body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  padding-left: 0.5em;
+  padding-left: 1em;
   padding-top: 0.1em;
 }
 
@@ -185,8 +185,8 @@ html, body {
   -ms-grid-column: 1;
   grid-area: currentTaskBar;
   border-radius: 3px;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
+          box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
 }
 
 #currentTaskTitle {
@@ -196,8 +196,9 @@ html, body {
 }
 
 #noCurrentTask {
-  background: #4a94b7;
-  color: #e1e2ef;
+  background: #1b1b1b;
+  color: #4a94b7;
+  font-weight: bold;
   width: 95%;
   padding: 0.5em;
   margin: 0 auto;
@@ -238,10 +239,11 @@ html, body {
 }
 
 #selectedTask {
-  background-color: #4a94b7;
+  background-color: #1b1b1b;
   border-radius: 3px;
   margin-bottom: 8px;
-  color: #e1e2ef;
+  font-weight: bold;
+  color: #4a94b7;
   position: relative;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -335,8 +337,8 @@ html, body {
   -ms-grid-column: 1;
   grid-area: taskList;
   border-radius: 3px;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
+          box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
   text-align: center;
 }
 
@@ -397,8 +399,8 @@ html, body {
   -ms-grid-column: 1;
   grid-area: eventList;
   border-radius: 3px;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
+          box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
   text-align: center;
 }
 
@@ -424,8 +426,8 @@ html, body {
   grid-area: journal;
   border-radius: 3px;
   border: thick solid #0d0d0e;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
+          box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
   overflow-y: hidden;
 }
 
@@ -503,8 +505,8 @@ html, body {
   -ms-grid-column: 1;
   grid-area: div7;
   border-radius: 3px;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
+          box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
 }
 
 /* CALENDAR */
@@ -518,8 +520,8 @@ html, body {
   grid-auto-rows: 3.5em;
   border: solid thick #0d0d0e;
   background-color: #0d0d0e;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
+          box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
 }
 
 #calendarGrid > div {

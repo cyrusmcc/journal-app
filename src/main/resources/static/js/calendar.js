@@ -60,6 +60,7 @@ for(i=1; i < childDivs.length; i++ ) {
         numberOfTaskCircle.style.color = '#a698da';
         numberOfTaskCircle.style.borderRadius = "50%";
         numberOfTaskCircle.style.fontSize = ".8em";
+        numberOfTaskCircle.style.fontWeight = "bold";
         numberOfTaskCircle.style.width = "1.2em";
         numberOfTaskCircle.style.height = "1.2em";
         numberOfTaskCircle.style.margin = "0.3em";
