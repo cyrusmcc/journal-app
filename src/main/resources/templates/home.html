@@ -235,7 +235,6 @@
           </div>
 
           <form id="journalEntryForm" method="post" th:action="@{/saveEntry}" th:object="${journalEntry}">
-              <div id="journalEntryContainer">
 
                   <div id="dailyTaskSummary" th:text="${journalEntry.taskSummary}"></div>
 
@@ -248,11 +247,8 @@
                             placeholder="### Daily Journal - Thoughts & feelings about today's happenings can go here"
                             th:field="*{text}">
                   </textarea>
-              </div>
 
-              <div id="journalEntryFooter">
                   <input class="button" type="submit" value="Save" id="saveEntryButton"/>
-              </div>
 
           </form>
 
