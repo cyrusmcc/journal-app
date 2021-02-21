@@ -51,16 +51,14 @@ html, body {
   max-width: 100%;
   grid-gap: .85em;
   padding: 0.8em;
-  height: 200vh;
+  height: 140vh;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 0.3fr 0.91fr 0.8fr .8fr .8fr;
+  grid-template-rows: auto auto 30vh 1fr;
   grid-template-areas: 
         "calendar"
         "currentTaskBar"
-        "taskList"
-        "eventList"
         "journal"
-        "div7";
+        "eventList";
 }
 
 .button {
@@ -124,19 +122,15 @@ html, body {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-template-areas: 
-          "div7 calendar calendar calendar currentTaskBar"
-          "div7 calendar calendar calendar taskList"
-          "div7 calendar calendar calendar taskList"
-          "div7 journal journal journal eventList"
-          "div7 journal journal journal eventList";
+          "calendar calendar calendar currentTaskBar"
+          "calendar calendar calendar"
+          "calendar calendar calendar"
+          "journal journal journal eventList"
+          "journal journal journal eventList";
     }
 
   #nav {
     display: none;
-  }
-
-  #div7 {
-    grid-area: div7;
   }
 
   #calendar {
@@ -146,10 +140,6 @@ html, body {
 
   #currentTaskBar {
     grid-area: currentTaskBar;
-  }
-
-  #taskList {
-    grid-area: taskList;
   }
 
   #eventList {
@@ -180,7 +170,7 @@ html, body {
 #currentTaskBar {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: $lightshade;
   grid-area: currentTaskBar;
@@ -188,171 +178,8 @@ html, body {
   box-shadow: $boxshadow;
 }
 
-#currentTaskTitle {
-  position: absolute;
-  top: 0;
-  margin-top: 0.6em;
-}
-
-#noCurrentTask {
-  background: $darkshade;
-  color: $lightaccent;
-  font-weight: bold;
-  width: 95%;
-  padding: 0.5em;
-  margin: 0 auto;
-  margin-bottom: 0.25em;
-  border-radius: $brdr;
-}
-
-#selectCurrentTask {
-  width: 50%;
-}
-
-.selectBox {
-  width: 95%;
-  margin: 3em 0.5em 2.8em;
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-}
-
-.selectBox .optionsContainer {
-  background: $lightaccent;
-  color: $text;
-  max-height: 0;
-  width: 100%;
-  opacity: 0;
-  transition: all 0.4s;
-  border-radius: $brdr;
-  overflow: hidden;
-
-  order: 1;
-}
-
-#selectedTask {
-  background-color: $darkshade;
-  border-radius: $brdr;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: $lightaccent;
-  position: relative;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  order: 0;
-}
-
-#selectedTask::after {
-  content: "";
-  background: url("/images/arrow-down.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-
-  position: absolute;
-  height: 100%;
-  width: 1.75em;
-  right: 0.2em;
-  top: 0.65em;
-
-  transition: all 0.4s;
-}
-
-.selectBox .optionsContainer.active {
-  max-height: 12em;
-  opacity: 1;
-  overflow-y: scroll;
-}
-
-.selectBox .optionsContainer.active + #selectedTask::after {
-  transition: rotateX(180deg);
-}
-
-.selectBox .optionsContainer::-webkit-scrollbar {
-  width: 8px;
-  background-color: $darkaccent;
-  border-left: medium solid $lightshade;
-  border-radius: 0 6px 6px 0;
-}
-
-.selectBox .optionsContainer::-webkit-scrollbar-thumb {
-  background-color: $lightaccent;
-  border-left: medium solid $lightshade;
-  border-radius: 0 6px 6px 0;
-}
-
-.selectBox .option,
-#selectedTask {
-  padding: 12px 24px;
-  cursor: pointer;
-}
-
-.option { 
-  list-style-type: none;
-}
-
-.option label {
-  cursor: pointer;
-}
-
-.optionsContainer .option:hover {
-  background: $darkaccent;
-}
-
-.selectBox .option .optionRadio {
-  display: none;
-}
-
-#changeTaskButton {
-  position: absolute;
-  font-size: 0.8em;
-  bottom: 0;
-  left: 0;
-  padding: 0.5em;
-  margin: 0.5em;
-  background-color: $darkshade;
-  border: none;
-  color: $text;
-  border-radius: $btnbrder;
-  text-decoration: none;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* TASK LIST */
-
-#taskList {
-  height: 100%;
-  position: relative;
-  background-color: $lightshade;
-  grid-area: taskList;
-  border-radius: $brdr;
-  box-shadow: $boxshadow;
-  text-align: center;
-}
-
-.listTitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  height: 15%;
-}
-
-.listContents {
-  overflow-y: scroll;
-  height: 65%;
-}
-
-.listFooter  {
-  height: 20%;
-}
-
 #newTaskButton {
-  position: absolute;
   font-size: 0.85em;
-  bottom: 0;
-  left: 0;
   padding: 0.5em;
   margin: 0.5em;
   background-color: $darkshade;
@@ -362,10 +189,7 @@ html, body {
 }
 
 #finishTaskButton {
-  position: absolute;
   font-size: 0.85em;
-  bottom: 0;
-  left: 6.5em;
   padding: 0.5em;
   margin: 0.5em;
   background-color: $darkshade;
@@ -386,10 +210,7 @@ html, body {
 }
 
 #newEventButton {
-  position: absolute;
   font-size: 0.85em;
-  bottom: 0;
-  left: 0;
   padding: 0.5em;
   margin: 0.5em;
   background-color: $darkshade;
@@ -453,16 +274,6 @@ html, body {
   color: gray;
 }
 
-
-/* DIV 7 */
-
-#div7 {
-  background-color: $lightshade;
-  grid-area: div7;
-  border-radius: $brdr;
-  box-shadow: $boxshadow;
-}
-
 /* CALENDAR */
 
 #calendarGrid {
@@ -486,12 +297,32 @@ html, body {
   border: thin solid $lightshade;
 }
 
-#dateDisplay {
+#calendarHead {
   font-size: 1.1em;
   background-color: $lightshade;
   border-radius: $brdr;
-  padding: 5px;
-  margin-bottom: 0.6em;
+  padding: 0.5em;
+  border: thick solid #0d0d0e;
+  border-bottom: 0;
+}
+
+#yearDesc {
+  display: flex;
+  font-size: 0.9em;
+  font-style: italic;
+  padding-left: 1.5em;
+}
+
+#yearDescP2 {
+  width: 5em;
+  color: #9a7092;
+  font-weight: bold;
+  min-width: 5em;
+  width: fit-content;
+  max-width: 17em;
+  border-bottom: solid thin $darkaccent;
+  margin-left: 0.6em;
+  margin-bottom: 0.2em;
 }
 
 #day1 {

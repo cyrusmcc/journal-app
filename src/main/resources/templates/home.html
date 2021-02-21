@@ -52,10 +52,13 @@
     <div class="parent">
 
       <div id="calendar">
-          
-        <div id="dateDisplay"></div>
 
-        <div class="grid" id="calendarGrid">
+          <div id="calendarHead">
+            <div id="dateDisplay"></div>
+              <div id="yearDesc"><span id="yearDescP1">Year of</span> <span id="yearDescP2">getting s*@# done!</span></div>
+          </div>
+
+          <div class="grid" id="calendarGrid">
 
           <div class="calendarDay" id="day1">
               <div class="dateNumber" id="dateNumber1"></div>
@@ -156,6 +159,20 @@
       </div>
 
       <div id="currentTaskBar">
+
+          <a id="newTaskButton" th:href="@{/newTask}">
+              New Goal
+          </a>
+
+          <a href="#" id="finishTaskButton">
+              Finish Goal
+          </a>
+
+          <a id="newEventButton" th:href="@{/newEvent}" class="btn btn-primary">
+              Add Event
+          </a>
+
+          <!--
         <div id="currentTaskTitle" class="listTitle">Current task</div>
 
 
@@ -185,29 +202,9 @@
 
               </form>
           </div>
-
+        -->
 
        </div>
-
-      <div id="taskList">
-
-          <p class="listTitle" id="taskListTitle">tasks</p>
-
-          <div class="listContents" id="taskListContents"></div>
-
-          <div class="listFooter" id="taskListFooter">
-
-              <a id="newTaskButton" th:href="@{/newTask}">
-                  Add Task
-              </a>
-
-              <a href="#" id="finishTaskButton">
-                  Finish task
-              </a>
-
-          </div>
-
-      </div>
 
       <div id="eventList">
 
@@ -217,9 +214,6 @@
 
           <div class="listFooter" id="eventListFooter">
 
-              <a id="newEventButton" th:href="@{/newEvent}" class="btn btn-primary">
-                  Add Event
-              </a>
 
           </div>
 
@@ -253,8 +247,6 @@
           </form>
 
       </div>
-
-      <div id="div7">div7</div>
 
     </div>
 

@@ -23,12 +23,12 @@ html, body {
   max-width: 100%;
   grid-gap: .85em;
   padding: 0.8em;
-  height: 200vh;
+  height: 140vh;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: auto 0.3fr 0.91fr 0.8fr .8fr .8fr;
-      grid-template-rows: auto 0.3fr 0.91fr 0.8fr .8fr .8fr;
-      grid-template-areas: "calendar" "currentTaskBar" "taskList" "eventList" "journal" "div7";
+  -ms-grid-rows: auto auto 30vh 1fr;
+      grid-template-rows: auto auto 30vh 1fr;
+      grid-template-areas: "calendar" "currentTaskBar" "journal" "eventList";
 }
 
 .button {
@@ -104,47 +104,35 @@ html, body {
         grid-template-columns: repeat(5, 1fr);
     -ms-grid-rows: (1fr)[5];
         grid-template-rows: repeat(5, 1fr);
-        grid-template-areas: "div7 calendar calendar calendar currentTaskBar" "div7 calendar calendar calendar taskList" "div7 calendar calendar calendar taskList" "div7 journal journal journal eventList" "div7 journal journal journal eventList";
+        grid-template-areas: "calendar calendar calendar currentTaskBar" "calendar calendar calendar" "calendar calendar calendar" "journal journal journal eventList" "journal journal journal eventList";
   }
   #nav {
     display: none;
-  }
-  #div7 {
-    -ms-grid-row: 1;
-    -ms-grid-row-span: 5;
-    -ms-grid-column: 1;
-    grid-area: div7;
   }
   #calendar {
     display: -ms-grid;
     display: grid;
     -ms-grid-row: 1;
     -ms-grid-row-span: 3;
-    -ms-grid-column: 2;
+    -ms-grid-column: 1;
     -ms-grid-column-span: 3;
     grid-area: calendar;
   }
   #currentTaskBar {
     -ms-grid-row: 1;
-    -ms-grid-column: 5;
+    -ms-grid-column: 4;
     grid-area: currentTaskBar;
-  }
-  #taskList {
-    -ms-grid-row: 2;
-    -ms-grid-row-span: 2;
-    -ms-grid-column: 5;
-    grid-area: taskList;
   }
   #eventList {
     -ms-grid-row: 4;
     -ms-grid-row-span: 2;
-    -ms-grid-column: 5;
+    -ms-grid-column: 4;
     grid-area: eventList;
   }
   #journal {
     -ms-grid-row: 4;
     -ms-grid-row-span: 2;
-    -ms-grid-column: 2;
+    -ms-grid-column: 1;
     -ms-grid-column-span: 3;
     grid-area: journal;
     height: 91%;
@@ -174,9 +162,9 @@ html, body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -189,187 +177,8 @@ html, body {
           box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
 }
 
-#currentTaskTitle {
-  position: absolute;
-  top: 0;
-  margin-top: 0.6em;
-}
-
-#noCurrentTask {
-  background: #1b1b1b;
-  color: #4a94b7;
-  font-weight: bold;
-  width: 95%;
-  padding: 0.5em;
-  margin: 0 auto;
-  margin-bottom: 0.25em;
-  border-radius: 3px;
-}
-
-#selectCurrentTask {
-  width: 50%;
-}
-
-.selectBox {
-  width: 95%;
-  margin: 3em 0.5em 2.8em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.selectBox .optionsContainer {
-  background: #4a94b7;
-  color: #e1e2ef;
-  max-height: 0;
-  width: 100%;
-  opacity: 0;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-  border-radius: 3px;
-  overflow: hidden;
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
-}
-
-#selectedTask {
-  background-color: #1b1b1b;
-  border-radius: 3px;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #4a94b7;
-  position: relative;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  -webkit-box-ordinal-group: 1;
-      -ms-flex-order: 0;
-          order: 0;
-}
-
-#selectedTask::after {
-  content: "";
-  background: url("/images/arrow-down.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  height: 100%;
-  width: 1.75em;
-  right: 0.2em;
-  top: 0.65em;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-}
-
-.selectBox .optionsContainer.active {
-  max-height: 12em;
-  opacity: 1;
-  overflow-y: scroll;
-}
-
-.selectBox .optionsContainer.active + #selectedTask::after {
-  -webkit-transition: rotateX(180deg);
-  transition: rotateX(180deg);
-}
-
-.selectBox .optionsContainer::-webkit-scrollbar {
-  width: 8px;
-  background-color: #9a7092;
-  border-left: medium solid #0d0d0e;
-  border-radius: 0 6px 6px 0;
-}
-
-.selectBox .optionsContainer::-webkit-scrollbar-thumb {
-  background-color: #4a94b7;
-  border-left: medium solid #0d0d0e;
-  border-radius: 0 6px 6px 0;
-}
-
-.selectBox .option,
-#selectedTask {
-  padding: 12px 24px;
-  cursor: pointer;
-}
-
-.option {
-  list-style-type: none;
-}
-
-.option label {
-  cursor: pointer;
-}
-
-.optionsContainer .option:hover {
-  background: #9a7092;
-}
-
-.selectBox .option .optionRadio {
-  display: none;
-}
-
-#changeTaskButton {
-  position: absolute;
-  font-size: 0.8em;
-  bottom: 0;
-  left: 0;
-  padding: 0.5em;
-  margin: 0.5em;
-  background-color: #1b1b1b;
-  border: none;
-  color: #e1e2ef;
-  border-radius: 2px;
-  text-decoration: none;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* TASK LIST */
-#taskList {
-  height: 100%;
-  position: relative;
-  background-color: #0d0d0e;
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  grid-area: taskList;
-  border-radius: 3px;
-  -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
-          box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
-  text-align: center;
-}
-
-.listTitle {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 0;
-  height: 15%;
-}
-
-.listContents {
-  overflow-y: scroll;
-  height: 65%;
-}
-
-.listFooter {
-  height: 20%;
-}
-
 #newTaskButton {
-  position: absolute;
   font-size: 0.85em;
-  bottom: 0;
-  left: 0;
   padding: 0.5em;
   margin: 0.5em;
   background-color: #1b1b1b;
@@ -379,10 +188,7 @@ html, body {
 }
 
 #finishTaskButton {
-  position: absolute;
   font-size: 0.85em;
-  bottom: 0;
-  left: 6.5em;
   padding: 0.5em;
   margin: 0.5em;
   background-color: #1b1b1b;
@@ -405,10 +211,7 @@ html, body {
 }
 
 #newEventButton {
-  position: absolute;
   font-size: 0.85em;
-  bottom: 0;
-  left: 0;
   padding: 0.5em;
   margin: 0.5em;
   background-color: #1b1b1b;
@@ -421,7 +224,7 @@ html, body {
 #journal {
   position: relative;
   background-color: #1b1b1b;
-  -ms-grid-row: 5;
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: journal;
   border-radius: 3px;
@@ -486,17 +289,6 @@ html, body {
   color: gray;
 }
 
-/* DIV 7 */
-#div7 {
-  background-color: #0d0d0e;
-  -ms-grid-row: 6;
-  -ms-grid-column: 1;
-  grid-area: div7;
-  border-radius: 3px;
-  -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
-          box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
-}
-
 /* CALENDAR */
 #calendarGrid {
   display: -ms-grid;
@@ -522,12 +314,36 @@ html, body {
   border: thin solid #0d0d0e;
 }
 
-#dateDisplay {
+#calendarHead {
   font-size: 1.1em;
   background-color: #0d0d0e;
   border-radius: 3px;
-  padding: 5px;
-  margin-bottom: 0.6em;
+  padding: 0.5em;
+  border: thick solid #0d0d0e;
+  border-bottom: 0;
+}
+
+#yearDesc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.9em;
+  font-style: italic;
+  padding-left: 1.5em;
+}
+
+#yearDescP2 {
+  width: 5em;
+  color: #9a7092;
+  font-weight: bold;
+  min-width: 5em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 17em;
+  border-bottom: solid thin #9a7092;
+  margin-left: 0.6em;
+  margin-bottom: 0.2em;
 }
 
 #day1 {
