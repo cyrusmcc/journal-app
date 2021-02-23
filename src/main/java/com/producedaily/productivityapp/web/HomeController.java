@@ -62,26 +62,15 @@ public class HomeController {
         model.addAttribute("allDailyUserTasks",
                 taskService.findAllDailyTasksByUsername(principal));
 
-        model.addAttribute("currentTask",
-                taskService.findCurrentTaskByUserName(principal));
-
         model.addAttribute("journalEntry",
                 journalService.findEntryByDate(principal));
 
-        model.addAttribute("theNewCurrentTask",
-                new Task());
+        model.addAttribute("event", new Event());
+
+        model.addAttribute("task", new Event());
+
 
         return model;
-    }
-
-    @GetMapping("/newEvent")
-    public String showEventAddForm(Model model) {
-
-        Event event = new Event();
-
-        model.addAttribute("event", event);
-
-        return "/event-form";
     }
 
     @PostMapping("/saveEvent")
@@ -90,16 +79,6 @@ public class HomeController {
         eventService.saveEvent(principal, event);
 
         return "redirect:/home";
-    }
-
-    @GetMapping("/newTask")
-    public String showTaskAddForm(Model model) {
-
-        Task task = new Task();
-
-        model.addAttribute("task", task);
-
-        return "/task-form.html";
     }
 
     @PostMapping("/saveTask")

@@ -49,16 +49,14 @@ html, body {
 .parent {
   display:grid;
   max-width: 100%;
-  grid-gap: .85em;
   padding: 0.8em;
-  height: 140vh;
+  height: 110vh;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto 30vh 1fr;
+  grid-template-rows: auto auto 50vh;
   grid-template-areas: 
         "calendar"
         "currentTaskBar"
-        "journal"
-        "eventList";
+        "contentContainer";
 }
 
 .button {
@@ -76,7 +74,7 @@ html, body {
   background-color: $lightshade;
   box-shadow: $boxshadow;
   border-radius: 0 0 2px 2px;
-  height: 2em;
+  height: 5vh;
 }
 
 #logoutForm {
@@ -125,8 +123,8 @@ html, body {
           "calendar calendar calendar currentTaskBar"
           "calendar calendar calendar"
           "calendar calendar calendar"
-          "journal journal journal eventList"
-          "journal journal journal eventList";
+          "journal journal journal"
+          "journal journal journal";
     }
 
   #nav {
@@ -140,10 +138,6 @@ html, body {
 
   #currentTaskBar {
     grid-area: currentTaskBar;
-  }
-
-  #eventList {
-    grid-area: eventList;
   }
 
   #journal {
@@ -162,25 +156,40 @@ html, body {
 #calendar {
   background-color: $darkshade;
   grid-area: calendar;
-  border-radius: $brdr;
+  border-radius: 3px 3px 0 0;
+  border-bottom: 0;
+}
+
+#newEventButton {
+  border: none;
+  font-size: 0.85em;
+  padding: 0.7em;
+  margin: 0.5em;
+  background-color: $darkshade;
+  color: $text;
+  border-radius: $btnbrder;
+  text-decoration: none;
 }
 
 /* CURRENT TASK BAR */
 
 #currentTaskBar {
+  margin-bottom: 1em;
+  border-top: 0;
   position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   background-color: $lightshade;
   grid-area: currentTaskBar;
-  border-radius: $brdr;
+  border-radius: 0 0 3px 3px;
   box-shadow: $boxshadow;
 }
 
 #newTaskButton {
+  border: none;
   font-size: 0.85em;
-  padding: 0.5em;
+  padding: 0.7em;
   margin: 0.5em;
   background-color: $darkshade;
   color: $text;
@@ -198,45 +207,78 @@ html, body {
   text-decoration: none;
 }
 
-/* EVENT LIST */
-
-#eventList {
-  position: relative;
-  background-color: $lightshade;
-  grid-area: eventList;
-  border-radius: $brdr;
+/* CONTENT CONTAINER */
+#contentContainer {
+  grid-area: contentContainer;
   box-shadow: $boxshadow;
-  text-align: center;
-}
-
-#newEventButton {
-  font-size: 0.85em;
-  padding: 0.5em;
-  margin: 0.5em;
-  background-color: $darkshade;
-  color: $text;
-  border-radius: $btnbrder;
-  text-decoration: none;
+  height: 50vh;
 }
 
 /* JOURNAL */
-
 #journal {
   position: relative;
+  height: 40vh;
   background-color: $darkshade;
-  grid-area: journal;
-  border-radius: $brdr;
-  border: thick solid $lightshade;
-  box-shadow: $boxshadow;
+  border-radius: 6px;
+}
+
+#navTabs {
+  border-top: 0;
+  border-radius: 4px 4px 0 0;
+  height: 8vh;
+}
+
+#tabs {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 4vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+#tabs > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+  background-color: $lightshade;
+
+}
+
+#tab1 {
+  opacity: 1;
+  height: 4vh;
+}
+
+#tab2 {
+  border: thin solid $darkshade;
+  border-bottom: 0;
+  border-radius: 3px;
+  opacity: 0.5;
+}
+
+#tab3 {
+  opacity: 0.5;
+}
+
+#navFooter {
+  height: 4vh;
+  background-color: #363738;
 }
 
 #dailyGeneratedSummary {
   height: 20%;
   padding: 0 0.3em 0 0.3em;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+  height: 6vh;
 }
 
 #journalEntryForm {
-  height: 80%;
+  height: 35vh;
   position: relative;
 }
 
@@ -292,18 +334,11 @@ html, body {
   border: thin solid $lightshade;
 }
 
-#calendarGrid > div:nth-child(odd) {
-  background: $darkshade;
-  border: thin solid $lightshade;
-}
 
 #calendarHead {
   font-size: 1.1em;
-  background-color: $lightshade;
   border-radius: $brdr;
   padding: 0.5em;
-  border: thick solid #0d0d0e;
-  border-bottom: 0;
 }
 
 #yearDesc {
@@ -345,27 +380,81 @@ html, body {
   border-radius: 0 0 3px 0;
 }
 
+/* GOAL LIST */
+#goalList {
+  display: none;
+  overflow-y: scroll;
+  height: 40vh;
+}
+
+/* EVENT LIST */
+#eventList {
+  display: none;
+  height: 40vh;
+  overflow-y: scroll;
+}
+
+
 /* MODAL */
+#taskForm {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+#eventForm {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formFieldSet {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 3vh;
+  width: 30%;
+  font-weight: normal;
+}
+
+.formTitle {
+  margin-bottom: 1.5em;
+}
+
+.formField {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+.formFieldHead {
+  text-align: start;
+}
+
 #task-modal-bg {
+  position: absolute;
+  top: 0;
+  position: fixed;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 0;
   display: none;
 }
 
 #task-modal-content {
-  width: 20em;
-  height: 11.5em;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  max-height: fit-content;
   color: $text;
   font-weight: bold;
   background-color: $lightshade;
   border-radius: $brdr;
   text-align: center;
-  padding: 1em;
+  padding: 0 1em 1em 1em;
   position: relative;
 }
 
@@ -381,11 +470,9 @@ html, body {
 }
 
 #task-modal-close {
-  position: absolute;
+  align-self: flex-end;
   color: $text;
   user-select: none;
-  bottom: 5.4em;
-  right: 0.1em;
   font-size: 2em;
   transform: rotate(45deg);
   cursor: pointer;

@@ -21,14 +21,13 @@ html, body {
   display: -ms-grid;
   display: grid;
   max-width: 100%;
-  grid-gap: .85em;
   padding: 0.8em;
-  height: 140vh;
+  height: 110vh;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: auto auto 30vh 1fr;
-      grid-template-rows: auto auto 30vh 1fr;
-      grid-template-areas: "calendar" "currentTaskBar" "journal" "eventList";
+  -ms-grid-rows: auto auto 50vh;
+      grid-template-rows: auto auto 50vh;
+      grid-template-areas: "calendar" "currentTaskBar" "contentContainer";
 }
 
 .button {
@@ -50,7 +49,7 @@ html, body {
   -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
           box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
   border-radius: 0 0 2px 2px;
-  height: 2em;
+  height: 5vh;
 }
 
 #logoutForm {
@@ -104,7 +103,7 @@ html, body {
         grid-template-columns: repeat(5, 1fr);
     -ms-grid-rows: (1fr)[5];
         grid-template-rows: repeat(5, 1fr);
-        grid-template-areas: "calendar calendar calendar currentTaskBar" "calendar calendar calendar" "calendar calendar calendar" "journal journal journal eventList" "journal journal journal eventList";
+        grid-template-areas: "calendar calendar calendar currentTaskBar" "calendar calendar calendar" "calendar calendar calendar" "journal journal journal" "journal journal journal";
   }
   #nav {
     display: none;
@@ -122,12 +121,6 @@ html, body {
     -ms-grid-row: 1;
     -ms-grid-column: 4;
     grid-area: currentTaskBar;
-  }
-  #eventList {
-    -ms-grid-row: 4;
-    -ms-grid-row-span: 2;
-    -ms-grid-column: 4;
-    grid-area: eventList;
   }
   #journal {
     -ms-grid-row: 4;
@@ -153,11 +146,25 @@ html, body {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: calendar;
-  border-radius: 3px;
+  border-radius: 3px 3px 0 0;
+  border-bottom: 0;
+}
+
+#newEventButton {
+  border: none;
+  font-size: 0.85em;
+  padding: 0.7em;
+  margin: 0.5em;
+  background-color: #1b1b1b;
+  color: #e1e2ef;
+  border-radius: 2px;
+  text-decoration: none;
 }
 
 /* CURRENT TASK BAR */
 #currentTaskBar {
+  margin-bottom: 1em;
+  border-top: 0;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -172,14 +179,15 @@ html, body {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: currentTaskBar;
-  border-radius: 3px;
+  border-radius: 0 0 3px 3px;
   -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
           box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
 }
 
 #newTaskButton {
+  border: none;
   font-size: 0.85em;
-  padding: 0.5em;
+  padding: 0.7em;
   margin: 0.5em;
   background-color: #1b1b1b;
   color: #e1e2ef;
@@ -197,49 +205,90 @@ html, body {
   text-decoration: none;
 }
 
-/* EVENT LIST */
-#eventList {
-  position: relative;
-  background-color: #0d0d0e;
-  -ms-grid-row: 4;
+/* CONTENT CONTAINER */
+#contentContainer {
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
-  grid-area: eventList;
-  border-radius: 3px;
+  grid-area: contentContainer;
   -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
           box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
-  text-align: center;
-}
-
-#newEventButton {
-  font-size: 0.85em;
-  padding: 0.5em;
-  margin: 0.5em;
-  background-color: #1b1b1b;
-  color: #e1e2ef;
-  border-radius: 2px;
-  text-decoration: none;
+  height: 50vh;
 }
 
 /* JOURNAL */
 #journal {
   position: relative;
+  height: 40vh;
   background-color: #1b1b1b;
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  grid-area: journal;
+  border-radius: 6px;
+}
+
+#navTabs {
+  border-top: 0;
+  border-radius: 4px 4px 0 0;
+  height: 8vh;
+}
+
+#tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 100%;
+  height: 4vh;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#tabs > span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+  background-color: #0d0d0e;
+}
+
+#tab1 {
+  opacity: 1;
+  height: 4vh;
+}
+
+#tab2 {
+  border: thin solid #1b1b1b;
+  border-bottom: 0;
   border-radius: 3px;
-  border: thick solid #0d0d0e;
-  -webkit-box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
-          box-shadow: -3px 3px 11px -1px RGB(15 15 15/60%);
+  opacity: 0.5;
+}
+
+#tab3 {
+  opacity: 0.5;
+}
+
+#navFooter {
+  height: 4vh;
+  background-color: #363738;
 }
 
 #dailyGeneratedSummary {
   height: 20%;
   padding: 0 0.3em 0 0.3em;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+  height: 6vh;
 }
 
 #journalEntryForm {
-  height: 80%;
+  height: 35vh;
   position: relative;
 }
 
@@ -309,18 +358,10 @@ html, body {
   border: thin solid #0d0d0e;
 }
 
-#calendarGrid > div:nth-child(odd) {
-  background: #1b1b1b;
-  border: thin solid #0d0d0e;
-}
-
 #calendarHead {
   font-size: 1.1em;
-  background-color: #0d0d0e;
   border-radius: 3px;
   padding: 0.5em;
-  border: thick solid #0d0d0e;
-  border-bottom: 0;
 }
 
 #yearDesc {
@@ -366,8 +407,83 @@ html, body {
   border-radius: 0 0 3px 0;
 }
 
+/* GOAL LIST */
+#goalList {
+  display: none;
+  overflow-y: scroll;
+  height: 40vh;
+}
+
+/* EVENT LIST */
+#eventList {
+  display: none;
+  height: 40vh;
+  overflow-y: scroll;
+}
+
 /* MODAL */
+#taskForm {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#eventForm {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.formFieldSet {
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 3vh;
+  width: 30%;
+  font-weight: normal;
+}
+
+.formTitle {
+  margin-bottom: 1.5em;
+}
+
+.formField {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 1em;
+}
+
+.formFieldHead {
+  text-align: start;
+}
+
 #task-modal-bg {
+  position: absolute;
+  top: 0;
+  position: fixed;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -377,20 +493,27 @@ html, body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 0;
   display: none;
 }
 
 #task-modal-content {
-  width: 20em;
-  height: 11.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 70%;
+  max-height: -webkit-fit-content;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
   color: #e1e2ef;
   font-weight: bold;
   background-color: #0d0d0e;
   border-radius: 3px;
   text-align: center;
-  padding: 1em;
+  padding: 0 1em 1em 1em;
   position: relative;
 }
 
@@ -406,14 +529,13 @@ html, body {
 }
 
 #task-modal-close {
-  position: absolute;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
   color: #e1e2ef;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  bottom: 5.4em;
-  right: 0.1em;
   font-size: 2em;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);

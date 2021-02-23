@@ -47,6 +47,10 @@ for(i=1; i < childDivs.length; i++ ) {
 
     }
 
+    if(i < dayOfMonth) {
+        document.getElementById(dayGridBox).style.background = "#1b1b1b";
+    }
+
     if(i == dayOfMonth) {
 
         // display task bubble on current date
