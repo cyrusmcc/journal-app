@@ -160,14 +160,14 @@
 
     <div id="currentTaskBar">
 
-        <button id="newTaskButton" onclick="openModal('taskForm')">New Goal</button>
+        <button class="button" id="newTaskButton" onclick="openModal('taskForm')">New Goal</button>
 
 
         <a href="#" id="finishTaskButton">
             Finish Goal
         </a>
 
-        <button id="newEventButton" onclick="openModal('eventForm')">New Event</button>
+        <button class="button" id="newEventButton" onclick="openModal('eventForm')">New Event</button>
 
     </div>
 
@@ -237,7 +237,7 @@
                            th:field="*{name}" type="text">
                 </div>
 
-                <input id="submitNewTask" type="submit" value="Add Event"/>
+                <input class="button submitForm" id="submitNewTask" type="submit" value="Add Event"/>
 
             </fieldset>
 
@@ -267,7 +267,7 @@
                            th:field="*{eventDate}" type="text" >
                 </div>
 
-                <input id="submitNewEvent" type="submit" value="Add Event"/>
+                <input class="button submitForm" type="submit" value="Add Event"/>
 
             </fieldset>
 

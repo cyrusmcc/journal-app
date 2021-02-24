@@ -60,9 +60,14 @@ html, body {
 }
 
 .button {
-  border: medium solid $maincolor;
-  color: $text;
-  background-color: $darkshade;
+    border: none;
+    font-size: 0.85em;
+    padding: 0.7em;
+    margin: 0.5em;
+    background-color: $darkshade;
+    color: $text;
+    border-radius: $btnbrder;
+    text-decoration: none;
 }
 
 /* NAV BAR */
@@ -148,6 +153,7 @@ html, body {
 
   #calendarGrid {
     width: 85%;
+    border-radius: 0;
     justify-self: center;
     grid-auto-flow: row;
   }
@@ -158,17 +164,6 @@ html, body {
   grid-area: calendar;
   border-radius: 3px 3px 0 0;
   border-bottom: 0;
-}
-
-#newEventButton {
-  border: none;
-  font-size: 0.85em;
-  padding: 0.7em;
-  margin: 0.5em;
-  background-color: $darkshade;
-  color: $text;
-  border-radius: $btnbrder;
-  text-decoration: none;
 }
 
 /* CURRENT TASK BAR */
@@ -184,17 +179,6 @@ html, body {
   grid-area: currentTaskBar;
   border-radius: 0 0 3px 3px;
   box-shadow: $boxshadow;
-}
-
-#newTaskButton {
-  border: none;
-  font-size: 0.85em;
-  padding: 0.7em;
-  margin: 0.5em;
-  background-color: $darkshade;
-  color: $text;
-  border-radius: $btnbrder;
-  text-decoration: none;
 }
 
 #finishTaskButton {
@@ -419,17 +403,32 @@ html, body {
 
 .formTitle {
   margin-bottom: 1.5em;
+  font-size: 1.2em;
+}
+
+.formFieldHead {
+  text-align: start;
+  font-size: 0.8em;
 }
 
 .formField {
   height: fit-content;
   display: flex;
   flex-direction: column;
-  row-gap: 1em;
+  row-gap: 0.2em;
 }
 
-.formFieldHead {
-  text-align: start;
+
+.formFieldInput {
+  background-color: #363738;
+  padding: 0.5em;
+  border: 0;
+  color: #e1e2ef;
+}
+
+.submitForm {
+  margin: 0;
+  width: 6em;
 }
 
 #task-modal-bg {
