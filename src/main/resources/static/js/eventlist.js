@@ -10,7 +10,6 @@ function onClickEventList() {
     document.getElementById("tab3").style.opacity = "1";
     document.getElementById("tab3").style.height = "4vh";
 
-
     document.getElementById("journal").style.display = "none";
     document.getElementById("goalList").style.display = "none";
     document.getElementById("eventList").style.display = "block";

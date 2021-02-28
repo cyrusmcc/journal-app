@@ -2,12 +2,11 @@ package com.producedaily.productivityapp.user.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.producedaily.productivityapp.event.model.Event;
+import com.producedaily.productivityapp.goal.model.Goal;
+import com.producedaily.productivityapp.goal.model.GoalOccurence;
+import com.producedaily.productivityapp.goal.model.GoalPeriod;
+import com.producedaily.productivityapp.goal.service.GoalService;
 import com.producedaily.productivityapp.journal.model.Journal;
-import com.producedaily.productivityapp.journal.model.JournalEntry;
-import com.producedaily.productivityapp.journal.repository.JournalEntryRepository;
-import com.producedaily.productivityapp.journal.service.JournalService;
-import com.producedaily.productivityapp.task.Task;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -40,7 +39,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL})
     @JsonManagedReference
-    private List<Task> tasks;
+    private List<Goal> goals;
 
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "journal_id")
@@ -115,12 +114,12 @@ public class User {
         this.events = events;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
+    public List<Goal> getGoals() {
+        return goals;
     }
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
+    public void setGoals(List<Goal> goals) {
+        this.goals = goals;
     }
 
     public Journal getJournal() {
@@ -163,38 +162,53 @@ public class User {
         return sortedEventList;
     }
 
-    // tasks that are older than current date are considered finished
-    public void setPastTasksToFinished(List<Task> tasks) {
+    // goals that are older than current date are considered finished
+    public void deletePastGoals(List<Goal> goals) {
 
-        for(int i = 0; i < tasks.size(); i++) {
+        LocalDate currentDate = LocalDate.parse(getLocalDate());
 
-            Task theTask = tasks.get(i);
+        List<Goal> pastGoals = goals;
 
-            LocalDate theTaskDate = LocalDate.parse(theTask.getTaskDate());
+        for(int i = 0; i < goals.size(); i++) {
 
-            if(LocalDate.now().isAfter(theTaskDate)) {
+            Goal currentGoal = goals.get(i);
 
-                theTask.setFinished(true);
+            GoalPeriod currentGoalPeriod = currentGoal.getGoalPeriod();
 
-                theTask.setCurrentTask(false);
+            GoalOccurence currentGoalOccurence = currentGoal.getGoalOccurrence();
+
+            LocalDate currentGoalDate = LocalDate.parse(currentGoal.getGoalDate());
+
+            if((currentGoalPeriod == GoalPeriod.DAILY) && (currentDate.isAfter(currentGoalDate))
+                    && (currentGoalOccurence != GoalOccurence.REOCCUR)) {
+
+                currentGoal.setFinished(true);
+
+                currentGoal.setNote(currentGoal.getName() + "didn't get completed.");
+
+                pastGoals.add(currentGoal);
+
             }
+
+            // weekly if date is past 7 days and not reoccur
+
         }
     }
 
-    public List<Task> getFinishedTasks(List<Task> tasks) {
+    public List<Goal> getFinishedGoals(List<Goal> goals) {
 
-        List<Task> unfinishedTasks = new ArrayList<>();
+        List<Goal> unfinishedGoals = new ArrayList<>();
 
-        for(int i = 0; i < tasks.size(); i++) {
+        for(int i = 0; i < goals.size(); i++) {
 
-            if((tasks.get(i).isFinished() == false) && (tasks.get(i) != null)) {
+            if((goals.get(i).isFinished() == false) && (goals.get(i) != null)) {
 
-                Task finished = tasks.get(i);
+                Goal finished = goals.get(i);
 
-                unfinishedTasks.add(tasks.get(i));
+                unfinishedGoals.add(goals.get(i));
             }
         }
-        return unfinishedTasks;
+        return unfinishedGoals;
     }
 
     @Override
@@ -202,7 +216,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", tasks=" + tasks +
+                ", goals=" + goals +
                 '}';
     }
 }

@@ -11,20 +11,20 @@
         Highlights current day,
         Add/remove color coded events,
         Custom event types,
-        Displays number of daily tasks,
+        Displays number of daily goals,
 - Journal
     
         Displays new entry daily,
-        Logs task summaries,
+        Logs goal summaries,
         Plain text area for user notes
   
-- Task tracker
+- goal tracker
   
-        Active task bar displays task in progress,
-        Start, pause, resume, & finish active task,
-        Finishing active task prompts user for notes
+        Active goal bar displays goal in progress,
+        Start, pause, resume, & finish active goal,
+        Finishing active goal prompts user for notes
         then submits notes and time to completion to daily journal,
-        Add/remove tasks and sort by dragging
+        Add/remove goals and sort by dragging
 - Event tracker
         
         List of events that sorts by date

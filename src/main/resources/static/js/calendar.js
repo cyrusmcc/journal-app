@@ -19,11 +19,11 @@ var months = ["January", "February", "March", "April", "May", "June", "July", "A
 var calendarTitle = days[d.getDay()] + ", " + months[d.getMonth()] + " " + dayOfMonth + ", " + d.getFullYear();
 document.getElementById('dateDisplay').innerText = calendarTitle;
 
-var activeUserTasks = 0;
+var activeUserGoals = 0;
 
-for(i = 0; i < userTasks.length; i++) {
-    if(userTasks[i].finished === false) {
-        activeUserTasks += 1;
+for(i = 0; i < userGoals.length; i++) {
+    if(userGoals[i].finished === false) {
+        activeUserGoals += 1;
     }
 }
 
@@ -53,27 +53,27 @@ for(i=1; i < childDivs.length; i++ ) {
 
     if(i == dayOfMonth) {
 
-        // display task bubble on current date
-        if(activeUserTasks > 0) {
+        // display goal bubble on current date
+        if(activeUserGoals > 0) {
 
-            var numberOfTaskCircle = document.createElement("div");
+            var numberOfGoalCircle = document.createElement("div");
 
-            numberOfTaskCircle.style.justifySelf = "flex-start";
-            numberOfTaskCircle.style.gridArea = "grid-area: 1 / 1 / 3 / 3";
-            numberOfTaskCircle.style.textAlign = "center";
-            numberOfTaskCircle.style.marginBottom = "1em";
-            numberOfTaskCircle.style.background = '#fbf7f4';
-            numberOfTaskCircle.style.color = '#1b1b1b';
-            numberOfTaskCircle.style.borderRadius = "50%";
-            numberOfTaskCircle.style.fontSize = ".8em";
-            numberOfTaskCircle.style.fontWeight = "bold";
-            numberOfTaskCircle.style.width = "1.2em";
-            numberOfTaskCircle.style.height = "1.2em";
-            numberOfTaskCircle.style.margin = "0.3em";
-            numberOfTaskCircle.style.paddingBottom = "0.15em";
-            numberOfTaskCircle.innerText = activeUserTasks;
+            numberOfGoalCircle.style.justifySelf = "flex-start";
+            numberOfGoalCircle.style.gridArea = "grid-area: 1 / 1 / 3 / 3";
+            numberOfGoalCircle.style.textAlign = "center";
+            numberOfGoalCircle.style.marginBottom = "1em";
+            numberOfGoalCircle.style.background = '#fbf7f4';
+            numberOfGoalCircle.style.color = '#1b1b1b';
+            numberOfGoalCircle.style.borderRadius = "50%";
+            numberOfGoalCircle.style.fontSize = ".8em";
+            numberOfGoalCircle.style.fontWeight = "bold";
+            numberOfGoalCircle.style.width = "1.2em";
+            numberOfGoalCircle.style.height = "1.2em";
+            numberOfGoalCircle.style.margin = "0.3em";
+            numberOfGoalCircle.style.paddingBottom = "0.15em";
+            numberOfGoalCircle.innerText = activeUserGoals;
 
-            document.getElementById(dayGridBox).appendChild(numberOfTaskCircle);
+            document.getElementById(dayGridBox).appendChild(numberOfGoalCircle);
         }
 
         document.getElementById(dayGridBox).style.background = '#4a94b7';

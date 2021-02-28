@@ -19,17 +19,17 @@
     <div class="var" id="userLocalDate" style="display:none;" th:text="${userLocalDate}"></div>
     <div class="var" id="username" style="display:none;" th:text="${username}"></div>
     <div class="var" id="userEvents" style="display:none;" th:text="${userEvents}"></div>
-    <div class="var" id="allDailyUserTasks" style="display:none;" th:text="${allDailyUserTasks}"></div>
-    <div class="var" id="unfinishedDailyUserTasks" style="display:none;" th:text="${unfinishedDailyUserTasks}"></div>
+    <div class="var" id="allDailyUsergoals" style="display:none;" th:text="${allDailyUserGoals}"></div>
+    <div class="var" id="unfinishedDailyUsergoals" style="display:none;" th:text="${unfinishedDailyUserGoals}"></div>
     <div class="var" id="journalEntry" style="display:none;" th:text="${journalEntry}"></div>
     <div class="var" id="journalEntryText" style="display:none;" th:text="${journalEntry.text}"></div>
-    <div class="var" id="journalEntrySummary" style="display:none;" th:text="${journalEntry.taskSummary}"></div>
+    <div class="var" id="journalEntrySummary" style="display:none;" th:text="${journalEntry.goalSummary}"></div>
     <div class="var" id="event" style="display:none;" th:text="${event}"></div>
-    <div class="var" id="task" style="display:none;" th:text="${task}"></div>
+    <div class="var" id="goal" style="display:none;" th:text="${goal}"></div>
 
 
     <script th:inline="javascript">
-        var userTasks = [[${allDailyUserTasks}]];
+        var userGoals = [[${allDailyUserGoals}]];
     </script>
 
 </div>
@@ -158,12 +158,12 @@
 
     </div>
 
-    <div id="currentTaskBar">
+    <div id="currentGoalBar">
 
-        <button class="button" id="newTaskButton" onclick="openModal('taskForm')">New Goal</button>
+        <button class="button" id="newGoalButton" onclick="openModal('goalForm')">New Goal</button>
 
 
-        <a href="#" id="finishTaskButton">
+        <a href="#" id="finishGoalButton">
             Finish Goal
         </a>
 
@@ -191,11 +191,11 @@
 
             <form id="journalEntryForm" method="post" th:action="@{/saveEntry}" th:object="${journalEntry}">
 
-                <div id="dailyTaskSummary" th:text="${journalEntry.taskSummary}"></div>
+                <div id="dailyGoalSummary" th:text="${journalEntry.goalSummary}"></div>
 
                 <input th:field="*{id}" type="hidden">
                 <input th:field="*{entryDate}" type="hidden"/>
-                <input th:field="*{taskSummary}" type="hidden"/>
+                <input th:field="*{goalSummary}" type="hidden"/>
                 <input th:field="*{journal}" type="hidden"/>
 
                 <textarea id="userJournalNotes" placeholder="### Daily Journal - Thoughts & feelings about today's happenings can go here"
@@ -222,22 +222,22 @@
 
 </div>
 
-<div id="task-modal-bg">
-    <div id="task-modal-content">
+<div id="goal-modal-bg">
+    <div id="goal-modal-content">
 
-        <div id="task-modal-close" onclick="closeModal()">+</div>
+        <div id="goal-modal-close" onclick="closeModal()">+</div>
 
-        <form id="taskForm" method="POST" th:action="@{/saveTask}" th:object="${task}">
+        <form id="goalForm" method="POST" th:action="@{/saveGoal}" th:object="${goal}">
 
             <fieldset class="formFieldSet">
                 <legend class="formTitle">Add New Goal</legend>
-                <div id="taskName" class="formField">
-                    <label for="taskNameInput" class="formFieldHead">Event Name</label>
-                    <input class="formFieldInput" id="taskNameInput" placeholder="Enter goal name" required
+                <div id="goalName" class="formField">
+                    <label for="goalNameInput" class="formFieldHead">Goal Name</label>
+                    <input class="formFieldInput" id="goalNameInput" placeholder="Enter goal name" required
                            th:field="*{name}" type="text">
                 </div>
 
-                <input class="button submitForm" id="submitNewTask" type="submit" value="Add Event"/>
+                <input class="button submitForm" id="submitNewgoal" type="submit" value="Add Goal"/>
 
             </fieldset>
 
@@ -257,7 +257,7 @@
 
                 <div id="eventDesc" class="formField">
                     <label for="eventDescInput" class="formFieldHead">Event Description</label>
-                    <input class="formFieldInput" id="eventDescInput" placeholder="Enter event description" required
+                    <input class="formFieldInput" id="eventDescInput" placeholder="Enter event description (Optional)"
                            th:field="*{description}" type="text">
                 </div>
 

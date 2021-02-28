@@ -1,12 +1,3 @@
-/* DEFAULT COLORS*/ 
-/*
-$lightshade : #fbf7f4;
-$lightaccent : #a698da;
-$maincolor : #87bbd5;
-$darkaccent : #9a7092;
-$darkshade : #3658a9;
-*/
-
 $darkshade: #1b1b1b;
 $lightshade : #0d0d0e;
 $lightaccent : #4a94b7;
@@ -55,7 +46,7 @@ html, body {
   grid-template-rows: auto auto 50vh;
   grid-template-areas: 
         "calendar"
-        "currentTaskBar"
+        "currentgoalBar"
         "contentContainer";
 }
 
@@ -125,7 +116,7 @@ html, body {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-template-areas: 
-          "calendar calendar calendar currentTaskBar"
+          "calendar calendar calendar currentgoalBar"
           "calendar calendar calendar"
           "calendar calendar calendar"
           "journal journal journal"
@@ -141,8 +132,8 @@ html, body {
     grid-area: calendar;
   }
 
-  #currentTaskBar {
-    grid-area: currentTaskBar;
+  #currentGoalBar {
+    grid-area: currentgoalBar;
   }
 
   #journal {
@@ -166,9 +157,9 @@ html, body {
   border-bottom: 0;
 }
 
-/* CURRENT TASK BAR */
+/* CURRENT GOAL BAR */
 
-#currentTaskBar {
+#currentGoalBar {
   margin-bottom: 1em;
   border-top: 0;
   position: relative;
@@ -176,12 +167,12 @@ html, body {
   justify-content: flex-start;
   align-items: center;
   background-color: $lightshade;
-  grid-area: currentTaskBar;
+  grid-area: currentgoalBar;
   border-radius: 0 0 3px 3px;
   box-shadow: $boxshadow;
 }
 
-#finishTaskButton {
+#finishGoalButton {
   font-size: 0.85em;
   padding: 0.5em;
   margin: 0.5em;
@@ -380,7 +371,7 @@ html, body {
 
 
 /* MODAL */
-#taskForm {
+#goalForm {
   display: none;
   flex-direction: column;
   align-items: center;
@@ -431,7 +422,7 @@ html, body {
   width: 6em;
 }
 
-#task-modal-bg {
+#goal-modal-bg {
   position: absolute;
   top: 0;
   position: fixed;
@@ -443,7 +434,7 @@ html, body {
   display: none;
 }
 
-#task-modal-content {
+#goal-modal-content {
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -457,7 +448,7 @@ html, body {
   position: relative;
 }
 
-#task-modal-notes-input {
+#goal-modal-notes-input {
   font-family: 'Poppins', sans-serif;
   width: 90%;
   display: block;
@@ -468,7 +459,7 @@ html, body {
   border: medium solid $darkshade;
 }
 
-#task-modal-close {
+#goal-modal-close {
   align-self: flex-end;
   color: $text;
   user-select: none;
@@ -477,7 +468,7 @@ html, body {
   cursor: pointer;
 }
 
-#updateTaskButton {
+#updateGoalButton {
   font-weight: bold;
   font-size: 0.85em;
   padding: 0.3em;

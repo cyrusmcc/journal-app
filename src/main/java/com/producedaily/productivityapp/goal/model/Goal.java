@@ -1,5 +1,4 @@
-package com.producedaily.productivityapp.task;
-
+package com.producedaily.productivityapp.goal.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.producedaily.productivityapp.user.model.User;
@@ -7,12 +6,12 @@ import com.producedaily.productivityapp.user.model.User;
 import javax.persistence.*;
 
 @Entity
-@Table(name="task")
-public class Task {
+@Table(name="goal")
+public class Goal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "task_id")
+    @Column(name = "goal_id")
     private long id;
 
     private String name;
@@ -22,21 +21,23 @@ public class Task {
 
     private boolean isFinished;
 
-    private boolean isCurrentTask;
+    private boolean isCurrentGoal;
 
-    private String taskDate;
+    private String goalDate;
 
-    //private TaskStatus taskStatus;
+    private GoalPeriod goalPeriod;
+
+    private GoalOccurence goalOccurrence;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
 
-    public Task() {
+    public Goal() {
     }
 
-    public Task(String name, boolean isFinished) {
+    public Goal(String name, boolean isFinished) {
         this.name = name;
         this.isFinished = isFinished;
     }
@@ -81,23 +82,41 @@ public class Task {
         this.user = user;
     }
 
-    public String getTaskDate() {
-        return taskDate;
+    public String getGoalDate() {
+        return goalDate;
     }
 
-    public void setTaskDate(String taskDate) {
-        this.taskDate = taskDate;
+    public void setGoalDate(String goalDate) {
+        this.goalDate = goalDate;
     }
 
-    public boolean getCurrentTaskStatus() {
-        return isCurrentTask;
+    public GoalPeriod getGoalPeriod() {
+        return goalPeriod;
     }
 
-    public boolean isCurrentTask(boolean b) {
-        return isCurrentTask;
+    public void setGoalPeriod(GoalPeriod goalPeriod) {
+        this.goalPeriod = goalPeriod;
     }
 
-    public void setCurrentTask(boolean currentTask) {
-        isCurrentTask = currentTask;
+    public GoalOccurence getGoalOccurrence() {
+        return goalOccurrence;
     }
+
+    public void setGoalOccurrence(GoalOccurence goalOccurrence) {
+        this.goalOccurrence = goalOccurrence;
+    }
+
+    public boolean getCurrentGoalStatus() {
+        return isCurrentGoal;
+    }
+
+    public boolean isCurrentGoal(boolean b) {
+        return isCurrentGoal;
+    }
+
+    public void setCurrentGoal(boolean currentGoal) {
+        isCurrentGoal = currentGoal;
+    }
+
 }
+

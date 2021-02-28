@@ -1,22 +1,22 @@
-var modal = document.getElementById("task-modal-content");
+var modal = document.getElementById("goal-modal-content");
 
-// open finish task modal
+// open finish goal modal
 function openModal(form) {
 
-    document.querySelector("#task-modal-bg").style.display = "flex";
+    document.querySelector("#goal-modal-bg").style.display = "flex";
 
     document.getElementById(form).style.display = "flex";
 
 }
 
-// close finish task modal
+// close finish goal modal
 function closeModal(form) {
 
-    document.getElementById("taskForm").style.display = "none";
+    document.getElementById("goalForm").style.display = "none";
 
     document.getElementById("eventForm").style.display = "none";
 
-    document.querySelector("#task-modal-bg").style.display = "none";
+    document.querySelector("#goal-modal-bg").style.display = "none";
 
 }
 

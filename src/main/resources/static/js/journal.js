@@ -9,11 +9,11 @@ var username = document.getElementById("username").innerText;
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
     "October", "November", "December"];
 
-var totalTasksComplete = 0;
+var totalGoalsComplete = 0;
 
-var totalDailyTasks = 0;
+var totalDailyGoals = 0;
 
-var tasksCompletedCounter;
+var goalsCompletedCounter;
 
 function onClickJournal() {
 
@@ -31,40 +31,40 @@ function onClickJournal() {
     document.getElementById("journal").style.display = "block";
 }
 
-for(i = 0; i < userTasks.length; i++) {
+for(i = 0; i < userGoals.length; i++) {
 
-    // find number of completed tasks
-    if((userTasks[i].taskDate == userDate) && (userTasks[i].finished == true)) {
-        totalTasksComplete += 1;
+    // find number of completed goals
+    if((userGoals[i].goalDate == userDate) && (userGoals[i].finished == true)) {
+        totalGoalsComplete += 1;
     }
 
-    // find total number of completed/uncompleted daily user tasks
-    if(userTasks[i].taskDate == userDate) {
-        totalDailyTasks += 1;
+    // find total number of completed/uncompleted daily user goals
+    if(userGoals[i].goalDate == userDate) {
+        totalDailyGoals += 1;
     }
 }
 
-tasksCompletedCounter = totalTasksComplete + "/" + totalDailyTasks;
+goalsCompletedCounter = totalGoalsComplete + "/" + totalDailyGoals;
 
 document.getElementById("genStart").innerText = "Hey, "+ username + "! Today, " + months[d.getMonth()] + " "
                         + currentDayOfMonth + "," + " you have completed [";
 
 document.getElementById("genStart").style.color = "#fbf7f4";
 
-document.getElementById("genMid").innerText = tasksCompletedCounter;
+document.getElementById("genMid").innerText = goalsCompletedCounter;
 
-document.getElementById('genEnd').innerText = "] tasks.";
+document.getElementById('genEnd').innerText = "] goals.";
 
 document.getElementById("genEnd").style.color = "#fbf7f4";
 
-if(totalTasksComplete == userTasks.length) {
+if(totalGoalsComplete == userGoals.length) {
     document.getElementById("genMid").style.color = '#A3C9A8';
 } else {
     document.getElementById("genMid").style.color = '#FFD07B';
 }
 
 
-var noteText = document.getElementById("dailyTaskSummary").innerText;
+var noteText = document.getElementById("dailyGoalSummary").innerText;
 
 noteText.split("###");
 

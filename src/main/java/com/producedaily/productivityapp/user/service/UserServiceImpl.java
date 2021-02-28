@@ -1,7 +1,7 @@
 package com.producedaily.productivityapp.user.service;
 
+import com.producedaily.productivityapp.goal.model.Goal;
 import com.producedaily.productivityapp.journal.model.Journal;
-import com.producedaily.productivityapp.task.Task;
 import com.producedaily.productivityapp.user.model.User;
 import com.producedaily.productivityapp.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,12 +130,12 @@ public class  UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Task> findTasks(Principal principal) {
+    public List<Goal> findgoals(Principal principal) {
 
         User user = findByUsername(principal.getName());
 
-        List<Task> tasks = user.getTasks();
+        List<Goal> goals = user.getGoals();
 
-        return tasks;
+        return goals;
     }
 }

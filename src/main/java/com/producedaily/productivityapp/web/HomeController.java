@@ -5,13 +5,12 @@ import com.producedaily.productivityapp.event.model.Event;
 import com.producedaily.productivityapp.event.service.EventService;
 import com.producedaily.productivityapp.journal.model.JournalEntry;
 import com.producedaily.productivityapp.journal.service.JournalService;
-import com.producedaily.productivityapp.task.Task;
-import com.producedaily.productivityapp.task.service.TaskService;
+import com.producedaily.productivityapp.goal.model.Goal;
+import com.producedaily.productivityapp.goal.service.GoalService;
 import com.producedaily.productivityapp.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -26,7 +25,7 @@ public class HomeController {
     private UserService userService;
 
     @Autowired
-    private TaskService taskService;
+    private GoalService goalService;
 
     @Autowired
     JournalService journalService;
@@ -56,18 +55,18 @@ public class HomeController {
         model.addAttribute("userEvents",
                 eventService.findByUserName(principal));
 
-        model.addAttribute("unfinishedDailyUserTasks",
-                taskService.findUnfinishedTasksByUserName(principal));
+        model.addAttribute("unfinishedDailyUserGoals",
+                goalService.findUnfinishedGoalsByUserName(principal));
 
-        model.addAttribute("allDailyUserTasks",
-                taskService.findAllDailyTasksByUsername(principal));
+        model.addAttribute("allDailyUserGoals",
+                goalService.findAllDailyGoalsByUsername(principal));
 
         model.addAttribute("journalEntry",
                 journalService.findEntryByDate(principal));
 
         model.addAttribute("event", new Event());
 
-        model.addAttribute("task", new Event());
+        model.addAttribute("goal", new Goal());
 
 
         return model;
@@ -81,10 +80,10 @@ public class HomeController {
         return "redirect:/home";
     }
 
-    @PostMapping("/saveTask")
-    public String saveTask(Principal principal, @ModelAttribute("task") Task task) {
+    @PostMapping("/saveGoal")
+    public String saveGoal(Principal principal, @ModelAttribute("goal") Goal goal) {
 
-        taskService.saveNewTask(principal, task);
+        goalService.saveNewGoal(principal, goal);
 
         return "redirect:/home";
     }
@@ -97,23 +96,23 @@ public class HomeController {
         return "redirect:/home";
     }
 
-    @PostMapping("/updateTask")
-    public String updateTaskToFinished(Principal principal, @ModelAttribute("theTask") Task theTask) {
+    @PostMapping("/updateGoal")
+    public String updateGoalToFinished(Principal principal, @ModelAttribute("thegoal") Goal theGoal) {
 
-        theTask.setCurrentTask(false);
-        taskService.updateTaskToFinished(principal, theTask);
+        theGoal.setCurrentGoal(false);
+        goalService.updateGoalToFinished(principal, theGoal);
 
         return "redirect:/home";
 
     }
 
-    @PostMapping("/updateCurrentTask")
-    public String updateCurrentTask(Principal principal,Task task) {
+    @PostMapping("/updateCurrentGoal")
+    public String updateCurrentGoal(Principal principal, Goal goal) {
 
-        // task equals 0 when current task is submitted to update current task
-        if(task.getCurrentTaskStatus() == false && (task.getId() != 0)) {
+        // goal equals 0 when current goal is submitted to update current goal
+        if(goal.getCurrentGoalStatus() == false && (goal.getId() != 0)) {
 
-            taskService.setCurrentTaskById(principal, task.getId());
+            goalService.setCurrentGoalById(principal, goal.getId());
 
         }
 
