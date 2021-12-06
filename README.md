@@ -1,6 +1,6 @@
 # Journal Tool
 
-Task based calendar & journal application for productivity tracking. I needed a way to keep track of my daily tasks but I was unsatisfied with the various productivity tools online. The new year was approaching and instead of buying a new planner or switching to a new program, I decided to build an application that allowed me to keep track of my daily productivity levels without micromanaging my day,so I built produceDaily.
+Task based calendar & journal application for productivity tracking. I needed a way to keep track of my daily tasks but I was unsatisfied with the various productivity tools online. The new year was approaching and instead of buying a new planner or switching to a new program, I decided to build an application that allowed me to keep track of my daily productivity levels and thoughts without micromanaging my day.
 
 
 # Features
